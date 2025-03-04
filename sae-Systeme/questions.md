@@ -1,0 +1,1 @@
+- Mettre un tableau global pour la mémoire plutot qu'un tableau local a la fonction combat avec le joueur ?

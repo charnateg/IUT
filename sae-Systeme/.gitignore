@@ -1,0 +1,30 @@
+# Ignorer les répertoires de build et de binaires
+build/
+bin/
+
+# Ignorer les fichiers d'objets et de dépendances
+*.o
+*.d
+
+# Ignorer les fichiers d'exécutable
+Server
+
+# Ignorer les fichiers de logs et de debugging
+*.log
+*.out
+*.err
+vgcore.*
+
+# Ignorer les fichiers de sauvegarde (ex: fichiers temporaires créés par les éditeurs de texte)
+*~
+*.swp
+*.swo
+*.bak
+
+# Ignorer les fichiers générés par l'IDE (ex: VSCode, CLion, etc.)
+.vscode/
+.idea/
+
+# Ignorer les fichiers spécifiques au système d'exploitation
+.DS_Store  # macOS
+Thumbs.db  # Windows

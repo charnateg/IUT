@@ -1,0 +1,28 @@
+package model;
+
+public enum Treasure {
+    XBOX,
+    FORZA,
+    EA,
+    RAYMAN,
+    SWITCH,
+    MINECRAFT,
+    DARKSOULS,
+    SIMS,
+    POKEMON,
+    LOL,
+    DIABLO,
+    PLAYSTATION,
+    COD,
+    MARIO,
+    VALORANT,
+    SONIC,
+    PACMAN,
+    THEWITCHER,
+    CANDYCRUSH,
+    SUBWAYSURFER,
+    CLASHOFCLANS,
+    STARCITIZEN,
+    FORTNITE,
+    ZELDA,
+}

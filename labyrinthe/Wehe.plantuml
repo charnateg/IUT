@@ -1,0 +1,279 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AdditionalTileView {
+  + AdditionalTileView(Board): 
+  + update(): void
+  + createRotateButton(String, int): JButton
+   additionalTilePanel: JPanel
+}
+class Board {
+  + Board(): 
+  + getTile(int, int): Tile
+  + addObserver(Observer): void
+  + notifyObservers(): void
+  + shiftRow(Tile, int, int): boolean
+  + shiftCol(Tile, int, int): boolean
+  + setTile(int, int, Tile): void
+   movableTile: Tile
+}
+class BoardController {
+  + BoardController(): 
+}
+class BoardFactory {
+  + BoardFactory(): 
+  + composeBoard(): Board
+  + createBoard(): Board
+  + createTiles(): ArrayList<Tile>
+}
+interface BoardObserver << interface >>
+class BoardView {
+  + BoardView(Board, BoardController, ArrayList<Player>): 
+  + createShiftButton(String, int, int, int): JButton
+  + createShiftLeftButtons(int): void
+  + createShiftRightButtons(int): void
+  + createShiftDownButtons(): void
+  + createShiftUpButtons(): void
+  + update(): void
+  + playSlideSound(): void
+  + isOdd(int): boolean
+  + createBoard(int): void
+   boardPanel: JPanel
+}
+enum Direction << enumeration >> {
+  + Direction(): 
+  + values(): Direction[]
+  + valueOf(String): Direction
+}
+class Game {
+  + Game(ArrayList<Player>): 
+  + addObserver(Observer): void
+  + nextTurn(): void
+  + notifyObservers(): void
+   turn: int
+   currentPlayer: Player
+   over: boolean
+   winner: Player
+   players: ArrayList<Player>
+}
+class GameController {
+  + GameController(): 
+  - addObservers(ArrayList<Player>): void
+  - initializeViews(): void
+  + initializeGame(): void
+  + startMusic(): void
+}
+interface GameObserver << interface >>
+class GameView {
+  + GameView(Game, BoardView, AdditionalTileView, PlayerView): 
+  + update(): void
+}
+class ImageHelper {
+  + ImageHelper(): 
+  + rotateCounterClockwise(BufferedImage): BufferedImage
+  + merge(String, String[]): BufferedImage
+  + rotate(BufferedImage, double): BufferedImage
+  + rotateClockwise(BufferedImage): BufferedImage
+}
+class JPanelWithBackground {
+  + JPanelWithBackground(): 
+  + paintComponent(Graphics): void
+}
+class Main {
+  + Main(): 
+  + main(String[]): void
+}
+interface Observable << interface >> {
+  + addObserver(Observer): void
+  + notifyObservers(): void
+}
+interface Observer << interface >> {
+  + update(): void
+}
+class Player {
+  + Player(int, String, ArrayList<Task>): 
+  + finishTask(Task): void
+  + addObserver(Observer): void
+  + notifyObservers(): void
+   name: String
+   id: int
+   treasures: List<Treasure>
+   position: Position
+   currentTask: Task
+   tasks: ArrayList<Task>
+}
+class PlayerController {
+  + PlayerController(Board, Player): 
+  + movePlayer(Direction): void
+}
+interface PlayerObserver << interface >>
+class PlayerView {
+  + PlayerView(Game, ArrayList<PlayerController>): 
+  + update(): void
+  + createMoveButtons(): void
+  + createButton(Direction): JButton
+   moveButtons: JPanel
+   panel: JPanel
+}
+class Position {
+  + Position(int, int): 
+}
+class RoundedButton {
+  + RoundedButton(String, int): 
+  # paintComponent(Graphics): void
+   contentAreaFilled: boolean
+}
+class RoundedLabel {
+  + RoundedLabel(String, int): 
+  - borderWidth: int
+  - backgroundColor: Color
+  - borderColor: Color
+  # paintBorder(Graphics): void
+  # paintComponent(Graphics): void
+   borderWidth: int
+   borderColor: Color
+   opaque: boolean
+   backgroundColor: Color
+}
+class RoundedPanel {
+  + RoundedPanel(int): 
+  # paintComponent(Graphics): void
+}
+class Task {
+  + Task(int, Treasure): 
+  + complete(): void
+  + toString(): String
+   name: String
+   id: int
+   image: String
+   completed: boolean
+   treasure: Treasure
+}
+class TaskFactory {
+  + TaskFactory(): 
+  + createTask(ArrayList<Treasure>, String): ArrayList<Task>
+}
+class Tile {
+  + Tile(int, String, boolean[], int): 
+  + Tile(int, String, boolean[]): 
+  + removeTask(): Task
+  + rotate(int): void
+  + rotate(int, int): void
+   directions: boolean[]
+   type: TileType
+   image: Image
+   rotation: int
+   bigImage: Image
+   task: Task
+   id: int
+   imagePath: String
+}
+class TileCurve {
+  + TileCurve(int): 
+   type: TileType
+}
+class TileFactory {
+  + TileFactory(): 
+  + createTileT(int): TileT
+  + createTileCurve(int): TileCurve
+  + createTileStraight(int): TileStraight
+}
+interface TileObserver << interface >>
+class TileStraight {
+  + TileStraight(int): 
+   type: TileType
+}
+class TileT {
+  + TileT(int): 
+   type: TileType
+}
+enum TileType << enumeration >> {
+  + TileType(): 
+  + valueOf(String): TileType
+  + values(): TileType[]
+}
+enum Treasure << enumeration >> {
+  + Treasure(): 
+  + valueOf(String): Treasure
+  + values(): Treasure[]
+}
+
+AdditionalTileView   "1" *-[#595959,plain]-> "_board\n1" Board                
+AdditionalTileView    -[#008200,dashed]-^  TileObserver         
+Board                "1" *-[#595959,plain]-> "_boardObserver\n1" BoardObserver        
+Board                "1" *-[#595959,plain]-> "_gameObserver\n1" GameObserver         
+Board                 -[#008200,dashed]-^  Observable           
+Board                "1" *-[#595959,plain]-> "_board\n*" Tile                 
+Board                 -[#595959,dashed]->  Tile                 : "«create»"
+Board                "1" *-[#595959,plain]-> "_additionalTileObserver\n1" TileObserver         
+Board                 -[#595959,dashed]->  TileStraight         : "«create»"
+BoardFactory          -[#595959,dashed]->  Board                : "«create»"
+BoardFactory         "1" *-[#595959,plain]-> "_board\n1" Board                
+BoardFactory          -[#595959,dashed]->  Task                 : "«create»"
+BoardFactory         "1" *-[#595959,plain]-> "_tasks\n*" Task                 
+BoardFactory         "1" *-[#595959,plain]-> "_tiles\n*" Tile                 
+BoardFactory          -[#595959,dashed]->  TileCurve            : "«create»"
+BoardFactory          -[#595959,dashed]->  TileStraight         : "«create»"
+BoardFactory          -[#595959,dashed]->  TileT                : "«create»"
+BoardFactory         "1" *-[#595959,plain]-> "_treasures\n*" Treasure             
+BoardObserver         -[#008200,plain]-^  Observer             
+BoardView            "1" *-[#595959,plain]-> "_board\n1" Board                
+BoardView            "1" *-[#595959,plain]-> "_boardController\n1" BoardController      
+BoardView             -[#008200,dashed]-^  BoardObserver        
+BoardView            "1" *-[#595959,plain]-> "_players\n*" Player               
+BoardView             -[#595959,dashed]->  Position             : "«create»"
+Game                  -[#008200,dashed]-^  Observable           
+Game                 "1" *-[#595959,plain]-> "_players\n*" Player               
+Game                 "1" *-[#595959,plain]-> "_playerObserver\n1" PlayerObserver       
+GameController        -[#595959,dashed]->  AdditionalTileView   : "«create»"
+GameController       "1" *-[#595959,plain]-> "board\n1" Board                
+GameController        -[#595959,dashed]->  BoardController      : "«create»"
+GameController        -[#595959,dashed]->  BoardFactory         : "«create»"
+GameController        -[#595959,dashed]->  BoardView            : "«create»"
+GameController       "1" *-[#595959,plain]-> "game\n1" Game                 
+GameController        -[#595959,dashed]->  Game                 : "«create»"
+GameController        -[#595959,dashed]->  GameView             : "«create»"
+GameController       "1" *-[#595959,plain]-> "gameView\n1" GameView             
+GameController        -[#595959,dashed]->  Player               : "«create»"
+GameController        -[#595959,dashed]->  PlayerController     : "«create»"
+GameController       "1" *-[#595959,plain]-> "playerControllers\n*" PlayerController     
+GameController        -[#595959,dashed]->  PlayerView           : "«create»"
+GameController        -[#595959,dashed]->  Position             : "«create»"
+GameController        -[#595959,dashed]->  Task                 : "«create»"
+GameObserver          -[#008200,plain]-^  Observer             
+GameView             "1" *-[#595959,plain]-> "_game\n1" Game                 
+GameView              -[#008200,dashed]-^  GameObserver         
+GameView              -[#595959,dashed]->  JPanelWithBackground : "«create»"
+GameView              -[#595959,dashed]->  RoundedButton        : "«create»"
+GameView              -[#595959,dashed]->  RoundedLabel         : "«create»"
+GameView             "1" *-[#595959,plain]-> "_turn\n1" RoundedLabel         
+Main                  -[#595959,dashed]->  GameController       : "«create»"
+Player               "1" *-[#595959,plain]-> "_boardObserver\n1" BoardObserver        
+Player               "1" *-[#595959,plain]-> "_gameObserver\n1" GameObserver         
+Player                -[#008200,dashed]-^  Observable           
+Player               "1" *-[#595959,plain]-> "_position\n1" Position             
+Player               "1" *-[#595959,plain]-> "_tasks\n*" Task                 
+Player               "1" *-[#595959,plain]-> "_treasures\n*" Treasure             
+PlayerController     "1" *-[#595959,plain]-> "_board\n1" Board                
+PlayerController     "1" *-[#595959,plain]-> "_player\n1" Player               
+PlayerController      -[#595959,dashed]->  Position             : "«create»"
+PlayerObserver        -[#008200,plain]-^  Observer             
+PlayerView           "1" *-[#595959,plain]-> "_game\n1" Game                 
+PlayerView           "1" *-[#595959,plain]-> "_player\n1" Player               
+PlayerView           "1" *-[#595959,plain]-> "_playerController\n*" PlayerController     
+PlayerView            -[#008200,dashed]-^  PlayerObserver       
+PlayerView            -[#595959,dashed]->  RoundedPanel         : "«create»"
+Task                 "1" *-[#595959,plain]-> "_treasure\n1" Treasure             
+TaskFactory           -[#595959,dashed]->  Task                 : "«create»"
+Tile                 "1" *-[#595959,plain]-> "_task\n1" Task                 
+TileCurve             -[#000082,plain]-^  Tile                 
+TileFactory           -[#595959,dashed]->  TileCurve            : "«create»"
+TileFactory           -[#595959,dashed]->  TileStraight         : "«create»"
+TileFactory           -[#595959,dashed]->  TileT                : "«create»"
+TileObserver          -[#008200,plain]-^  Observer             
+TileStraight          -[#000082,plain]-^  Tile                 
+TileT                 -[#000082,plain]-^  Tile                 
+@enduml

@@ -1,0 +1,265 @@
+@startuml
+
+skinparam linetype ortho
+
+
+package Planets
+{
+
+    package API
+    {
+        static class PlanetAPI
+        {
+            - _planets : List<Planet>
+            + PlanetAPI()
+            + GetPlanet(id : int) : Planet
+            + GetPlanets() : List<Planet>
+            + AddPlanet(planet : Planet) : void
+            + RemovePlanet(id : int) : void
+        }
+        static class MineralAPI
+        {
+            - _minerals : List<Mineral>
+            + MineralAPI()
+            + GetMineral(id : int) : Mineral
+            + GetMinerals() : List<Mineral>
+            + AddMineral(mineral : Mineral) : void
+            + RemoveMineral(id : int) : void
+        }
+    }
+    class Planet
+    {
+        - _id : int
+        - _name : string
+        - _description : string
+        - _atmosphere : Atmosphere
+        - _temperature : int
+        - _minerals : List<int>
+        - _experienceValue : int
+        + Planet(name : string)
+    }
+    class Mineral
+    {
+        - _id : int
+        - _name : string
+        - _description : string
+        - _rarity : int
+        - _experienceValue : int
+        - _enhanced : bool
+        + Mineral(name : string)
+        + Enhance() : void
+        + CalculateExperience() : int
+    }
+
+    enum Atmosphere
+    {
+        Chaud
+        Froid
+        Glacial
+        Tempéré
+        Respirable
+        Toxique
+    }
+}
+
+package Library
+{
+    class Library
+    {
+        - _documents : List<Document>
+        + Library()
+        + AddDocument(document : Document) : void
+        + FindDocument(id : int) : Document
+        + RemoveDocument(id : int) : void
+        + GetDocument(id : int) : Document
+        + GetDocuments() : List<Document>
+    }
+    class LibraryManager
+    {
+        - _library : Library
+        + LibraryManager()
+        + AddDocument(document : Document) : void
+        + RemoveDocument(id : int) : void
+        + GetDocument(id : int) : Document
+        + GetDocuments() : List<Document>
+    }
+}
+
+class Document
+{
+    - _id : int
+    - _name : string
+    - _content : string
+    - _errors : int
+    - _experienceValue : int
+    - _formatted : bool
+    - _archived : bool
+    + Document(name : string, content : string, errors : int, experienceValue : int)
+    + GetErrorsCount() : int
+    + FixErrors(amount : int) : void
+    + CalculateExperience() : int
+    + Format() : void
+    + Archive() : void
+}
+
+package TaskSystem
+{
+    class Tasks
+    {
+        - _tasks : List<Task>
+        + Tasks()
+        + GetTask(id : int) : Task
+        + GetTasks() : List<Task>
+        + AddTask(task : Task) : void
+        + RemoveTask(id : int) : void
+    }
+
+    class Task
+    {
+        - _id : int
+        - _name : string
+        - _description : string
+        - _experienceValue : int
+        - _completed : bool
+        + Task(name : string, description : string, experienceValue : int)
+        + Complete() : void
+    }
+
+    class TaskGenerator
+    {
+        - _tasks : List<Task>
+        + TaskGenerator()
+        + GenerateTask() : Task
+    }
+}
+
+package Menu
+{
+}
+
+package Dialogue
+{
+}
+
+
+package InteractionSystem
+{
+    package Interactions
+    {
+        interface IInteractable
+        {
+            + Interact() : void
+            + GetInteractionText() : string
+            + GetInteractable() : Interactable
+        }
+        class LibraryInteraction implements IInteractable
+        {
+            - _libraryManager : LibraryManager
+            + Start()
+            + Update()
+            + Interact(player : MainPlayer) : void
+            + GetInteractionText() : string
+            + GetInteractable() : Interactable
+        }
+        class WorkspaceInteraction implements IInteractable
+        {
+            - _promptText : string
+            + Start()
+            + Update()
+            + Interact(player : MainPlayer) : void
+            + GetInteractionText() : string
+            + GetInteractable() : Interactable
+        }
+        class TableInteraction implements IInteractable
+        {
+            - _documentStacker : DocumentStacker
+
+            + Start()
+            + Update()
+            + Interact(player : MainPlayer) : void
+            + GetInteractionText() : string
+            + GetInteractable() : Interactable
+        }
+    }
+
+    class Interactor
+    {
+        - _interactionPoint : Transform
+        - _interactionPointRadius : float
+        - _interactableMask : LayerMask
+        - _interactionPromptUI : InteractionPromptUI
+    }
+
+
+
+    enum Interactable
+    {
+        Mineral,
+        Library,
+        Document,
+        Door,
+        Astronaut,
+        Scientist,
+    }
+
+}
+
+
+
+package Player
+{
+    class DataLibrarian
+    {
+        - _name : string
+        - _maxLevel : int
+        - _level : int
+        - _skills : List<Skill>
+        - _experience : int
+        - _stats : Attributes
+        + Player(name : string)
+        + DataLibrarian(name : string)
+        + AddSkill(skill : Skill) : void
+        + IncreaseExperience(amount : int) : void
+        + IncreaseLevel() : void
+        + IncreaseStats(attribute : Attribute, amount : int) : void
+        + Interact() : void
+    }
+    package Attributes
+    {
+        enum Attribute
+        {
+            - INTELLIGENCE
+            - SPEED
+            - PRECISION
+        }
+        class Attributes
+        {
+            - _intelligence : int
+            - _speed : int
+            - _precision : int
+            + Attributes(name : string)
+            + IncreaseIntelligence(amount : int) : void
+            + IncreaseSpeed(amount : int) : void
+            + IncreasePrecision(amount : int) : void
+        }
+    }
+    package Skills
+    {
+        abstract class Skill
+        {
+            - _name : string
+            - _level : int
+            - _description : string
+            - _type : Attribute
+            + Skill(name : string)
+            + GetType() : Attribute
+        }
+    }
+}
+
+
+DataLibrarian *--> "Have\n1 _stats" Player.Attributes.Attributes
+
+
+
+@enduml

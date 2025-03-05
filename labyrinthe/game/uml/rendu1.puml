@@ -1,0 +1,335 @@
+@startuml
+!theme reddress-darkred
+skinparam linetype ortho
+skinparam class {
+    FontColor White
+    FontSize 16
+}
+package helpers {
+  class ImageHelper {
+    + ImageHelper():
+    + merge(backgroundPath : String, foregroundPaths : String[]): BufferedImage
+    + rotate(original : BufferedImage, angle : double): BufferedImage
+    + rotateClockwise(original : BufferedImage): BufferedImage
+    + rotateCounterClockwise(original : BufferedImage): BufferedImage
+  }
+  class JPanelWithBackground {
+    + JPanelWithBackground():
+    - backgroundImage: Image
+    + paintComponent(g : Graphics): void
+  }
+  class RoundedButton {
+    + RoundedButton(text : String, radius : int):
+    - radius: int
+    + setContentAreaFilled(b : boolean): void
+    # paintComponent(g : Graphics): void
+  }
+  class RoundedLabel {
+    + RoundedLabel(text : String,radius : int):
+    - backgroundColor: Color
+    - borderColor: Color
+    - radius: int
+    - borderWidth: int
+    + setBackgroundColor(backgroundColor : Color): void
+    + setBorderColor(borderColor : Color): void
+    + setBorderWidth(borderWidth : int): void
+    + setOpaque(isOpaque : boolean): void
+    # paintComponent(g : Graphics): void
+    # paintBorder(g : Graphics): void
+  }
+  class RoundedPanel {
+    + RoundedPanel(radius : int):
+    - radius: int
+    # paintComponent(g : Graphics): void
+  }
+}
+
+package view {
+  class AdditionalTileView
+  {
+    + AdditionalTileView(board : Board):
+    - _additionalTilePanel: JPanel
+    - _board: Board
+    - _additionalTile: JLabel
+    + update(): void
+    + createRotateButton(img : String, direction int): JButton
+    + getAdditionalTilePanel(): JPanel
+  }
+  class BoardView {
+    + BoardView(board : Board, boardController BoardController, players : List<Player>):
+    - _board: Board
+    - _boardController: BoardController
+    - _boardPanel: JPanel
+    - _players: List<Player>
+    + update(): void
+    + createShiftButton(img : String, rowToShift : int, colToShift : int, direction : int) : JButton
+    + createBoard(i : int): void
+    + getBoardPanel(): JPanel
+    + playSlideSound(): void
+    + isOdd(number : int): boolean
+  }
+  class GameView {
+    + GameView(Game, BoardView, AdditionalTileView, PlayerView):
+    - _turn: RoundedLabel
+    - _game: Game
+    + update(): void
+  }
+  class PlayerView {
+    + PlayerView(Game, List<PlayerController>):
+    - _panel: JPanel
+    - _game: Game
+    - _playerControllers: List<PlayerController>
+    + getPanel(): JPanel
+    + update(): void
+  }
+
+}
+
+package model {
+   package observers
+   {
+        interface BoardObserver << interface >> extends Observer
+        interface GameObserver << interface >> extends Observer
+        interface PlayerObserver << interface >> extends Observer
+        interface TileObserver << interface >> extends Observer
+        interface Observer << interface >>
+  }
+  package factories {
+      class TaskFactory {
+        + TaskFactory():
+        + createTask(treasureList : ArrayList<Treasure>, name : String): ArrayList<Task>
+      }
+      class TileFactory {
+        + TileFactory():
+        + createTileCurve(id : int): Tile
+        + createTileStraight(id : int): Tile
+        + createTileT(id : int): Tile
+      }
+      class BoardFactory {
+        + BoardFactory():
+        - _board: Board
+        - _tiles: List<Tile>
+        - _treasures: Treasure[]
+        - _tasks: List<Task>
+        + createBoard(): Board
+        + createTiles(): List<Tile>
+        + composeBoard(): Board
+      }
+  }
+  class Board implements Observable {
+    + Board():
+    - _height: int
+    - _movableTile: Tile
+    - _direction: int
+    - _gameObserver: GameObserver
+    - _width: int
+    - _lastMovedRow: int
+    - _additionalTileObserver: TileObserver
+    - _lastMovedCol: int
+    - _boardObserver: BoardObserver
+    - _board: Tile[][]
+    + shiftCol(tile : Tile, col : int, direction int): boolean
+    + shiftRow(tile : Tile, row :  int, direction :  int): boolean
+    + notifyObservers(): void
+    + setTile(row : int, col : int, tile : Tile): void
+    + addObserver(observer : Observer): void
+    + getMovableTile(): Tile
+    + displayBoard(): void
+    + getTile(row : int, col : int): Tile
+  }
+  class Game implements Observable {
+    + Game(players : List<Player>):
+    - _players: List<Player>
+    - _winner: int
+    - _currentPlayer: Player
+    - _turn: int
+    - _playerObserver: PlayerObserver
+    + getWinner(): Player
+    + getPlayers(): List<Player>
+    + addObserver(observer : Observer): void
+    + nextTurn(): void
+    + notifyObservers(): void
+    + isOver(): boolean
+    + getCurrentPlayer(): Player
+    + getTurn(): int
+  }
+  class Player implements Observable {
+    + Player(id : int, name : String, tasks : ArrayList<Task>):
+    - _tasks: ArrayList<Task>
+    - _treasures: ArrayList<Treasure>
+    - _id: int
+    - _name: String
+    - _position: Position
+    + finishTask(task : Task): void
+    + getCurrentTask(): Task
+    + getId(): int
+    + getTreasures(): List<Treasure>
+    + getName(): String
+    + getTasks(): ArrayList<Task>
+    + setPosition(position : Position): void
+    + getPosition(): Position
+  }
+  class Task {
+    + Task(id : int, treasure Treasure):
+    - _completed: boolean
+    - _id: int
+    + complete(): void
+    + getTreasure(): Treasure
+    + toString(): String
+    + getName(): String
+    + getImage() : String
+    + isCompleted(): boolean
+  }
+  package tiles {
+    class Tile {
+      + Tile(id : int, image :  String, _direction : boolean[], rotation : int):
+      + Tile(id : int, image : String, directions :  boolean[]):
+      - _treasure: Treasure
+      - _id: int
+      - _rotation: int
+      - _image: String
+      - _directions: boolean[]
+      + getDirections(): boolean[]
+      + getImage(): Image
+      + pickUpTreasure(): Treasure
+      + getBigImage(): Image
+      + getImagePath(): String
+      + setTreasure(treasure : Treasure): void
+      + getId(): int
+      + getTreasure(): Treasure
+      + getRotation(): int
+      + getType(): TileType
+      + rotate(direction : int, times int): void
+      + rotate(direction : int): void
+
+    }
+    class TileCurve extends Tile {
+      + TileCurve(id : int):
+      + getType(): TileType
+    }
+    class TileStraight extends Tile {
+      + TileStraight( id :int):
+      + getType(): TileType
+    }
+    class TileT extends Tile {
+      + TileT( id :int):
+      + getType(): TileType
+    }
+    enum TileType << enumeration >> {
+      + STRAIGHT
+      + T
+      + CURVE
+    }
+  }
+
+  class Position
+  {
+    + Position(row : int, col : int):
+    + _row: int
+    + _col: int
+  }
+
+  enum Treasure << enumeration >> {
+    + Crown
+    + Gem
+    + Rat
+    + Shield
+    + Keys
+    + Sword
+    + Bat
+    + Necklace
+    + Ring
+    + Spider
+    + Coin
+    + Chest
+    + Goblet
+  }
+  interface Observable << interface >> {
+    + addObserver(observer : Observer): void
+    + notifyObservers(): void
+  }
+}
+
+package controller {
+    class BoardController
+    {
+    }
+    class GameController
+    {
+      + GameController():
+      - _game: Game
+      - _board: Board
+      - _playerControllers: List<PlayerController>
+      - _gameView: GameView
+      + initializeGame(): void
+      + startMusic(): void
+      + addObservers(players : List<Player>): void
+      + initializeViews(): void
+    }
+    class PlayerController {
+      + PlayerController(board : Board, player :Player):
+      - _player: Player
+      - _board: Board
+      + movePlayer(direction : Direction): void
+    }
+
+}
+
+class Main {
+  + Main():
+  + main(String[]): void
+}
+
+BoardView            "1" *-->                     "_board\n1" Board
+BoardView            "1" *-->                     "_boardController\n1" BoardController
+BoardView            "1" *-->                     "_players\n*" Player
+BoardView               ..^                     model.observers.BoardObserver
+
+
+AdditionalTileView   "1" *-->                     "_board\n1" Board
+AdditionalTileView        ..^                     model.observers.TileObserver
+
+
+
+GameView             "1" *-->                     "_game\n1" Game
+GameView             "1" *-->                     "_turn\n1" RoundedLabel
+GameView              -->                         JPanelWithBackground : "uses"
+GameView              -->                         RoundedButton        : "uses"
+GameView              -->                         RoundedLabel         : "uses"
+GameView              -->                         ImageHelper : "uses"
+GameView              ..^                         model.observers.GameObserver
+
+
+
+PlayerView           "1" *-->                     "_game\n1" Game
+PlayerView           "1" *-->                     "_playerControllers\n*" PlayerController
+PlayerView            -->                         RoundedPanel         : "uses"
+PlayerView            ..^                         model.observers.PlayerObserver
+
+
+Board                "1" *-->                     "_boardObserver\n1" model.observers.BoardObserver
+Board                "1" *-->                     "_gameObserver\n1" model.observers.GameObserver
+Board                "1" *-->                     "_additionalTileObserver\n1" model.observers.TileObserver
+Board                "1" *-->                     "_board\n*" Tile
+Board                 -->                         Tile                 : "uses"
+
+Game                 "1" *-->                     "_players\n*" Player
+Game                 "1" *-->                     "_playerObserver\n1" model.observers.PlayerObserver
+
+
+Player               "1" *-->                     "_tasks\n*" Task
+Player               "1" *-->                     "_position\n1" Position
+
+Task                 "1" *-->                     "_treasure\n1" Treasure
+
+Tile                 "1" *-->                     "_treasure\n1" Treasure
+Tile                 -->                          ImageHelper : "uses"
+
+TaskFactory           -->                         Task                 : "uses"
+
+GameController        -->                         BoardFactory       : "uses"
+GameController        -->                         TaskFactory        : "uses"
+GameController        -->                         PlayerController   : "uses"
+GameController        -->                         BoardController    : "uses"
+GameController        -->                         TileFactory           : "uses"
+@enduml

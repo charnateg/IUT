@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{414052BD-8573-45FF-B6FB-D543869F8DA5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Saé</RootNamespace>
+    <AssemblyName>Saé</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.3, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.118.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AjouterDepense.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AjouterDepense.Designer.cs">
+      <DependentUpon>AjouterDepense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bilan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bilan.Designer.cs">
+      <DependentUpon>Bilan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDepenses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDepenses.Designer.cs">
+      <DependentUpon>ucDepenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucEvent1a1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucEvent1a1.Designer.cs">
+      <DependentUpon>ucEvent1a1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ucEvenements.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucEvenements.Designer.cs">
+      <DependentUpon>ucEvenements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucParticipants.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucParticipants.Designer.cs">
+      <DependentUpon>ucParticipants.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AjouterDepense.resx">
+      <DependentUpon>AjouterDepense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bilan.resx">
+      <DependentUpon>Bilan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDepenses.resx">
+      <DependentUpon>ucDepenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucEvent1a1.resx">
+      <DependentUpon>ucEvent1a1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="ucEvenements.resx">
+      <DependentUpon>ucEvenements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucParticipants.resx">
+      <DependentUpon>ucParticipants.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\accueil %281%29-modified.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\2413035 %281%29-modified.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\1204035 %281%29-modified.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\%281%29 %281%29-modified.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\bilan-icone-modified %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Menu_icon_icon-icons.com_71858-modified %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\AccueilBleu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Fond.jpg.jfif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Fond.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\Titre.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\bienvenue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\doubleFlecheDroite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\FlecheDroite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\FlecheGauche.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\doubleFlecheGauche.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+  </Target>
+</Project>

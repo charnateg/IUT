@@ -1,6 +1,0 @@
-[submodule "sae-reseau"]
-	path = sae-reseau
-	url = https://gitlab.unistra.fr/sae-s31-s41/sae.git
-[submodule "T3"]
-	path = T3
-	url = https://gitlab.unistra.fr/naughty-frog/t3.git

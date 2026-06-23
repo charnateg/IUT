@@ -26,4 +26,7 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-[Ll]ogs/
+[Ll]ogs/T3/Executables/
+*.tga
+*.cubemap
+.DS_Store

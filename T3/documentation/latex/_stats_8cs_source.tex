@@ -1,0 +1,51 @@
+\doxysection{Stats.\+cs}
+\hypertarget{_stats_8cs_source}{}\label{_stats_8cs_source}\index{game/Assets/Scripts/UI/Stats.cs@{game/Assets/Scripts/UI/Stats.cs}}
+\mbox{\hyperlink{_stats_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00007}\mbox{\hyperlink{class_stats}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stats}{Stats}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00009}00009\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Progress\ Bars"{}})]}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ \_intelligenceBar;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ \_speedBar;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ \_accuracyBar;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ \_memoryBar;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ \_levelBar;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00016}00016\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Text\ Values"{}})]}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TMP\_Text\ \_intelligenceText;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TMP\_Text\ \_speedText;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TMP\_Text\ \_accuracyText;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00020}00020\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TMP\_Text\ \_memoryText;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00021}00021\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TMP\_Text\ \_levelText;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00023}00023\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Max\ Values"{}})]}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00024}00024\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_maxAttributeValue\ =\ 30;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00026}00026\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_main_player}{MainPlayer}}\ \_player;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00028}00028\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \_player\ ??=\ FindObjectOfType<MainPlayer>();}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00041}\mbox{\hyperlink{class_stats_a652c5a06d4150c8acca788a3186a1563}{00041}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stats_a652c5a06d4150c8acca788a3186a1563}{UpdateStats}}(\textcolor{keywordtype}{int}\ intelligence,\ \textcolor{keywordtype}{int}\ speed,\ \textcolor{keywordtype}{int}\ accuracy,\ \textcolor{keywordtype}{int}\ memory,\ \textcolor{keywordtype}{int}\ level)}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \_intelligenceBar.fillAmount\ =\ intelligence\ /\ \_maxAttributeValue;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \_speedBar.fillAmount\ =\ speed\ /\ \_maxAttributeValue;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \_accuracyBar.fillAmount\ =\ accuracy\ /\ \_maxAttributeValue;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \_memoryBar.fillAmount\ =\ memory\ /\ \_maxAttributeValue;}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \_levelBar.fillAmount\ =\ (float)\_player.\mbox{\hyperlink{class_main_player_affe671f2eb99466cb902ef7f37927bf6}{GetExperience}}()\ /\ \_player.\mbox{\hyperlink{class_main_player_ac613f81a6c39e842eb1ff6d268618bc6}{GetMaxExperience}}();}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \_intelligenceText.text\ =\ intelligence.ToString();}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \_speedText.text\ =\ speed.ToString();}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \_accuracyText.text\ =\ accuracy.ToString();}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \_memoryText.text\ =\ memory.ToString();}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \_levelText.text\ =\ level.ToString();}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stats_8cs_source_l00056}00056\ \}}
+
+\end{DoxyCode}

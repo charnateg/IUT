@@ -1,0 +1,51 @@
+\doxysection{Rock.\+cs}
+\hypertarget{_rock_8cs_source}{}\label{_rock_8cs_source}\index{game/Assets/Scripts/API/Rocks/Rock.cs@{game/Assets/Scripts/API/Rocks/Rock.cs}}
+\mbox{\hyperlink{_rock_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00004}00004\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00008}\mbox{\hyperlink{class_rock}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rock}{Rock}}}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_id;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_name;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_description;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{_rarety_8cs_af9b1b454e0fdc7fcb263e40926c5f8a5}{Rarety}}\ \_rarety;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00014}\mbox{\hyperlink{class_rock_ad3756d379f2eb77327155a081c95dce5}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_rock_ad3756d379f2eb77327155a081c95dce5}{Rock}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{string}\ name,\ \textcolor{keywordtype}{string}\ description,\ \mbox{\hyperlink{_rarety_8cs_af9b1b454e0fdc7fcb263e40926c5f8a5}{Rarety}}\ rarety)}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.\_id\ =\ id;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.\_name\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ this.\_description\ =\ description;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ this.\_rarety\ =\ rarety;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00022}\mbox{\hyperlink{class_rock_a36e0bf384aad5809bb49fd6efec74c5b}{00022}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_rock_a36e0bf384aad5809bb49fd6efec74c5b}{GetName}}()}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_name;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00026}\mbox{\hyperlink{class_rock_a3b72815e0229770a6f8384a9574f629e}{00026}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_rock_a3b72815e0229770a6f8384a9574f629e}{GetDescription}}()}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_description;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00030}\mbox{\hyperlink{class_rock_a7e0f800e008602df1797ba73af10a339}{00030}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{_rarety_8cs_af9b1b454e0fdc7fcb263e40926c5f8a5}{Rarety}}\ \mbox{\hyperlink{class_rock_a7e0f800e008602df1797ba73af10a339}{GetRarety}}()}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_rarety;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00034}\mbox{\hyperlink{class_rock_a307fc6aab28f6b589d4a687f1483ee21}{00034}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_rock_a307fc6aab28f6b589d4a687f1483ee21}{GetId}}()}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_id;}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00038}\mbox{\hyperlink{class_rock_a45212b1e0a52ba5486b0fca742f9c63a}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_rock_a45212b1e0a52ba5486b0fca742f9c63a}{ToString}}()}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Rock\{"{}}\ +}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\_id="{}}\ +\ \_id\ +}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ \_name='"{}}\ +\ \_name\ +\ \textcolor{charliteral}{'\(\backslash\)''}\ +}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ \_description='"{}}\ +\ \_description\ +\ \textcolor{charliteral}{'\(\backslash\)''}\ +}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{},\ \_rarety="{}}\ +\ \_rarety.ToString()\ +}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{charliteral}{'\}'};}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_rock_8cs_source_l00048}00048\ \}}
+
+\end{DoxyCode}

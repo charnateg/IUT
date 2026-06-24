@@ -1,0 +1,89 @@
+\doxysection{Camera\+Follow.\+cs}
+\hypertarget{_camera_follow_8cs_source}{}\label{_camera_follow_8cs_source}\index{game/Assets/Scripts/controller/Camera/CameraFollow.cs@{game/Assets/Scripts/controller/Camera/CameraFollow.cs}}
+\mbox{\hyperlink{_camera_follow_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00007}\mbox{\hyperlink{class_camera_follow}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_camera_follow}{CameraFollow}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00009}00009\ \textcolor{preprocessor}{\ \ \ \ \#region\ Variables}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00010}00010\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Target\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Transform\ \_target;\ \textcolor{comment}{//\ The\ player\ or\ \_target\ object\ to\ track}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_verticalOffset\ =\ 2f;\ \textcolor{comment}{//\ Vertical\ offset\ from\ the\ \_target\ (how\ high\ the\ camera\ should\ be)}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00014}00014\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Camera\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_smoothing\ =\ 5f;\ \textcolor{comment}{//\ Smoothness\ for\ following\ the\ \_target\ (\ used\ for\ the\ transition\ )}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_rotationSpeed\ =\ 100f;\ \textcolor{comment}{//\ Speed\ of\ rotation\ around\ the\ \_target}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_minDistance\ =\ 15f;\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_maxDistance\ =\ 40f;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_distance\ =\ 10f;\ \textcolor{comment}{//\ Distance\ from\ the\ \_target}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ offset;\ \textcolor{comment}{//\ Offset\ from\ the\ \_target}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00023}00023\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ InitializeCamera();}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{void}\ LateUpdate()}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ HandleRotation();}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ HandleDistance();}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ FollowTarget();}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00036}00036\ \textcolor{preprocessor}{\ \ \ \ \#region\ logic}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ InitializeCamera()}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_target\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_target\ =\ GameObject.FindGameObjectWithTag(\textcolor{stringliteral}{"{}Player"{}}).transform;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_target\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Target\ not\ set\ and\ no\ GameObject\ with\ tag\ 'Player'\ found."{}});}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ enabled\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Disable\ the\ script}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ offset\ =\ transform.position\ -\/\ \_target.position;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \_distance\ =\ offset.magnitude;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ HandleDistance()}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ scroll\ =\ Input.GetAxis(\textcolor{stringliteral}{"{}Mouse\ ScrollWheel"{}});}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \_distance\ -\/=\ scroll\ *\ 5f;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \_distance\ =\ Mathf.Clamp(\_distance,\ \_minDistance,\ \_maxDistance);}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00068}00068\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ HandleRotation()}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Input.GetMouseButton(1))\ \textcolor{comment}{//\ Right\ Mouse\ Button}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ horizontal\ =\ Input.GetAxis(\textcolor{stringliteral}{"{}Mouse\ X"{}})\ *\ \_rotationSpeed\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ vertical\ =\ Input.GetAxis(\textcolor{stringliteral}{"{}Mouse\ Y"{}})\ *\ \_rotationSpeed\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ horizontalRotation\ =\ Quaternion.AngleAxis(horizontal,\ Vector3.up);}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ offset\ =\ horizontalRotation\ *\ offset;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ verticalRotation\ =\ Quaternion.AngleAxis(-\/vertical,\ transform.right);}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ potentialOffset\ =\ verticalRotation\ *\ offset;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle\ =\ Vector3.Angle(Vector3.up,\ potentialOffset.normalized);}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ 20f\ \&\&\ angle\ <\ 80f)\ \textcolor{comment}{//\ Clamp\ vertical\ rotation}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ offset\ =\ potentialOffset;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00091}00091\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ FollowTarget()}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ Vector3\ \_targetCamPos\ =\ \_target.position\ +\ offset.normalized\ *\ \_distance\ +\ Vector3.up\ *\ \_verticalOffset;}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ transform.position\ =\ Vector3.Lerp(transform.position,\ \_targetCamPos,\ \_smoothing\ *\ Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ transform.LookAt(\_target.position\ +\ Vector3.up\ *\ \_verticalOffset);}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00097}00097\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_camera_follow_8cs_source_l00098}00098\ \}}
+
+\end{DoxyCode}

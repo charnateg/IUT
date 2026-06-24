@@ -1,0 +1,159 @@
+\doxysection{Server\+Interactor Class Reference}
+\hypertarget{class_server_interactor}{}\label{class_server_interactor}\index{ServerInteractor@{ServerInteractor}}
+
+
+The server view, this class handles the interaction with the server.  
+
+
+Inheritance diagram for Server\+Interactor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_server_interactor}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}} \mbox{\hyperlink{class_server_interactor_ab4d10af37539d4b38b3bee6200546645}{Get\+Interactable}} ()
+\begin{DoxyCompactList}\small\item\em Returns the type of interactable object. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_server_interactor_a14dd2a39dda6fab872718a51e60e10c5}{Get\+Interaction\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Returns the text displayed on the interaction prompt. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_server_interactor_ac587dd37d26a2f36dca4ab114593b8ee}{Interact}} (\mbox{\hyperlink{class_main_player}{Main\+Player}} player)
+\begin{DoxyCompactList}\small\item\em Defines how the object interacts with the player. \end{DoxyCompactList}\item 
+IEnumerator \mbox{\hyperlink{class_server_interactor_a046b8da8e1e9b8ae8ea0d6895497dad5}{Repair\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Repairs the server. \end{DoxyCompactList}\item 
+IEnumerator \mbox{\hyperlink{class_server_interactor_a30802c274fcbd149168a0a8ed5f6539c}{Reset\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Resets the UI after 4 seconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_server_interactor_a5d964dee44acb29626278a466c7848a8}{Set\+State}} (\mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{Server\+State}} state)
+\begin{DoxyCompactList}\small\item\em Sets the state of the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interface_i_interactable}{IInteractable}}}
+
+
+\doxysubsection{Detailed Description}
+The server view, this class handles the interaction with the server. 
+
+Definition at line \mbox{\hyperlink{_server_interactor_8cs_source_l00010}{10}} of file \mbox{\hyperlink{_server_interactor_8cs_source}{Server\+Interactor.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_server_interactor_ab4d10af37539d4b38b3bee6200546645}\index{ServerInteractor@{ServerInteractor}!GetInteractable@{GetInteractable}}
+\index{GetInteractable@{GetInteractable}!ServerInteractor@{ServerInteractor}}
+\doxysubsubsection{\texorpdfstring{GetInteractable()}{GetInteractable()}}
+{\footnotesize\ttfamily \label{class_server_interactor_ab4d10af37539d4b38b3bee6200546645} 
+\mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}} Server\+Interactor.\+Get\+Interactable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the type of interactable object. 
+
+\begin{DoxyReturn}{Returns}
+The type of the interactable.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_i_interactable_ab0aa0b7f6a876062de3f7ae2f70e4b74}{IInteractable}}.
+
+
+
+Definition at line \mbox{\hyperlink{_server_interactor_8cs_source_l00021}{21}} of file \mbox{\hyperlink{_server_interactor_8cs_source}{Server\+Interactor.\+cs}}.
+
+\Hypertarget{class_server_interactor_a14dd2a39dda6fab872718a51e60e10c5}\index{ServerInteractor@{ServerInteractor}!GetInteractionText@{GetInteractionText}}
+\index{GetInteractionText@{GetInteractionText}!ServerInteractor@{ServerInteractor}}
+\doxysubsubsection{\texorpdfstring{GetInteractionText()}{GetInteractionText()}}
+{\footnotesize\ttfamily \label{class_server_interactor_a14dd2a39dda6fab872718a51e60e10c5} 
+string Server\+Interactor.\+Get\+Interaction\+Text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the text displayed on the interaction prompt. 
+
+\begin{DoxyReturn}{Returns}
+Interaction text.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_i_interactable_afd1f62290c0b205925751a3cb5f86698}{IInteractable}}.
+
+
+
+Definition at line \mbox{\hyperlink{_server_interactor_8cs_source_l00026}{26}} of file \mbox{\hyperlink{_server_interactor_8cs_source}{Server\+Interactor.\+cs}}.
+
+\Hypertarget{class_server_interactor_ac587dd37d26a2f36dca4ab114593b8ee}\index{ServerInteractor@{ServerInteractor}!Interact@{Interact}}
+\index{Interact@{Interact}!ServerInteractor@{ServerInteractor}}
+\doxysubsubsection{\texorpdfstring{Interact()}{Interact()}}
+{\footnotesize\ttfamily \label{class_server_interactor_ac587dd37d26a2f36dca4ab114593b8ee} 
+void Server\+Interactor.\+Interact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_main_player}{Main\+Player}}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Defines how the object interacts with the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player interacting with the object.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_i_interactable_a100dbbe3516bf2a8e302318b41d7738c}{IInteractable}}.
+
+
+
+Definition at line \mbox{\hyperlink{_server_interactor_8cs_source_l00044}{44}} of file \mbox{\hyperlink{_server_interactor_8cs_source}{Server\+Interactor.\+cs}}.
+
+\Hypertarget{class_server_interactor_a046b8da8e1e9b8ae8ea0d6895497dad5}\index{ServerInteractor@{ServerInteractor}!RepairServer@{RepairServer}}
+\index{RepairServer@{RepairServer}!ServerInteractor@{ServerInteractor}}
+\doxysubsubsection{\texorpdfstring{RepairServer()}{RepairServer()}}
+{\footnotesize\ttfamily \label{class_server_interactor_a046b8da8e1e9b8ae8ea0d6895497dad5} 
+IEnumerator Server\+Interactor.\+Repair\+Server (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Repairs the server. 
+
+\begin{DoxyReturn}{Returns}
+IEnumerator 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_server_interactor_8cs_source_l00079}{79}} of file \mbox{\hyperlink{_server_interactor_8cs_source}{Server\+Interactor.\+cs}}.
+
+\Hypertarget{class_server_interactor_a30802c274fcbd149168a0a8ed5f6539c}\index{ServerInteractor@{ServerInteractor}!ResetUI@{ResetUI}}
+\index{ResetUI@{ResetUI}!ServerInteractor@{ServerInteractor}}
+\doxysubsubsection{\texorpdfstring{ResetUI()}{ResetUI()}}
+{\footnotesize\ttfamily \label{class_server_interactor_a30802c274fcbd149168a0a8ed5f6539c} 
+IEnumerator Server\+Interactor.\+Reset\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Resets the UI after 4 seconds. 
+
+
+
+Definition at line \mbox{\hyperlink{_server_interactor_8cs_source_l00106}{106}} of file \mbox{\hyperlink{_server_interactor_8cs_source}{Server\+Interactor.\+cs}}.
+
+\Hypertarget{class_server_interactor_a5d964dee44acb29626278a466c7848a8}\index{ServerInteractor@{ServerInteractor}!SetState@{SetState}}
+\index{SetState@{SetState}!ServerInteractor@{ServerInteractor}}
+\doxysubsubsection{\texorpdfstring{SetState()}{SetState()}}
+{\footnotesize\ttfamily \label{class_server_interactor_a5d964dee44acb29626278a466c7848a8} 
+void Server\+Interactor.\+Set\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{Server\+State}}}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Sets the state of the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The state to set the server to\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_server_interactor_8cs_source_l00117}{117}} of file \mbox{\hyperlink{_server_interactor_8cs_source}{Server\+Interactor.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/controller/\+Server/\mbox{\hyperlink{_server_interactor_8cs}{Server\+Interactor.\+cs}}\end{DoxyCompactItemize}

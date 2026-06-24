@@ -1,0 +1,67 @@
+\doxysection{Conference.\+cs}
+\hypertarget{_conference_8cs_source}{}\label{_conference_8cs_source}\index{game/Assets/Scripts/model/Conferences/Conference.cs@{game/Assets/Scripts/model/Conferences/Conference.cs}}
+\mbox{\hyperlink{_conference_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00007}00007\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00008}\mbox{\hyperlink{class_conference}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_conference}{Conference}}}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_id;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_subject;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_duration;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_experience;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_requiredIntelligence;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_requiredMemory;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \_isCompleted;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00018}\mbox{\hyperlink{class_conference_ad5160b8e9dbcde0bfceff7ba5e24a14e}{00018}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_conference_ad5160b8e9dbcde0bfceff7ba5e24a14e}{Conference}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ ,\textcolor{keywordtype}{string}\ subject,\ \textcolor{keywordtype}{int}\ duration,\ \textcolor{keywordtype}{int}\ experienceValue,\ \textcolor{keywordtype}{int}\ requiredIntelligence,\ \textcolor{keywordtype}{int}\ requiredMemory)}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \_id\ =\ id;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \_subject\ =\ subject;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \_duration\ =\ duration;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \_experience=\ experienceValue;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \_requiredIntelligence\ =\ requiredIntelligence;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \_requiredMemory\ =\ requiredMemory;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \_isCompleted\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00033}\mbox{\hyperlink{class_conference_a0ac4d22348c956c5f65e0849c688662c}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_conference_a0ac4d22348c956c5f65e0849c688662c}{CalculateExperience}}(\mbox{\hyperlink{class_main_player}{MainPlayer}}\ player)}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ playerIntelligence\ =\ player.\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Intelligence);}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ playerMemory\ =\ player.\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Memory);}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(playerIntelligence\ >=\ \_requiredIntelligence\ \&\&\ playerMemory\ >=\ \_requiredMemory)}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_experience;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ how\ close\ the\ player\ is\ to\ the\ required\ intelligence\ and\ memory}}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ intelligenceFactor\ =\ Mathf.Clamp01((\textcolor{keywordtype}{float})playerIntelligence\ /\ \_requiredIntelligence);}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ memoryFactor\ =\ Mathf.Clamp01((\textcolor{keywordtype}{float})playerMemory\ /\ \_requiredMemory);}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ intelligenceFactorWeight\ =\ 0.4f;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ memoryFactorWeight\ =\ 0.6f;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ experience\ based\ on\ the\ player's\ intelligence\ and\ memory}}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ intelligencePart\ =\ intelligenceFactor\ *\ intelligenceFactorWeight;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ memoryPart\ =\ memoryFactor\ *\ memoryFactorWeight;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ experience\ =\ (int)((intelligencePart\ +\ memoryPart)\ *\ \_experience);}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ experience;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00062}\mbox{\hyperlink{class_conference_a74d8773e946f3bcb4987839cac8232fa}{00062}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_conference_a74d8773e946f3bcb4987839cac8232fa}{CompleteConference}}()}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \_isCompleted\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00070}\mbox{\hyperlink{class_conference_aa65c8988314f34922566e0a6222fe495}{00070}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_conference_aa65c8988314f34922566e0a6222fe495}{IsCompleted}}()\ =>\ \_isCompleted;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00075}\mbox{\hyperlink{class_conference_aacec9686ab8f278ecd7262d528d5b76d}{00075}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_conference_aacec9686ab8f278ecd7262d528d5b76d}{GetSubject}}()\ =>\ \_subject;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00080}\mbox{\hyperlink{class_conference_aed7424164f0d075e46bf4a7de9f47941}{00080}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_conference_aed7424164f0d075e46bf4a7de9f47941}{GetDuration}}()\ =>\ \_duration;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00085}\mbox{\hyperlink{class_conference_a6f6ee6e7296de5a7ca9b052a78ec2747}{00085}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_conference_a6f6ee6e7296de5a7ca9b052a78ec2747}{GetRequiredIntelligence}}()\ =>\ \_requiredIntelligence;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00090}\mbox{\hyperlink{class_conference_a5fde3c3072327a8fa9a0b97b87b22892}{00090}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_conference_a5fde3c3072327a8fa9a0b97b87b22892}{GetRequiredMemory}}()\ =>\ \_requiredMemory;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00095}\mbox{\hyperlink{class_conference_aadbc5e1ca62b9063be3cd770b84bd066}{00095}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_conference_aadbc5e1ca62b9063be3cd770b84bd066}{GetId}}()\ =>\ \_id;}
+\DoxyCodeLine{\Hypertarget{_conference_8cs_source_l00096}00096\ \}}
+
+\end{DoxyCode}

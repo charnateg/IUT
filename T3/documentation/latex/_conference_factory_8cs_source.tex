@@ -1,0 +1,68 @@
+\doxysection{Conference\+Factory.\+cs}
+\hypertarget{_conference_factory_8cs_source}{}\label{_conference_factory_8cs_source}\index{game/Assets/Scripts/controller/Conference/ConferenceFactory.cs@{game/Assets/Scripts/controller/Conference/ConferenceFactory.cs}}
+\mbox{\hyperlink{_conference_factory_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00006}\mbox{\hyperlink{class_conference_factory}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_conference_factory}{ConferenceFactory}}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{private}\ List<Conference>\ \_conferences\ =\ \textcolor{keyword}{new}\ List<Conference>}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00009}00009\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00010}00010\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (1,\ \textcolor{stringliteral}{"{}Introduction\ aux\ systèmes\ intelligents\ embarqués"{}},\ 5,\ 50,\ 3,\ 3),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (2,\ \textcolor{stringliteral}{"{}Rapport\ sur\ les\ algorithmes\ d'apprentissage\ automatique"{}},\ 6,\ 70,\ 4,\ 4),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (3,\ \textcolor{stringliteral}{"{}Colloque\ sur\ la\ simulation\ des\ réseaux\ neuronaux"{}},\ 7,\ 90,\ 6,\ 5),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (4,\ \textcolor{stringliteral}{"{}Atelier\ sur\ les\ capteurs\ de\ données\ biométriques"{}},\ 8,\ 110,\ 7,\ 6),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (5,\ \textcolor{stringliteral}{"{}Séminaire\ sur\ les\ interféromètres\ optiques\ avancés"{}},\ 9,\ 130,\ 8,\ 7),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (6,\ \textcolor{stringliteral}{"{}Rapport\ sur\ les\ applications\ des\ graphes\ quantiques"{}},\ 10,\ 150,\ 10,\ 8),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (7,\ \textcolor{stringliteral}{"{}Présentation\ sur\ les\ cryptographies\ post-\/quantiques"{}},\ 11,\ 170,\ 12,\ 9),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (8,\ \textcolor{stringliteral}{"{}Atelier\ sur\ les\ réseaux\ de\ neurones\ convolutifs"{}},\ 12,\ 190,\ 13,\ 10),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (9,\ \textcolor{stringliteral}{"{}Colloque\ sur\ les\ lasers\ à\ impulsion\ ultra-\/courte"{}},\ 13,\ 210,\ 15,\ 11),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (10,\ \textcolor{stringliteral}{"{}Rapport\ sur\ les\ systèmes\ experts\ basés\ sur\ la\ logique\ floue"{}},\ 14,\ 230,\ 16,\ 12),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (11,\ \textcolor{stringliteral}{"{}Séminaire\ sur\ les\ réseaux\ neuronaux\ biologiques"{}},\ 15,\ 250,\ 18,\ 13),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (12,\ \textcolor{stringliteral}{"{}Conférence\ sur\ les\ capteurs\ de\ gravité\ quantique"{}},\ 16,\ 270,\ 20,\ 14),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (13,\ \textcolor{stringliteral}{"{}Rapport\ sur\ les\ systèmes\ d'intelligence\ collective"{}},\ 17,\ 280,\ 21,\ 15),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (14,\ \textcolor{stringliteral}{"{}Atelier\ pratique\ sur\ les\ communications\ quantiques"{}},\ 17,\ 290,\ 23,\ 16),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (15,\ \textcolor{stringliteral}{"{}Colloque\ sur\ la\ simulation\ moléculaire\ avancée"{}},\ 15,\ 300,\ 25,\ 17),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (16,\ \textcolor{stringliteral}{"{}Séminaire\ sur\ les\ supraconducteurs\ à\ haute\ température"{}},\ 13,\ 310,\ 26,\ 18),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (17,\ \textcolor{stringliteral}{"{}Rapport\ sur\ les\ champs\ gravitationnels\ et\ leurs\ applications"{}},\ 12,\ 320,\ 27,\ 19),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (18,\ \textcolor{stringliteral}{"{}Présentation\ sur\ les\ systèmes\ cyber-\/physiques\ avancés"{}},\ 10,\ 330,\ 28,\ 20),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (19,\ \textcolor{stringliteral}{"{}Conférence\ sur\ la\ détection\ d'ondes\ gravitationnelles"{}},\ 9,\ 340,\ 29,\ 21),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (20,\ \textcolor{stringliteral}{"{}Atelier\ sur\ les\ architectures\ neuronales\ distribuées"{}},\ 8,\ 350,\ 30,\ 22),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (21,\ \textcolor{stringliteral}{"{}Colloque\ sur\ les\ particules\ subatomiques\ et\ leurs\ spectres"{}},\ 7,\ 360,\ 30,\ 23),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (22,\ \textcolor{stringliteral}{"{}Rapport\ sur\ les\ simulateurs\ quantiques\ multi-\/dimensions"{}},\ 6,\ 370,\ 30,\ 24),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (23,\ \textcolor{stringliteral}{"{}Présentation\ sur\ les\ technologies\ des\ capteurs\ biochimiques"{}},\ 5,\ 380,\ 30,\ 25),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (24,\ \textcolor{stringliteral}{"{}Atelier\ sur\ la\ synchronisation\ des\ atomes\ froids"{}},\ 5,\ 390,\ 30,\ 26),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (25,\ \textcolor{stringliteral}{"{}Rapport\ sur\ les\ modèles\ mathématiques\ de\ turbulence"{}},\ 5,\ 400,\ 30,\ 27),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (26,\ \textcolor{stringliteral}{"{}Conférence\ sur\ les\ hologrammes\ et\ leurs\ applications"{}},\ 5,\ 410,\ 30,\ 28),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (27,\ \textcolor{stringliteral}{"{}Présentation\ sur\ la\ manipulation\ des\ ions\ quantiques"{}},\ 5,\ 420,\ 30,\ 29),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (28,\ \textcolor{stringliteral}{"{}Atelier\ pratique\ sur\ les\ interféromètres\ gravitationnels"{}},\ 5,\ 430,\ 30,\ 29),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (29,\ \textcolor{stringliteral}{"{}Colloque\ sur\ les\ innovations\ en\ apprentissage\ profond"{}},\ 5,\ 440,\ 30,\ 30),}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ (30,\ \textcolor{stringliteral}{"{}Symposium\ sur\ les\ systèmes\ quantiques\ émergents"{}},\ 5,\ 450,\ 30,\ 30)}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ The\ single\ instance\ of\ the\ factory}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00042}00042\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_conference_factory}{ConferenceFactory}}\ \_instance;}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Private\ constructor\ to\ prevent\ instantiation\ from\ outside}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_conference_factory}{ConferenceFactory}}()\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00047}00047\ \ \ \ \ \textcolor{comment}{//\ Public\ static\ method\ to\ access\ the\ single\ instance}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00048}\mbox{\hyperlink{class_conference_factory_a45819564471308404771b2052f6eadbd}{00048}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_conference_factory}{ConferenceFactory}}\ \mbox{\hyperlink{class_conference_factory_a45819564471308404771b2052f6eadbd}{Instance}}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_instance\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_instance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_conference_factory}{ConferenceFactory}}();}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_instance;}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00064}\mbox{\hyperlink{class_conference_factory_aeedcdf3b61053fd512766d0b8d362544}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Conference>\ \mbox{\hyperlink{class_conference_factory_aeedcdf3b61053fd512766d0b8d362544}{GetLevelConferences}}(\textcolor{keywordtype}{int}\ level)}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ there\ are\ 10\ levels\ and\ 30\ conferences}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 3\ conferences\ per\ level}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_conferences.GetRange((level\ -\/\ 1)\ *\ 3,\ 3);}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_factory_8cs_source_l00070}00070\ \}}
+
+\end{DoxyCode}

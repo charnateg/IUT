@@ -1,0 +1,480 @@
+\doxysection{Main\+Player Class Reference}
+\hypertarget{class_main_player}{}\label{class_main_player}\index{MainPlayer@{MainPlayer}}
+
+
+The main player script that manages the player\textquotesingle{}s data and interactions.  
+
+
+Inheritance diagram for Main\+Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_main_player}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_main_player_a831240ac268f1b66f4523451beba2596}{Save\+Player\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Save the player\textquotesingle{}s data to a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_af8edc1db2e05467194bef729ba74941e}{Load\+Player\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Load the player\textquotesingle{}s data from a file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_ab1d4b9f7a4bc32662a4461d24e53b4ec}{Fresh\+Player\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Reset the player\textquotesingle{}s data to default values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_ac73ecea5c4caab403e683223c6f1f48a}{Synchronize\+Speed}} ()
+\begin{DoxyCompactList}\small\item\em Synchronize the player\textquotesingle{}s speed with their speed attribute. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a3517dafb49386bd9e28f89bdb33a8367}{Increase\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Increase the player\textquotesingle{}s level by 1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{Increase\+Expereince}} (int value)
+\begin{DoxyCompactList}\small\item\em Increase the player\textquotesingle{}s experience by a given value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{Increase\+Attributes}} (\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}} attribute, int value)
+\begin{DoxyCompactList}\small\item\em Increase the value of a player\textquotesingle{}s attribute by a given amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a4d2c5d891f3b98c31b31c9e05cf2552b}{Add\+Document}} (\mbox{\hyperlink{class_document}{Document}} document)
+\begin{DoxyCompactList}\small\item\em Add a document to the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_document}{Document}} \mbox{\hyperlink{class_main_player_ac5030d5ed5a71996be0cccabd4ee5429}{Get\+Document}} ()
+\begin{DoxyCompactList}\small\item\em Get the last document in the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_document}{Document}} \mbox{\hyperlink{class_main_player_aab518a2aaee2345dd078996e735e8977}{Remove\+Document}} ()
+\begin{DoxyCompactList}\small\item\em Remove the last document in the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_ade36737aeed38bcfa9dcefb016287d07}{Move\+Document\+Up}} (int index)
+\begin{DoxyCompactList}\small\item\em Move a document up in the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a0ed4838e2d23d477549140389035fb0c}{Move\+Document\+Down}} (int index)
+\begin{DoxyCompactList}\small\item\em Move a document down in the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a275b454afaefa94266f28da5e4620c05}{Add\+Skill}} (\mbox{\hyperlink{class_skill}{Skill}} skill)
+\begin{DoxyCompactList}\small\item\em Add a skill to the player\textquotesingle{}s skill list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a307f52a38f6c17d90afa399e8c586349}{Add\+Observer}} (\mbox{\hyperlink{interface_observer}{Observer}} observer)
+\begin{DoxyCompactList}\small\item\em Add an observer to the player\textquotesingle{}s observer list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_main_player_a58e99d87c65c39b1c2066591b342c8a3}{Can\+Add\+Document}} ()
+\begin{DoxyCompactList}\small\item\em Check if the player can add a document to their inventory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a6a366029ca433142fa47c425a4ca53d9}{Refresh\+Stacker}} ()
+\begin{DoxyCompactList}\small\item\em Refresh the document stacker with the player\textquotesingle{}s current documents. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a83a04bd058c73a9454a75418b021d033}{Notify\+Observers}} ()
+\begin{DoxyCompactList}\small\item\em Notify all observers that the player\textquotesingle{}s state has changed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_player_a375245d5ed7e05ece6f0f8d0353a2890}{Set\+Name}} (string name)
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s name. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{Get\+Attribute\+Value}} (\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}} attribute)
+\begin{DoxyCompactList}\small\item\em Get the attribute value of the player. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_attributes}{Attributes}} \mbox{\hyperlink{class_main_player_a4d32cd9ff5caf8f408843a85573771f1}{Get\+Attributes}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s attributes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_main_player_a4530beb74b8665c66f2d453da0b6ffe9}{Get\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s level. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_main_player_affe671f2eb99466cb902ef7f37927bf6}{Get\+Experience}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s experience. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_main_player_ac613f81a6c39e842eb1ff6d268618bc6}{Get\+Max\+Experience}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s maximum experience. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_inventory}{Inventory}} \mbox{\hyperlink{class_main_player_af91b966b277925eb6017aeb580a9454b}{Get\+Inventory}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s inventory. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_document}{Document}} $>$ \mbox{\hyperlink{class_main_player_a95778f3ff92e44f1f37f3a4302dd8c01}{Get\+Documents}} ()
+\begin{DoxyCompactList}\small\item\em Get the player\textquotesingle{}s Documents. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main player script that manages the player\textquotesingle{}s data and interactions. 
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00010}{10}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_main_player_a4d2c5d891f3b98c31b31c9e05cf2552b}\index{MainPlayer@{MainPlayer}!AddDocument@{AddDocument}}
+\index{AddDocument@{AddDocument}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{AddDocument()}{AddDocument()}}
+{\footnotesize\ttfamily \label{class_main_player_a4d2c5d891f3b98c31b31c9e05cf2552b} 
+void Main\+Player.\+Add\+Document (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document}{Document}}}]{document}{}\end{DoxyParamCaption})}
+
+
+
+Add a document to the player\textquotesingle{}s inventory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em document} & The document to add\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00225}{225}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a307f52a38f6c17d90afa399e8c586349}\index{MainPlayer@{MainPlayer}!AddObserver@{AddObserver}}
+\index{AddObserver@{AddObserver}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{AddObserver()}{AddObserver()}}
+{\footnotesize\ttfamily \label{class_main_player_a307f52a38f6c17d90afa399e8c586349} 
+void Main\+Player.\+Add\+Observer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interface_observer}{Observer}}}]{observer}{}\end{DoxyParamCaption})}
+
+
+
+Add an observer to the player\textquotesingle{}s observer list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em observer} & The observer to add\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00316}{316}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a275b454afaefa94266f28da5e4620c05}\index{MainPlayer@{MainPlayer}!AddSkill@{AddSkill}}
+\index{AddSkill@{AddSkill}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{AddSkill()}{AddSkill()}}
+{\footnotesize\ttfamily \label{class_main_player_a275b454afaefa94266f28da5e4620c05} 
+void Main\+Player.\+Add\+Skill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_skill}{Skill}}}]{skill}{}\end{DoxyParamCaption})}
+
+
+
+Add a skill to the player\textquotesingle{}s skill list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em skill} & The skill to add\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00307}{307}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a58e99d87c65c39b1c2066591b342c8a3}\index{MainPlayer@{MainPlayer}!CanAddDocument@{CanAddDocument}}
+\index{CanAddDocument@{CanAddDocument}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{CanAddDocument()}{CanAddDocument()}}
+{\footnotesize\ttfamily \label{class_main_player_a58e99d87c65c39b1c2066591b342c8a3} 
+bool Main\+Player.\+Can\+Add\+Document (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Check if the player can add a document to their inventory. 
+
+\begin{DoxyReturn}{Returns}
+True if the player can add a document, false otherwise
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00324}{324}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_ab1d4b9f7a4bc32662a4461d24e53b4ec}\index{MainPlayer@{MainPlayer}!FreshPlayerData@{FreshPlayerData}}
+\index{FreshPlayerData@{FreshPlayerData}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{FreshPlayerData()}{FreshPlayerData()}}
+{\footnotesize\ttfamily \label{class_main_player_ab1d4b9f7a4bc32662a4461d24e53b4ec} 
+void Main\+Player.\+Fresh\+Player\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Reset the player\textquotesingle{}s data to default values. 
+
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00123}{123}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a4d32cd9ff5caf8f408843a85573771f1}\index{MainPlayer@{MainPlayer}!GetAttributes@{GetAttributes}}
+\index{GetAttributes@{GetAttributes}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetAttributes()}{GetAttributes()}}
+{\footnotesize\ttfamily \label{class_main_player_a4d32cd9ff5caf8f408843a85573771f1} 
+\mbox{\hyperlink{class_attributes}{Attributes}} Main\+Player.\+Get\+Attributes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the player\textquotesingle{}s attributes. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s attributes
+\end{DoxyReturn}
+\Hypertarget{class_main_player_ab672d4203f33e69888df0f7928ed298c}\index{MainPlayer@{MainPlayer}!GetAttributeValue@{GetAttributeValue}}
+\index{GetAttributeValue@{GetAttributeValue}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetAttributeValue()}{GetAttributeValue()}}
+{\footnotesize\ttfamily \label{class_main_player_ab672d4203f33e69888df0f7928ed298c} 
+int Main\+Player.\+Get\+Attribute\+Value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}}]{attribute}{}\end{DoxyParamCaption})}
+
+
+
+Get the attribute value of the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & The attribute to get\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the attribute
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00361}{361}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_ac5030d5ed5a71996be0cccabd4ee5429}\index{MainPlayer@{MainPlayer}!GetDocument@{GetDocument}}
+\index{GetDocument@{GetDocument}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetDocument()}{GetDocument()}}
+{\footnotesize\ttfamily \label{class_main_player_ac5030d5ed5a71996be0cccabd4ee5429} 
+\mbox{\hyperlink{class_document}{Document}} Main\+Player.\+Get\+Document (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the last document in the player\textquotesingle{}s inventory. 
+
+\begin{DoxyReturn}{Returns}
+The last document in the inventory
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00240}{240}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a95778f3ff92e44f1f37f3a4302dd8c01}\index{MainPlayer@{MainPlayer}!GetDocuments@{GetDocuments}}
+\index{GetDocuments@{GetDocuments}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetDocuments()}{GetDocuments()}}
+{\footnotesize\ttfamily \label{class_main_player_a95778f3ff92e44f1f37f3a4302dd8c01} 
+List$<$ \mbox{\hyperlink{class_document}{Document}} $>$ Main\+Player.\+Get\+Documents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the player\textquotesingle{}s Documents. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s Documents
+\end{DoxyReturn}
+\Hypertarget{class_main_player_affe671f2eb99466cb902ef7f37927bf6}\index{MainPlayer@{MainPlayer}!GetExperience@{GetExperience}}
+\index{GetExperience@{GetExperience}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetExperience()}{GetExperience()}}
+{\footnotesize\ttfamily \label{class_main_player_affe671f2eb99466cb902ef7f37927bf6} 
+int Main\+Player.\+Get\+Experience (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the player\textquotesingle{}s experience. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s experience
+\end{DoxyReturn}
+\Hypertarget{class_main_player_af91b966b277925eb6017aeb580a9454b}\index{MainPlayer@{MainPlayer}!GetInventory@{GetInventory}}
+\index{GetInventory@{GetInventory}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetInventory()}{GetInventory()}}
+{\footnotesize\ttfamily \label{class_main_player_af91b966b277925eb6017aeb580a9454b} 
+\mbox{\hyperlink{class_inventory}{Inventory}} Main\+Player.\+Get\+Inventory (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the player\textquotesingle{}s inventory. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s inventory
+\end{DoxyReturn}
+\Hypertarget{class_main_player_a4530beb74b8665c66f2d453da0b6ffe9}\index{MainPlayer@{MainPlayer}!GetLevel@{GetLevel}}
+\index{GetLevel@{GetLevel}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetLevel()}{GetLevel()}}
+{\footnotesize\ttfamily \label{class_main_player_a4530beb74b8665c66f2d453da0b6ffe9} 
+int Main\+Player.\+Get\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the player\textquotesingle{}s level. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s level
+\end{DoxyReturn}
+\Hypertarget{class_main_player_ac613f81a6c39e842eb1ff6d268618bc6}\index{MainPlayer@{MainPlayer}!GetMaxExperience@{GetMaxExperience}}
+\index{GetMaxExperience@{GetMaxExperience}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{GetMaxExperience()}{GetMaxExperience()}}
+{\footnotesize\ttfamily \label{class_main_player_ac613f81a6c39e842eb1ff6d268618bc6} 
+int Main\+Player.\+Get\+Max\+Experience (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the player\textquotesingle{}s maximum experience. 
+
+\begin{DoxyReturn}{Returns}
+The player\textquotesingle{}s maximum experience
+\end{DoxyReturn}
+\Hypertarget{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}\index{MainPlayer@{MainPlayer}!IncreaseAttributes@{IncreaseAttributes}}
+\index{IncreaseAttributes@{IncreaseAttributes}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{IncreaseAttributes()}{IncreaseAttributes()}}
+{\footnotesize\ttfamily \label{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f} 
+void Main\+Player.\+Increase\+Attributes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}}]{attribute}{, }\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Increase the value of a player\textquotesingle{}s attribute by a given amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em attribute} & The attribute to increase\\
+\hline
+{\em value} & The amount to increase the attribute by\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00197}{197}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}\index{MainPlayer@{MainPlayer}!IncreaseExpereince@{IncreaseExpereince}}
+\index{IncreaseExpereince@{IncreaseExpereince}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{IncreaseExpereince()}{IncreaseExpereince()}}
+{\footnotesize\ttfamily \label{class_main_player_af01defa18d4375e16d2eee7fcfd950f1} 
+void Main\+Player.\+Increase\+Expereince (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Increase the player\textquotesingle{}s experience by a given value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The amount of experience to add\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00165}{165}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a3517dafb49386bd9e28f89bdb33a8367}\index{MainPlayer@{MainPlayer}!IncreaseLevel@{IncreaseLevel}}
+\index{IncreaseLevel@{IncreaseLevel}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{IncreaseLevel()}{IncreaseLevel()}}
+{\footnotesize\ttfamily \label{class_main_player_a3517dafb49386bd9e28f89bdb33a8367} 
+void Main\+Player.\+Increase\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Increase the player\textquotesingle{}s level by 1. 
+
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00144}{144}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_af8edc1db2e05467194bef729ba74941e}\index{MainPlayer@{MainPlayer}!LoadPlayerData@{LoadPlayerData}}
+\index{LoadPlayerData@{LoadPlayerData}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{LoadPlayerData()}{LoadPlayerData()}}
+{\footnotesize\ttfamily \label{class_main_player_af8edc1db2e05467194bef729ba74941e} 
+void Main\+Player.\+Load\+Player\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Load the player\textquotesingle{}s data from a file. 
+
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00091}{91}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a0ed4838e2d23d477549140389035fb0c}\index{MainPlayer@{MainPlayer}!MoveDocumentDown@{MoveDocumentDown}}
+\index{MoveDocumentDown@{MoveDocumentDown}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{MoveDocumentDown()}{MoveDocumentDown()}}
+{\footnotesize\ttfamily \label{class_main_player_a0ed4838e2d23d477549140389035fb0c} 
+void Main\+Player.\+Move\+Document\+Down (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Move a document down in the player\textquotesingle{}s inventory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the document to move\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00286}{286}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_ade36737aeed38bcfa9dcefb016287d07}\index{MainPlayer@{MainPlayer}!MoveDocumentUp@{MoveDocumentUp}}
+\index{MoveDocumentUp@{MoveDocumentUp}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{MoveDocumentUp()}{MoveDocumentUp()}}
+{\footnotesize\ttfamily \label{class_main_player_ade36737aeed38bcfa9dcefb016287d07} 
+void Main\+Player.\+Move\+Document\+Up (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Move a document up in the player\textquotesingle{}s inventory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the document to move\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00268}{268}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a83a04bd058c73a9454a75418b021d033}\index{MainPlayer@{MainPlayer}!NotifyObservers@{NotifyObservers}}
+\index{NotifyObservers@{NotifyObservers}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{NotifyObservers()}{NotifyObservers()}}
+{\footnotesize\ttfamily \label{class_main_player_a83a04bd058c73a9454a75418b021d033} 
+void Main\+Player.\+Notify\+Observers (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Notify all observers that the player\textquotesingle{}s state has changed. 
+
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00344}{344}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a6a366029ca433142fa47c425a4ca53d9}\index{MainPlayer@{MainPlayer}!RefreshStacker@{RefreshStacker}}
+\index{RefreshStacker@{RefreshStacker}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{RefreshStacker()}{RefreshStacker()}}
+{\footnotesize\ttfamily \label{class_main_player_a6a366029ca433142fa47c425a4ca53d9} 
+void Main\+Player.\+Refresh\+Stacker (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Refresh the document stacker with the player\textquotesingle{}s current documents. 
+
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00331}{331}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_aab518a2aaee2345dd078996e735e8977}\index{MainPlayer@{MainPlayer}!RemoveDocument@{RemoveDocument}}
+\index{RemoveDocument@{RemoveDocument}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{RemoveDocument()}{RemoveDocument()}}
+{\footnotesize\ttfamily \label{class_main_player_aab518a2aaee2345dd078996e735e8977} 
+\mbox{\hyperlink{class_document}{Document}} Main\+Player.\+Remove\+Document (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Remove the last document in the player\textquotesingle{}s inventory. 
+
+\begin{DoxyReturn}{Returns}
+The removed document
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00252}{252}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a831240ac268f1b66f4523451beba2596}\index{MainPlayer@{MainPlayer}!SavePlayerData@{SavePlayerData}}
+\index{SavePlayerData@{SavePlayerData}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{SavePlayerData()}{SavePlayerData()}}
+{\footnotesize\ttfamily \label{class_main_player_a831240ac268f1b66f4523451beba2596} 
+void Main\+Player.\+Save\+Player\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Save the player\textquotesingle{}s data to a file. 
+
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00067}{67}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+\Hypertarget{class_main_player_a375245d5ed7e05ece6f0f8d0353a2890}\index{MainPlayer@{MainPlayer}!SetName@{SetName}}
+\index{SetName@{SetName}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}}
+{\footnotesize\ttfamily \label{class_main_player_a375245d5ed7e05ece6f0f8d0353a2890} 
+void Main\+Player.\+Set\+Name (\begin{DoxyParamCaption}\item[{string}]{name}{}\end{DoxyParamCaption})}
+
+
+
+Get the player\textquotesingle{}s name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The player\textquotesingle{}s name\\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_main_player_ac73ecea5c4caab403e683223c6f1f48a}\index{MainPlayer@{MainPlayer}!SynchronizeSpeed@{SynchronizeSpeed}}
+\index{SynchronizeSpeed@{SynchronizeSpeed}!MainPlayer@{MainPlayer}}
+\doxysubsubsection{\texorpdfstring{SynchronizeSpeed()}{SynchronizeSpeed()}}
+{\footnotesize\ttfamily \label{class_main_player_ac73ecea5c4caab403e683223c6f1f48a} 
+void Main\+Player.\+Synchronize\+Speed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Synchronize the player\textquotesingle{}s speed with their speed attribute. 
+
+
+
+Definition at line \mbox{\hyperlink{_main_player_8cs_source_l00137}{137}} of file \mbox{\hyperlink{_main_player_8cs_source}{Main\+Player.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/model/\+Player/\mbox{\hyperlink{_main_player_8cs}{Main\+Player.\+cs}}\end{DoxyCompactItemize}

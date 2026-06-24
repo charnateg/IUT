@@ -1,0 +1,145 @@
+\doxysection{Planets\+API Class Reference}
+\hypertarget{class_planets_a_p_i}{}\label{class_planets_a_p_i}\index{PlanetsAPI@{PlanetsAPI}}
+
+
+This class represents the Planets API.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ \mbox{\hyperlink{class_planet}{Planet}} $>$ \mbox{\hyperlink{class_planets_a_p_i_a2233c665f6efe3566acb12dbb34907fb}{Get\+All\+Planets}} (string order="{}id"{})
+\begin{DoxyCompactList}\small\item\em Get all planets. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_planet}{Planet}} \mbox{\hyperlink{class_planets_a_p_i_ade94189e5c02845f41cbe9e1ef7e7025}{Get\+Planet\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Get a planet details by its id. \end{DoxyCompactList}\item 
+static List$<$ \mbox{\hyperlink{class_planet}{Planet}} $>$ \mbox{\hyperlink{class_planets_a_p_i_aeb4f88789b1ccdf8a7bab00b0395125b}{Get\+Planets\+By\+Rocks}} (int rock\+Id)
+\begin{DoxyCompactList}\small\item\em Get a planet details based on the minerals it contains. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_planets_a_p_i_a8b99702d07cb5fbcb07dcc58c161fade}{Get\+Planet\+Image}} (int id)
+\begin{DoxyCompactList}\small\item\em Get the image path of a planet. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_planets_a_p_i_a1ae4b8886787cb58c27b340629e2d72b}{Get\+Planet\+Image}} (\mbox{\hyperlink{class_planet}{Planet}} planet)
+\begin{DoxyCompactList}\small\item\em Get the image path of a planet. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents the Planets API. 
+
+Definition at line \mbox{\hyperlink{_planets_a_p_i_8cs_source_l00008}{8}} of file \mbox{\hyperlink{_planets_a_p_i_8cs_source}{Planets\+API.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_planets_a_p_i_a2233c665f6efe3566acb12dbb34907fb}\index{PlanetsAPI@{PlanetsAPI}!GetAllPlanets@{GetAllPlanets}}
+\index{GetAllPlanets@{GetAllPlanets}!PlanetsAPI@{PlanetsAPI}}
+\doxysubsubsection{\texorpdfstring{GetAllPlanets()}{GetAllPlanets()}}
+{\footnotesize\ttfamily \label{class_planets_a_p_i_a2233c665f6efe3566acb12dbb34907fb} 
+static List$<$ \mbox{\hyperlink{class_planet}{Planet}} $>$ Planets\+API.\+Get\+All\+Planets (\begin{DoxyParamCaption}\item[{string}]{order}{ = {\ttfamily "{}id"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get all planets. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order} & order type("{}id"{}, "{}name"{})\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of all the planets
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_planets_a_p_i_8cs_source_l00026}{26}} of file \mbox{\hyperlink{_planets_a_p_i_8cs_source}{Planets\+API.\+cs}}.
+
+\Hypertarget{class_planets_a_p_i_ade94189e5c02845f41cbe9e1ef7e7025}\index{PlanetsAPI@{PlanetsAPI}!GetPlanetById@{GetPlanetById}}
+\index{GetPlanetById@{GetPlanetById}!PlanetsAPI@{PlanetsAPI}}
+\doxysubsubsection{\texorpdfstring{GetPlanetById()}{GetPlanetById()}}
+{\footnotesize\ttfamily \label{class_planets_a_p_i_ade94189e5c02845f41cbe9e1ef7e7025} 
+static \mbox{\hyperlink{class_planet}{Planet}} Planets\+API.\+Get\+Planet\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a planet details by its id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The id of the planet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The planet
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_planets_a_p_i_8cs_source_l00040}{40}} of file \mbox{\hyperlink{_planets_a_p_i_8cs_source}{Planets\+API.\+cs}}.
+
+\Hypertarget{class_planets_a_p_i_a8b99702d07cb5fbcb07dcc58c161fade}\index{PlanetsAPI@{PlanetsAPI}!GetPlanetImage@{GetPlanetImage}}
+\index{GetPlanetImage@{GetPlanetImage}!PlanetsAPI@{PlanetsAPI}}
+\doxysubsubsection{\texorpdfstring{GetPlanetImage()}{GetPlanetImage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_planets_a_p_i_a8b99702d07cb5fbcb07dcc58c161fade} 
+static string Planets\+API.\+Get\+Planet\+Image (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the image path of a planet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the planet id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The path to the planet image
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_planets_a_p_i_8cs_source_l00062}{62}} of file \mbox{\hyperlink{_planets_a_p_i_8cs_source}{Planets\+API.\+cs}}.
+
+\Hypertarget{class_planets_a_p_i_a1ae4b8886787cb58c27b340629e2d72b}\index{PlanetsAPI@{PlanetsAPI}!GetPlanetImage@{GetPlanetImage}}
+\index{GetPlanetImage@{GetPlanetImage}!PlanetsAPI@{PlanetsAPI}}
+\doxysubsubsection{\texorpdfstring{GetPlanetImage()}{GetPlanetImage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_planets_a_p_i_a1ae4b8886787cb58c27b340629e2d72b} 
+static string Planets\+API.\+Get\+Planet\+Image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_planet}{Planet}}}]{planet}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the image path of a planet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em planet} & The planet \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The path to the planet image
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_planets_a_p_i_8cs_source_l00073}{73}} of file \mbox{\hyperlink{_planets_a_p_i_8cs_source}{Planets\+API.\+cs}}.
+
+\Hypertarget{class_planets_a_p_i_aeb4f88789b1ccdf8a7bab00b0395125b}\index{PlanetsAPI@{PlanetsAPI}!GetPlanetsByRocks@{GetPlanetsByRocks}}
+\index{GetPlanetsByRocks@{GetPlanetsByRocks}!PlanetsAPI@{PlanetsAPI}}
+\doxysubsubsection{\texorpdfstring{GetPlanetsByRocks()}{GetPlanetsByRocks()}}
+{\footnotesize\ttfamily \label{class_planets_a_p_i_aeb4f88789b1ccdf8a7bab00b0395125b} 
+static List$<$ \mbox{\hyperlink{class_planet}{Planet}} $>$ Planets\+API.\+Get\+Planets\+By\+Rocks (\begin{DoxyParamCaption}\item[{int}]{rock\+Id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a planet details based on the minerals it contains. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rock\+Id} & The mineral(rock) id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A list of planets
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_planets_a_p_i_8cs_source_l00051}{51}} of file \mbox{\hyperlink{_planets_a_p_i_8cs_source}{Planets\+API.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/\+API/\+Planets/\mbox{\hyperlink{_planets_a_p_i_8cs}{Planets\+API.\+cs}}\end{DoxyCompactItemize}

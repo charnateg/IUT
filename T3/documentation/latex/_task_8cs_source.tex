@@ -1,0 +1,50 @@
+\doxysection{Task.\+cs}
+\hypertarget{_task_8cs_source}{}\label{_task_8cs_source}\index{game/Assets/Scripts/model/TaskSystem/Task.cs@{game/Assets/Scripts/model/TaskSystem/Task.cs}}
+\mbox{\hyperlink{_task_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00007}00007\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00008}\mbox{\hyperlink{class_task}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_task}{Task}}\ }
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_id;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_name;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_experienceValue;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \_completed;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00015}\mbox{\hyperlink{class_task_a505d4d640a81376259067ef21a98363f}{00015}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_task_a505d4d640a81376259067ef21a98363f}{Task}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id}\ ,\textcolor{keywordtype}{string}\ name,\ \textcolor{keywordtype}{int}\ experienceValue)}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \_id\ =\ id;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \_name\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \_experienceValue\ =\ experienceValue;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \_completed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00023}\mbox{\hyperlink{class_task_a2969c6542a5c9714bfeaa3222b653657}{00023}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_a2969c6542a5c9714bfeaa3222b653657}{Complete}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \_completed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00028}\mbox{\hyperlink{class_task_a527f8238799cf43d99a0680006bfa68d}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_a527f8238799cf43d99a0680006bfa68d}{GetId}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_id;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00032}\mbox{\hyperlink{class_task_a32135f5da734d5a1efb596bb71f7c397}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_task_a32135f5da734d5a1efb596bb71f7c397}{GetName}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_name;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00037}\mbox{\hyperlink{class_task_a22e141595c8341eb2c2c5bd57f28ee2b}{00037}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_a22e141595c8341eb2c2c5bd57f28ee2b}{GetExperienceValue}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_experienceValue;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00042}\mbox{\hyperlink{class_task_a3ebac28ddbc6478d586bb36bc8e0143a}{00042}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_task_a3ebac28ddbc6478d586bb36bc8e0143a}{IsCompleted}}()}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_completed;}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00046}00046\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_task_8cs_source_l00047}00047\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,50 @@
+\doxysection{Task\+UI.\+cs}
+\hypertarget{_task_u_i_8cs_source}{}\label{_task_u_i_8cs_source}\index{game/Assets/Scripts/view/TaskUI.cs@{game/Assets/Scripts/view/TaskUI.cs}}
+\mbox{\hyperlink{_task_u_i_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00008}\mbox{\hyperlink{class_task_u_i}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_task_u_i}{TaskUI}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00010}00010\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Components"{}})]}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_manager}{TaskManager}}\ \_taskManager;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_taskPanel;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_taskPrefab;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List\ <GameObject>\ \_taskPrefabs\ =\ \textcolor{keyword}{new}\ List<GameObject>();}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00016}00016\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Tasks"{}})]}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Task>\ \_tasks\ =\ \textcolor{keyword}{new}\ List<Task>();}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00019}00019\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00020}00020\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \_taskManager\ ??=\ FindObjectOfType<TaskManager>();}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00026}\mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{00026}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{SetUP}}()}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Deactivate\ the\ prefabs}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_taskPrefabs.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_taskManager.\mbox{\hyperlink{class_task_manager_a069b0a81484d51ff271731807ff2438d}{GetTasks}}().Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].transform.Find(\textcolor{stringliteral}{"{}Title"{}}).GetComponent<TMP\_Text>().text\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_a069b0a81484d51ff271731807ff2438d}{GetTasks}}()[i].GetName();}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].transform.Find(\textcolor{stringliteral}{"{}XP"{}}).GetComponent<TMP\_Text>().text\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_a069b0a81484d51ff271731807ff2438d}{GetTasks}}()[i].GetExperienceValue().ToString()\ +\ \textcolor{stringliteral}{"{}XP"{}};}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_taskManager.\mbox{\hyperlink{class_task_manager_a069b0a81484d51ff271731807ff2438d}{GetTasks}}()[i].IsCompleted())}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Change\ the\ color\ of\ the\ task\ to\ green}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].transform.Find(\textcolor{stringliteral}{"{}Title"{}}).GetComponent<TMP\_Text>().color\ =\ Color.green;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].transform.Find(\textcolor{stringliteral}{"{}XP"{}}).GetComponent<TMP\_Text>().color\ =\ Color.green;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ strike\ through\ the\ text}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].transform.Find(\textcolor{stringliteral}{"{}Title"{}}).GetComponent<TMP\_Text>().fontStyle\ =\ FontStyles.Strikethrough;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_taskPrefabs[i].transform.Find(\textcolor{stringliteral}{"{}XP"{}}).GetComponent<TMP\_Text>().fontStyle\ =\ FontStyles.Strikethrough;}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_u_i_8cs_source_l00050}00050\ \}}
+
+\end{DoxyCode}

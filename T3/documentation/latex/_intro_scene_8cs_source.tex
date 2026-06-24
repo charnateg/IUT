@@ -1,0 +1,33 @@
+\doxysection{Intro\+Scene.\+cs}
+\hypertarget{_intro_scene_8cs_source}{}\label{_intro_scene_8cs_source}\index{game/Assets/Scripts/menus/IntroScene.cs@{game/Assets/Scripts/menus/IntroScene.cs}}
+\mbox{\hyperlink{_intro_scene_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.Video;}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00008}\mbox{\hyperlink{class_intro_scene}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_intro_scene}{IntroScene}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00010}\mbox{\hyperlink{class_intro_scene_ac2a8bb277456488eaf3a5d2539c447c5}{00010}}\ \ \ \ \ \textcolor{keyword}{public}\ VideoPlayer\ \mbox{\hyperlink{class_intro_scene_ac2a8bb277456488eaf3a5d2539c447c5}{videoPlayer}};}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00011}\mbox{\hyperlink{class_intro_scene_ac185115dab856e39a83005e25f06c65d}{00011}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_intro_scene_ac185115dab856e39a83005e25f06c65d}{nextSceneName}}\ =\ \textcolor{stringliteral}{"{}Planet1"{}};}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_intro_scene_ac2a8bb277456488eaf3a5d2539c447c5}{videoPlayer}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_intro_scene_ac2a8bb277456488eaf3a5d2539c447c5}{videoPlayer}}\ =\ GetComponent<VideoPlayer>();}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ videoPlayer.loopPointReached\ +=\ OnVideoEnd;}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keywordtype}{void}\ OnVideoEnd(VideoPlayer\ vp)}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ SceneManager.LoadScene(\mbox{\hyperlink{class_intro_scene_ac185115dab856e39a83005e25f06c65d}{nextSceneName}});}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00026}00026\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_intro_scene_8cs_source_l00027}00027\ \}}
+
+\end{DoxyCode}

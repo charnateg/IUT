@@ -1,0 +1,104 @@
+\doxysection{Doc\+Stack\+Player.\+cs}
+\hypertarget{_doc_stack_player_8cs_source}{}\label{_doc_stack_player_8cs_source}\index{game/Assets/Scripts/view/DocStackPlayer.cs@{game/Assets/Scripts/view/DocStackPlayer.cs}}
+\mbox{\hyperlink{_doc_stack_player_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00007}\mbox{\hyperlink{class_doc_stack_player}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_doc_stack_player}{DocStackPlayer}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00009}00009\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Document\ Prefabs"{}})]}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_unformattedPrefab;\ \ \textcolor{comment}{//\ Unformatted\ document\ prefab}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_formattedPrefab;\ \ \ \ \textcolor{comment}{//\ Formatted\ document\ prefab}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_metadataPrefab;\ \ \ \ \ \textcolor{comment}{//\ Metadata-\/only\ prefab}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_formattedMetadataPrefab;\ \textcolor{comment}{//\ Formatted\ +\ Metadata\ prefab}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00015}00015\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Player\ and\ Stack\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Transform\ \_player;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reference\ to\ the\ player}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_docHeight;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Height\ of\ one\ document\ in\ the\ stack}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Vector3\ \_offsetFromPlayer\ =\ \textcolor{keyword}{new}\ Vector3(-\/0.5f,\ 1.5f,\ 0);\ \textcolor{comment}{//\ Offset\ relative\ to\ player's\ position}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Stack<GameObject>\ stackedDocs\ =\ \textcolor{keyword}{new}\ Stack<GameObject>();\ \textcolor{comment}{//\ Stack\ to\ track\ documents}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \_currentStackPosition;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tracks\ the\ stacking\ position}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ initial\ stacking\ position\ relative\ to\ player}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \_currentStackPosition\ =\ \_player.position\ +\ \_player.TransformDirection(\_offsetFromPlayer);}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \_docHeight\ =\ 0.4f;\ \textcolor{comment}{//\ Default\ document\ height}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ stacking\ position\ to\ follow\ the\ player\ dynamically}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \_currentStackPosition\ =\ \_player.position\ +\ \_player.TransformDirection(\_offsetFromPlayer);}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00039}\mbox{\hyperlink{class_doc_stack_player_aa85fac984cef91f7c110bde0d554e69b}{00039}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_doc_stack_player_aa85fac984cef91f7c110bde0d554e69b}{StackDoc}}(\mbox{\hyperlink{class_document}{Document}}\ doc)}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Determine\ the\ correct\ prefab\ to\ instantiate}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ GameObject\ prefabToUse\ =\ GetPrefabForDocument(doc);}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prefabToUse\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}No\ prefab\ assigned\ for\ the\ document\ state."{}});}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ spawn\ position\ based\ on\ stack\ height}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ Vector3\ spawnPosition\ =\ \_currentStackPosition\ +\ \textcolor{keyword}{new}\ Vector3(0,\ \_docHeight\ *\ stackedDocs.Count,\ 0);}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Instantiate\ and\ set\ up\ the\ document}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ GameObject\ newDoc\ =\ Instantiate(prefabToUse,\ spawnPosition,\ Quaternion.identity);}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ newDoc.transform.rotation\ =\ Quaternion.Euler(0,\ 0,\ 90);\ \textcolor{comment}{//\ Rotate\ document}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ newDoc.transform.SetParent(\_player);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Parent\ to\ the\ player}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ the\ document\ to\ the\ stack}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ stackedDocs.Push(newDoc);}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00064}\mbox{\hyperlink{class_doc_stack_player_add32726ba7ccda6637a4a8cbb19da202}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_doc_stack_player_add32726ba7ccda6637a4a8cbb19da202}{UnstackDoc}}()}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ there\ are\ documents\ to\ unstack}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stackedDocs.Count\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ top\ document\ and\ remove\ it}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ topDoc\ =\ stackedDocs.Pop();}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(topDoc);\ \textcolor{comment}{//\ Destroy\ the\ document\ object}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00077}\mbox{\hyperlink{class_doc_stack_player_aa4620f1dca0902b63f8dcb6b9dce333c}{00077}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_doc_stack_player_aa4620f1dca0902b63f8dcb6b9dce333c}{ClearStack}}()}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ all\ stacked\ documents}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (GameObject\ doc\ \textcolor{keywordflow}{in}\ stackedDocs)}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(doc);}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Clear\ the\ stack}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ stackedDocs.Clear();}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ GetPrefabForDocument(\mbox{\hyperlink{class_document}{Document}}\ doc)}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00095}00095\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!doc.\mbox{\hyperlink{class_document_a670f59d124843ad4ff670f960a7d56b4}{IsFormatted}}()\ \&\&\ !doc.\mbox{\hyperlink{class_document_a42242f3611ec657a9bb6632c95ed5f21}{HasMetadata}}())}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_unformattedPrefab;\ \textcolor{comment}{//\ Unformatted\ document}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (doc.\mbox{\hyperlink{class_document_a670f59d124843ad4ff670f960a7d56b4}{IsFormatted}}()\ \&\&\ !doc.\mbox{\hyperlink{class_document_a42242f3611ec657a9bb6632c95ed5f21}{HasMetadata}}())}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_formattedPrefab;\ \textcolor{comment}{//\ Formatted\ only}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!doc.\mbox{\hyperlink{class_document_a670f59d124843ad4ff670f960a7d56b4}{IsFormatted}}()\ \&\&\ doc.\mbox{\hyperlink{class_document_a42242f3611ec657a9bb6632c95ed5f21}{HasMetadata}}())}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_metadataPrefab;\ \textcolor{comment}{//\ Metadata\ only}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (doc.\mbox{\hyperlink{class_document_a670f59d124843ad4ff670f960a7d56b4}{IsFormatted}}()\ \&\&\ doc.\mbox{\hyperlink{class_document_a42242f3611ec657a9bb6632c95ed5f21}{HasMetadata}}())}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_formattedMetadataPrefab;\ \textcolor{comment}{//\ Formatted\ +\ Metadata}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \textcolor{comment}{//\ Should\ not\ happen}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_doc_stack_player_8cs_source_l00115}00115\ \}}
+
+\end{DoxyCode}

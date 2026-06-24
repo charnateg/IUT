@@ -1,0 +1,51 @@
+\doxysection{Planet.\+cs}
+\hypertarget{_planet_8cs_source}{}\label{_planet_8cs_source}\index{game/Assets/Scripts/API/Planets/Planet.cs@{game/Assets/Scripts/API/Planets/Planet.cs}}
+\mbox{\hyperlink{_planet_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00006}\mbox{\hyperlink{class_planet}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_planet}{Planet}}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00008}00008\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_id;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00009}00009\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_name;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00010}00010\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_description;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{_atmosphere_8cs_a2ddd440137c327bfba22a7e2b4d6f887}{Atmosphere}}\ \_atmosphere;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_temperature;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ List<int>\ \_materials;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00014}\mbox{\hyperlink{class_planet_a778db64f93d9a99da3f388ab43433446}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_planet_a778db64f93d9a99da3f388ab43433446}{Planet}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{string}\ name,\ \textcolor{keywordtype}{string}\ description,\ \mbox{\hyperlink{_atmosphere_8cs_a2ddd440137c327bfba22a7e2b4d6f887}{Atmosphere}}\ atmosphere,\ \textcolor{keywordtype}{float}\ temperature,\ List<int>\ materials)}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ this.\_id\ =\ id;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ this.\_name\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ this.\_description\ =\ description;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ this.\_atmosphere\ =\ atmosphere;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ this.\_temperature\ =\ temperature;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ this.\_materials\ =\ materials;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00023}\mbox{\hyperlink{class_planet_ae90f060e8fafd075257c1b2261077ee0}{00023}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_planet_ae90f060e8fafd075257c1b2261077ee0}{GetId}}()}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_id;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00027}\mbox{\hyperlink{class_planet_a168a28eeb1305982db2dd7811f1b43a7}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_planet_a168a28eeb1305982db2dd7811f1b43a7}{GetName}}()\{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_name;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00030}\mbox{\hyperlink{class_planet_ae0c3d42eb0a199c33fcc4eef4444c1bd}{00030}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_planet_ae0c3d42eb0a199c33fcc4eef4444c1bd}{GetDescription}}()\{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_description;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00033}\mbox{\hyperlink{class_planet_a2f26f7100da4e104955e70f9c10dc375}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{_atmosphere_8cs_a2ddd440137c327bfba22a7e2b4d6f887}{Atmosphere}}\ \mbox{\hyperlink{class_planet_a2f26f7100da4e104955e70f9c10dc375}{GetAtmosphere}}()\{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_atmosphere;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00036}\mbox{\hyperlink{class_planet_afd3ec343e548e553c1e59e402cd40c23}{00036}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_planet_afd3ec343e548e553c1e59e402cd40c23}{GetTemperature}}()}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_temperature;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00040}\mbox{\hyperlink{class_planet_a070530c136f7b932202c17799c726470}{00040}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Rock>\ \mbox{\hyperlink{class_planet_a070530c136f7b932202c17799c726470}{GetMaterials}}()}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_rocks_a_p_i}{RocksAPI}}.\mbox{\hyperlink{class_rocks_a_p_i_aecf14dfc123c66b5b7ecc1d1d75ebdf5}{GetRocks}}(\_materials);}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00044}\mbox{\hyperlink{class_planet_a56e1618c74430ac0b940b7065cef8e99}{00044}}\ \ \ \ \ \textcolor{keyword}{public}\ List<int>\ \mbox{\hyperlink{class_planet_a56e1618c74430ac0b940b7065cef8e99}{GetMaterialsIDs}}()}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_materials;}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_planet_8cs_source_l00048}00048\ \}}
+
+\end{DoxyCode}

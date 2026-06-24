@@ -1,0 +1,203 @@
+\doxysection{Level\+Manager.\+cs}
+\hypertarget{_level_manager_8cs_source}{}\label{_level_manager_8cs_source}\index{game/Assets/Scripts/controller/Level/LevelManager.cs@{game/Assets/Scripts/controller/Level/LevelManager.cs}}
+\mbox{\hyperlink{_level_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00010}\mbox{\hyperlink{class_level_manager}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_level_manager}{LevelManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}[]\ MIN\_SCORES\ =\ \{\ 4000,\ 6000,\ 9000,\ 12000,\ 15000,\ 18000,\ 21000,\ 24000,\ 27000,\ 30000\ \};}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00016}00016\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Level\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_chrono\ =\ 0;\ \textcolor{comment}{//\ Level\ timer}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_level;\ \textcolor{comment}{//\ Current\ level\ number}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_score;\ \textcolor{comment}{//\ Current\ score}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Dependencies"{}})]}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_main_player}{MainPlayer}}\ \_player;\ \textcolor{comment}{//\ Reference\ to\ the\ player\ object}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00023}00023\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_manager}{TaskManager}}\ \_taskManager;\ \textcolor{comment}{//\ Reference\ to\ the\ task\ manager\ object}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00025}00025\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}UI\ Elements"{}})]}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00026}00026\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TextMeshProUGUI\ \_timerText;\ \textcolor{comment}{//\ Timer\ display\ UI\ element}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00027}00027\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ UI;\ \textcolor{comment}{//\ Main\ UI\ object\ containing\ panels}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00029}00029\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Rocket\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00030}00030\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_rocket}{Rocket}}\ \_rocket;\ \textcolor{comment}{//\ Reference\ to\ the\ rocket\ object}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00031}00031\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_RocketCamera;\ \textcolor{comment}{//\ Rocket\ camera}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00032}00032\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_mainCamera;\ \textcolor{comment}{//\ Main\ game\ camera}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00034}00034\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_limitChrono\ =\ 480f;\ \textcolor{comment}{//\ Maximum\ time\ for\ the\ level\ (in\ seconds)}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00035}00035\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \_isEnd\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Flag\ indicating\ if\ the\ level\ has\ ended}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00040}\mbox{\hyperlink{class_level_manager_acd4c530eb1d86a3147abfd1a743ed289}{00040}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_manager_acd4c530eb1d86a3147abfd1a743ed289}{UpdateChrono}}()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \_chrono\ +=\ Time.deltaTime;\ \textcolor{comment}{//\ Increment\ the\ timer}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_chrono\ >=\ 0.001f)\ \textcolor{comment}{//\ Ensure\ update\ granularity}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ minutes,\ seconds,\ and\ milliseconds}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ minutes\ =\ (int)(\_chrono\ /\ 60);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ seconds\ =\ (int)(\_chrono\ \%\ 60);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ milliseconds\ =\ (int)((\_chrono\ -\/\ (\textcolor{keywordtype}{int})\_chrono)\ *\ 1000);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ the\ timer\ text}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \_timerText.text\ =\ \textcolor{keywordtype}{string}.Format(\textcolor{stringliteral}{"{}\{0:D2\}:\{1:D2\}:\{2:D3\}"{}},\ minutes,\ seconds,\ milliseconds);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00058}00058\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00059}00059\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \_chrono\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \_RocketCamera\ ??=\ GameObject.Find(\textcolor{stringliteral}{"{}RocketCamera"{}});}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \_mainCamera\ ??=\ GameObject.Find(\textcolor{stringliteral}{"{}Main\ Camera"{}});}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \_player\ ??=\ FindObjectOfType<MainPlayer>();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \_taskManager\ ??=\ FindObjectOfType<TaskManager>();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \_RocketCamera.GetComponent<Camera>().enabled\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Disable\ the\ rocket\ camera\ initially}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_level_manager_acd4c530eb1d86a3147abfd1a743ed289}{UpdateChrono}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_chrono\ >=\ \_limitChrono)}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_level_manager_ac84b7450c28bafe815a5a09b86395099}{FinishLevel}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00085}\mbox{\hyperlink{class_level_manager_a1afd7d3befb0aa3bf563f55aced79a81}{00085}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_manager_a1afd7d3befb0aa3bf563f55aced79a81}{LaunchRocket}}()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \_rocket.GetComponent<\mbox{\hyperlink{class_rocket}{Rocket}}>().StartLaunch();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ SwitchToRocketCamera();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ the\ end\ panel\ after\ a\ delay}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ StartCoroutine(ShowEndPanelAfterDelay(5));}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ SwitchToRocketCamera()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animation_and_movement_controller}{AnimationAndMovementController}}\ playerController\ =\ FindObjectOfType<AnimationAndMovementController>();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerController\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ playerController.enabled\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Disable\ player\ movement}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \_mainCamera.SetActive(\textcolor{keyword}{false});\ \textcolor{comment}{//\ Disable\ the\ main\ camera}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Camera\ cam\ \textcolor{keywordflow}{in}\ Camera.allCameras)}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ cam.enabled\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Disable\ all\ other\ cameras}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \_RocketCamera.GetComponent<Camera>().enabled\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Enable\ the\ rocket\ camera}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00116}\mbox{\hyperlink{class_level_manager_ac84b7450c28bafe815a5a09b86395099}{00116}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_manager_ac84b7450c28bafe815a5a09b86395099}{FinishLevel}}()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00117}00117\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animation_and_movement_controller}{AnimationAndMovementController}}\ playerController\ =\ FindObjectOfType<AnimationAndMovementController>();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \_isEnd\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_level_manager_a1afd7d3befb0aa3bf563f55aced79a81}{LaunchRocket}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_level_manager_afdef5e588b9850916443800977b1a07d}{EvaluateScore}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disable\ player\ movement}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wait\ for\ 4\ seconds\ before\ showing\ the\ end\ panel}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (playerController\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ playerController.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00133}\mbox{\hyperlink{class_level_manager_a41827fc0491d46c1eebe9602dcfd43cc}{00133}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_level_manager_a41827fc0491d46c1eebe9602dcfd43cc}{CalculateScore}}()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00134}00134\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ finishedTasks\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_a4cc3ec6cc1405eba1eab5d816a7b027b}{GetFinishedTasks}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ totalTasks\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_ade70ab8b4067825291a585c21bf0ac41}{GetTotalTasks}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ archivedDocuments\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_a88d9ab901f33123f86291a32af91f5d0}{GetArchivedDocuments}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ metadatedDocuments\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_a5ecab26dc8fb63afc24511ea9199d4b6}{GetMetadatedDocuments}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ finishedConferences\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_abd3f8f9c700e102ef5e97cda10b1cd16}{GetFinishedConferences}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ repairedServers\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_a6bfed90f19cf198b7131be46a38749b1}{GetRepairedServers}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ backupData\ =\ \_taskManager.\mbox{\hyperlink{class_task_manager_ad1f6492ed7d14955321e6c19343ec899}{GetBackupData}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ score\ based\ on\ the\ number\ of\ completed\ tasks}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ score\ +=\ finishedTasks\ *\ 300;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ the\ player\ didn't\ complete\ all\ the\ tasks,\ reduce\ the\ score}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (finishedTasks\ <\ totalTasks)}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ score\ -\/=\ (totalTasks\ -\/\ finishedTasks)\ *\ 50;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ score\ based\ on\ the\ number\ of\ archived\ documents}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ score\ +=\ archivedDocuments\ *\ 50;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ score\ +=\ metadatedDocuments\ *\ 80;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ score\ based\ on\ the\ number\ of\ finished\ conferences}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ score\ +=\ finishedConferences\ *\ 400;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ score\ based\ on\ the\ number\ of\ repaired\ servers}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ score\ +=\ repairedServers\ *\ 300;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ score\ based\ on\ the\ number\ of\ backup\ data}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ score\ +=\ backupData\ *\ 200;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ score\ based\ on\ the\ time\ remaining}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ each\ second\ remaining,\ add\ 10\ points}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ but\ there\ is\ a\ problem\ the\ player\ can\ just\ finish\ the\ level\ in\ the\ game\ start\ (480\ *\ 10\ =\ 4800)\ }}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ so\ we\ need\ to\ not\ give\ points\ if\ the\ player\ finishes\ the\ level\ in\ less\ than\ 5\ minutes}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_chrono\ <\ 200)}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ score\ +=\ (int)(\_chrono\ *\ 10);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ player's\ precision}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ precision\ =\ \_player.\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Precision);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ the\ more\ precise\ the\ player\ is,\ the\ more\ points\ they\ get}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ score\ +=\ (int)(precision\ *\ 50);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ score;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00185}00185\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00187}\mbox{\hyperlink{class_level_manager_afdef5e588b9850916443800977b1a07d}{00187}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_level_manager_afdef5e588b9850916443800977b1a07d}{EvaluateScore}}()}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00188}00188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \_score\ =\ \mbox{\hyperlink{class_level_manager_a41827fc0491d46c1eebe9602dcfd43cc}{CalculateScore}}();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_score\ >=\ MIN\_SCORES[\_level\ -\/\ 1])}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00201}\mbox{\hyperlink{class_level_manager_a026e12dc54a9cc961f251e447525c18b}{00201}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_level_manager_a026e12dc54a9cc961f251e447525c18b}{LoadLevel}}(\textcolor{keywordtype}{int}\ level)}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00202}00202\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \_level\ =\ level;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \_score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \_chrono\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00206}00206\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00212}\mbox{\hyperlink{class_level_manager_af63f51e6375e20735ec4b1095b8d1321}{00212}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_level_manager_af63f51e6375e20735ec4b1095b8d1321}{GetChrono}}()\ =>\ \_chrono;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00218}\mbox{\hyperlink{class_level_manager_af1f4976817a3601f3151edba4121ff2e}{00218}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_level_manager_af1f4976817a3601f3151edba4121ff2e}{GetLevel}}()\ =>\ \_level;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00224}\mbox{\hyperlink{class_level_manager_ad23083bf512e3a0a5137159b81c1f7e1}{00224}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_level_manager_ad23083bf512e3a0a5137159b81c1f7e1}{GetScore}}()\ =>\ \_score;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00230}00230\ \ \ \ \ \textcolor{keyword}{private}\ IEnumerator\ ShowEndPanelAfterDelay(\textcolor{keywordtype}{float}\ delay)}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00231}00231\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ WaitForSeconds(delay);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_script}{EndScript}}\ endScript\ =\ UI.transform.Find(\textcolor{stringliteral}{"{}EndPanel"{}}).GetComponent<\mbox{\hyperlink{class_end_script}{EndScript}}>();}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ UI.transform.Find(\textcolor{stringliteral}{"{}EndPanel"{}}).GetComponent<Image>().color\ =\ \_score\ >=\ MIN\_SCORES[\_level\ -\/\ 1]\ ?\ Color.green\ :\ Color.red;}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ endScript.\mbox{\hyperlink{class_end_script_ac2b092db8bcd23cd9b634874c58990aa}{SetUP}}(\_score,\ MIN\_SCORES[\_level\ -\/\ 1]);}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ UI.transform.Find(\textcolor{stringliteral}{"{}EndPanel"{}}).gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00237}00237\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_level_manager_8cs_source_l00238}00238\ \}}
+
+\end{DoxyCode}

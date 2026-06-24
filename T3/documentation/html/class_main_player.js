@@ -1,0 +1,28 @@
+var class_main_player =
+[
+    [ "AddDocument", "class_main_player.html#a4d2c5d891f3b98c31b31c9e05cf2552b", null ],
+    [ "AddObserver", "class_main_player.html#a307f52a38f6c17d90afa399e8c586349", null ],
+    [ "AddSkill", "class_main_player.html#a275b454afaefa94266f28da5e4620c05", null ],
+    [ "CanAddDocument", "class_main_player.html#a58e99d87c65c39b1c2066591b342c8a3", null ],
+    [ "FreshPlayerData", "class_main_player.html#ab1d4b9f7a4bc32662a4461d24e53b4ec", null ],
+    [ "GetAttributes", "class_main_player.html#a4d32cd9ff5caf8f408843a85573771f1", null ],
+    [ "GetAttributeValue", "class_main_player.html#ab672d4203f33e69888df0f7928ed298c", null ],
+    [ "GetDocument", "class_main_player.html#ac5030d5ed5a71996be0cccabd4ee5429", null ],
+    [ "GetDocuments", "class_main_player.html#a95778f3ff92e44f1f37f3a4302dd8c01", null ],
+    [ "GetExperience", "class_main_player.html#affe671f2eb99466cb902ef7f37927bf6", null ],
+    [ "GetInventory", "class_main_player.html#af91b966b277925eb6017aeb580a9454b", null ],
+    [ "GetLevel", "class_main_player.html#a4530beb74b8665c66f2d453da0b6ffe9", null ],
+    [ "GetMaxExperience", "class_main_player.html#ac613f81a6c39e842eb1ff6d268618bc6", null ],
+    [ "IncreaseAttributes", "class_main_player.html#a7509df1e9eb0c18f682aaf9e7105048f", null ],
+    [ "IncreaseExpereince", "class_main_player.html#af01defa18d4375e16d2eee7fcfd950f1", null ],
+    [ "IncreaseLevel", "class_main_player.html#a3517dafb49386bd9e28f89bdb33a8367", null ],
+    [ "LoadPlayerData", "class_main_player.html#af8edc1db2e05467194bef729ba74941e", null ],
+    [ "MoveDocumentDown", "class_main_player.html#a0ed4838e2d23d477549140389035fb0c", null ],
+    [ "MoveDocumentUp", "class_main_player.html#ade36737aeed38bcfa9dcefb016287d07", null ],
+    [ "NotifyObservers", "class_main_player.html#a83a04bd058c73a9454a75418b021d033", null ],
+    [ "RefreshStacker", "class_main_player.html#a6a366029ca433142fa47c425a4ca53d9", null ],
+    [ "RemoveDocument", "class_main_player.html#aab518a2aaee2345dd078996e735e8977", null ],
+    [ "SavePlayerData", "class_main_player.html#a831240ac268f1b66f4523451beba2596", null ],
+    [ "SetName", "class_main_player.html#a375245d5ed7e05ece6f0f8d0353a2890", null ],
+    [ "SynchronizeSpeed", "class_main_player.html#ac73ecea5c4caab403e683223c6f1f48a", null ]
+];

@@ -1,0 +1,95 @@
+\doxysection{Document\+Dispenser.\+cs}
+\hypertarget{_document_dispenser_8cs_source}{}\label{_document_dispenser_8cs_source}\index{game/Assets/Scripts/InteractionSystem/DocumentDispenser.cs@{game/Assets/Scripts/InteractionSystem/DocumentDispenser.cs}}
+\mbox{\hyperlink{_document_dispenser_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00008}\mbox{\hyperlink{class_document_dispenser}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_document_dispenser}{DocumentDispenser}}\ :\ MonoBehaviour,\ \mbox{\hyperlink{interface_i_interactable}{IInteractable}}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00010}00010\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Dependencies"{}})]}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_document_stacker}{DocumentStacker}}\ \_documentStacker;\ \textcolor{comment}{//\ Manages\ stacking\ visualizations.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_document_generator}{DocumentGenerator}}\ \_documentGenerator;\ \textcolor{comment}{//\ Generates\ documents.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<DocumentCategory>\ \_documentCategories;\ \textcolor{comment}{//\ Category\ of\ documents\ to\ generate.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_loggable}{ILoggable}}\ \_logger;\ \textcolor{comment}{//\ Logs\ messages.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00016}00016\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Configuration"{}})]}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_roomName;\ \textcolor{comment}{//\ Name\ of\ the\ room\ where\ the\ table\ is\ located.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_maxDocuments\ =\ 5;\ \textcolor{comment}{//\ Maximum\ number\ of\ documents\ that\ can\ be\ stacked\ on\ the\ table.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_spawnInterval\ =\ 20f;\ \textcolor{comment}{//\ Interval\ in\ seconds\ to\ spawn\ a\ new\ document.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}State"{}})]}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{private}\ Stack<Document>\ \_documents\ =\ \textcolor{keyword}{new}\ Stack<Document>();\ \textcolor{comment}{//\ Stack\ of\ documents\ currently\ on\ the\ table.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_timer;\ \textcolor{comment}{//\ Tracks\ time\ since\ the\ last\ document\ was\ generated.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ required\ components\ are\ set.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \_documentStacker\ ??=\ GetComponent<DocumentStacker>();}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \_documentGenerator\ ??=\ \mbox{\hyperlink{class_document_generator}{DocumentGenerator}}.\mbox{\hyperlink{class_document_generator_a0b42bb0f443a942d0d256b50a117a768}{Instance}};}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \_logger\ ??=\ FindObjectOfType<Logger>();}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_logger\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Logger\ is\ not\ assigned\ and\ no\ GameManager\ found\ in\ the\ scene."{}});}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ GenerateDocument();}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00039}00039\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ HandleDocumentGeneration();}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ HandleDocumentGeneration()}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \_timer\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_timer\ >=\ \_spawnInterval\ \&\&\ \_documents.Count\ <\ \_maxDocuments)}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \_timer\ =\ 0f;\ \textcolor{comment}{//\ Reset\ the\ timer.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ GenerateDocument();}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ GenerateDocument()}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_document}{Document}}\ newDocument\ =\ \_documentGenerator.\mbox{\hyperlink{class_document_generator_a1102158d28e4812471f62d9556344bd5}{PickDocument}}(\_documentCategories);}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newDocument\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}No\ document\ available\ from\ the\ generator."{}});}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \_documents.Push(newDocument);}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_document_stacker_a17f09bf17c4675c8b1855c817b1d5abd}{StackDock}}();\ \textcolor{comment}{//\ Visualize\ stacking\ on\ the\ table.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\$\textcolor{stringliteral}{"{}Un\ nouveau\ document\ est\ disponible\ dans\ le\ \{\_roomName\}."{}});}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00079}\mbox{\hyperlink{class_document_dispenser_a7cb97bf4f4844dca80da737a1e9b39df}{00079}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_document_dispenser_a7cb97bf4f4844dca80da737a1e9b39df}{Interact}}(\mbox{\hyperlink{class_main_player}{MainPlayer}}\ player)}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_documents.Count\ ==\ 0\ ||\ !player.\mbox{\hyperlink{class_main_player_a58e99d87c65c39b1c2066591b342c8a3}{CanAddDocument}}())}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}No\ documents\ available\ to\ interact\ with."{}});}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Unstack\ the\ top\ document\ and\ give\ it\ to\ the\ player.}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_document_stacker_a541dc30ae52ec0f711a6f378bff01df1}{UnstackDock}}();}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_document}{Document}}\ document\ =\ \_documents.Pop();}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ player.\mbox{\hyperlink{class_main_player_a4d2c5d891f3b98c31b31c9e05cf2552b}{AddDocument}}(document);}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00097}\mbox{\hyperlink{class_document_dispenser_accef005321b15db758b460e84b1ef36c}{00097}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_document_dispenser_accef005321b15db758b460e84b1ef36c}{GetInteractionText}}()}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Prend\ le\ document"{}};}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00100}00100\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00106}\mbox{\hyperlink{class_document_dispenser_a03bc8b1b574f65d34537dcb9ce371e47}{00106}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}}\ \mbox{\hyperlink{class_document_dispenser_a03bc8b1b574f65d34537dcb9ce371e47}{GetInteractable}}()}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}}.Library;}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_document_dispenser_8cs_source_l00110}00110\ \}}
+
+\end{DoxyCode}

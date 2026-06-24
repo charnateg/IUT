@@ -1,0 +1,175 @@
+\doxysection{Task\+Manager.\+cs}
+\hypertarget{_task_manager_8cs_source}{}\label{_task_manager_8cs_source}\index{game/Assets/Scripts/controller/Tasks/TaskManager.cs@{game/Assets/Scripts/controller/Tasks/TaskManager.cs}}
+\mbox{\hyperlink{_task_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Ink.Runtime;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }Unity.VisualScripting;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00009}\mbox{\hyperlink{class_task_manager}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_task_manager}{TaskManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00011}00011\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Components"{}})]}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_main_player}{MainPlayer}}\ \_player;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_u_i}{TaskUI}}\ \_taskUI;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00015}00015\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Tasks"{}})]}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Task>\ \_tasks\ =\ \textcolor{keyword}{new}\ List<Task>();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_finishedConferences;\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_archivedDocuments;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_metadatedDocuments;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00020}00020\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_repairedServers;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00021}00021\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_backupData;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00023}00023\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Base\ Task\ Values"{}})]}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00024}00024\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_baseConferences\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_baseArchivedDocuments\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \ \_baseMetadatedDocuments\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00027}00027\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00029}00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \_player\ ??=\ FindObjectOfType<MainPlayer>();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \_taskUI\ ??=\ FindObjectOfType<TaskUI>();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ GenerateTasksForLevel(\_player.\mbox{\hyperlink{class_main_player_a4530beb74b8665c66f2d453da0b6ffe9}{GetLevel}}());}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \_taskUI.\mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{SetUP}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \_finishedConferences\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \_archivedDocuments\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \_metadatedDocuments\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \_repairedServers\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ GenerateTasksForLevel(\textcolor{keywordtype}{int}\ level)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \_tasks.Clear();\ \textcolor{comment}{//\ Clear\ old\ tasks\ to\ regenerate}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adjust\ task\ requirements\ based\ on\ level}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ documents\ =\ \_baseArchivedDocuments\ +\ (level\ /\ 2);\ \textcolor{comment}{//\ Increment\ documents\ every\ 2\ levels}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ metadatedDocuments\ =\ \_baseMetadatedDocuments\ +\ (level\ /\ 3);\ \textcolor{comment}{//\ Increment\ metadated\ documents\ every\ 3\ levels}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ xpMultiplier\ =\ Mathf.Max(1,\ level);\ \ \ \ \ \ \textcolor{comment}{//\ Scale\ XP\ based\ on\ level}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ AddTask(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task}{Task}}(0,\ \$\textcolor{stringliteral}{"{}Archiver\ \{documents\}\ documents"{}},\ CalculateXP(400,\ xpMultiplier)));}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ AddTask(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task}{Task}}(1,\ \$\textcolor{stringliteral}{"{}Ajouter\ des\ métadonnées\ aux\ \{metadatedDocuments\}"{}},\ CalculateXP(500,\ xpMultiplier)));}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ AddTask(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task}{Task}}(2,\ \$\textcolor{stringliteral}{"{}Donner\ \{\_baseConferences\}\ conférences"{}},\ CalculateXP(300,\ xpMultiplier)));}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(level\ >=\ 3)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ AddTask(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task}{Task}}(3,\ \textcolor{stringliteral}{"{}Sauvegarder\ les\ données\ au\ serveur"{}},\ CalculateXP(500,\ xpMultiplier)));}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ AddTask(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_task}{Task}}(4,\ \textcolor{stringliteral}{"{}Réparer\ le\ serveur"{}},\ CalculateXP(800,\ xpMultiplier)));}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ AddTask(\mbox{\hyperlink{class_task}{Task}}\ task)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \_tasks.Add(task);}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ CalculateXP(\textcolor{keywordtype}{int}\ baseXP,\ \textcolor{keywordtype}{int}\ levelMultiplier)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ baseXP\ *\ levelMultiplier;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00082}\mbox{\hyperlink{class_task_manager_a069b0a81484d51ff271731807ff2438d}{00082}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Task>\ \mbox{\hyperlink{class_task_manager_a069b0a81484d51ff271731807ff2438d}{GetTasks}}()\ =>\ \_tasks;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00086}\mbox{\hyperlink{class_task_manager_a95d0ae619686237c7d3adc75a407c003}{00086}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_a95d0ae619686237c7d3adc75a407c003}{IncrementFinishedConferences}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \_finishedConferences++;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_manager_ab2d3f852017b20dac8b45ac74c9a7250}{CheckConferenceCompletion}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \_taskUI.\mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{SetUP}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00096}\mbox{\hyperlink{class_task_manager_ad9be67a08da85326e1f9120e88ba571d}{00096}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_ad9be67a08da85326e1f9120e88ba571d}{IncrementArchivedDocuments}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00097}00097\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \_archivedDocuments++;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_manager_ac9e50d965074403ec836059159eb0c8e}{CheckDocumentCompletion}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \_taskUI.\mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{SetUP}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00106}\mbox{\hyperlink{class_task_manager_a7a946eedda694d16c0f47b9448092ebe}{00106}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_a7a946eedda694d16c0f47b9448092ebe}{IncrementMetadatedDocuments}}()\{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \_metadatedDocuments++;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_manager_a413da52dcd7eba31e52ddc9e3df2bee3}{CheckMetadataCompletion}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \_taskUI.\mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{SetUP}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00116}\mbox{\hyperlink{class_task_manager_a9f88c11d404ef3fb4d80a67e30325faf}{00116}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_a9f88c11d404ef3fb4d80a67e30325faf}{IncrementBackupData}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00117}00117\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \_backupData++;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_manager_a5c332649381595540ac820eed4163af4}{CheckBackupCompletion}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \_taskUI.\mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{SetUP}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00126}\mbox{\hyperlink{class_task_manager_ab93c3d272bd21282a771d5c8aa228ca6}{00126}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_ab93c3d272bd21282a771d5c8aa228ca6}{IncrementRepairedServers}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \_repairedServers++;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_task_manager_ae1f8e6bebd3a7271465b206dcefc06bc}{CheckServerCompletion}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \_taskUI.\mbox{\hyperlink{class_task_u_i_a6cd1addd75671a67de4b0db360d9d1de}{SetUP}}();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00136}\mbox{\hyperlink{class_task_manager_ac9e50d965074403ec836059159eb0c8e}{00136}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_ac9e50d965074403ec836059159eb0c8e}{CheckDocumentCompletion}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00137}00137\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_archivedDocuments\ ==\ \_baseArchivedDocuments)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \_tasks[0].Complete();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \_player.\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(\_tasks[0].GetExperienceValue());}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00145}\mbox{\hyperlink{class_task_manager_a413da52dcd7eba31e52ddc9e3df2bee3}{00145}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_a413da52dcd7eba31e52ddc9e3df2bee3}{CheckMetadataCompletion}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_metadatedDocuments\ ==\ \_baseMetadatedDocuments)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \_tasks[1].Complete();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \_player.\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(\_tasks[1].GetExperienceValue());}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00156}\mbox{\hyperlink{class_task_manager_ab2d3f852017b20dac8b45ac74c9a7250}{00156}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_ab2d3f852017b20dac8b45ac74c9a7250}{CheckConferenceCompletion}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00157}00157\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_finishedConferences\ ==\ \_baseConferences)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \_tasks[2].Complete();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \_player.\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(\_tasks[2].GetExperienceValue());}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00167}\mbox{\hyperlink{class_task_manager_a5c332649381595540ac820eed4163af4}{00167}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_a5c332649381595540ac820eed4163af4}{CheckBackupCompletion}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00168}00168\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_tasks.Count\ <\ 4\ )\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_backupData\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \_tasks[3].Complete();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \_player.\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(\_tasks[3].GetExperienceValue());}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00177}00177\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00181}\mbox{\hyperlink{class_task_manager_ae1f8e6bebd3a7271465b206dcefc06bc}{00181}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_task_manager_ae1f8e6bebd3a7271465b206dcefc06bc}{CheckServerCompletion}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00182}00182\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_tasks.Count\ <\ 5)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_repairedServers\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \_tasks[4].Complete();}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \_player.\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(\_tasks[4].GetExperienceValue());}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00189}00189\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00191}\mbox{\hyperlink{class_task_manager_a4cc3ec6cc1405eba1eab5d816a7b027b}{00191}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_manager_a4cc3ec6cc1405eba1eab5d816a7b027b}{GetFinishedTasks}}()}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00192}00192\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ finishedTasks\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\mbox{\hyperlink{class_task}{Task}}\ task\ \textcolor{keywordflow}{in}\ \_tasks)}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(task.\mbox{\hyperlink{class_task_a3ebac28ddbc6478d586bb36bc8e0143a}{IsCompleted}}())}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ finishedTasks++;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ finishedTasks;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00204}\mbox{\hyperlink{class_task_manager_ade70ab8b4067825291a585c21bf0ac41}{00204}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_manager_ade70ab8b4067825291a585c21bf0ac41}{GetTotalTasks}}()=>\ \_tasks.Count;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00205}\mbox{\hyperlink{class_task_manager_a88d9ab901f33123f86291a32af91f5d0}{00205}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_manager_a88d9ab901f33123f86291a32af91f5d0}{GetArchivedDocuments}}()\ =>\ \_archivedDocuments;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00206}\mbox{\hyperlink{class_task_manager_a5ecab26dc8fb63afc24511ea9199d4b6}{00206}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_manager_a5ecab26dc8fb63afc24511ea9199d4b6}{GetMetadatedDocuments}}()\ =>\ \_metadatedDocuments;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00207}\mbox{\hyperlink{class_task_manager_a6bfed90f19cf198b7131be46a38749b1}{00207}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_manager_a6bfed90f19cf198b7131be46a38749b1}{GetRepairedServers}}()\ =>\ \_repairedServers;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00208}\mbox{\hyperlink{class_task_manager_ad1f6492ed7d14955321e6c19343ec899}{00208}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_manager_ad1f6492ed7d14955321e6c19343ec899}{GetBackupData}}()\ =>\ \_backupData;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00209}\mbox{\hyperlink{class_task_manager_abd3f8f9c700e102ef5e97cda10b1cd16}{00209}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_task_manager_abd3f8f9c700e102ef5e97cda10b1cd16}{GetFinishedConferences}}()\ =>\ \_finishedConferences;}
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_task_manager_8cs_source_l00211}00211\ \}}
+
+\end{DoxyCode}

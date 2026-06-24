@@ -1,0 +1,90 @@
+\doxysection{IInteractable Interface Reference}
+\hypertarget{interface_i_interactable}{}\label{interface_i_interactable}\index{IInteractable@{IInteractable}}
+
+
+Interface for interactable objects. All interactable objects must implement this.  
+
+
+Inheritance diagram for IInteractable\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.846561cm]{interface_i_interactable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_i_interactable_a100dbbe3516bf2a8e302318b41d7738c}{Interact}} (\mbox{\hyperlink{class_main_player}{Main\+Player}} player)
+\begin{DoxyCompactList}\small\item\em Defines how the object interacts with the player. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{interface_i_interactable_afd1f62290c0b205925751a3cb5f86698}{Get\+Interaction\+Text}} ()
+\begin{DoxyCompactList}\small\item\em Returns the text displayed on the interaction prompt. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}} \mbox{\hyperlink{interface_i_interactable_ab0aa0b7f6a876062de3f7ae2f70e4b74}{Get\+Interactable}} ()
+\begin{DoxyCompactList}\small\item\em Returns the type of interactable object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for interactable objects. All interactable objects must implement this. 
+
+Definition at line \mbox{\hyperlink{_interactor_8cs_source_l00025}{25}} of file \mbox{\hyperlink{_interactor_8cs_source}{Interactor.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{interface_i_interactable_ab0aa0b7f6a876062de3f7ae2f70e4b74}\index{IInteractable@{IInteractable}!GetInteractable@{GetInteractable}}
+\index{GetInteractable@{GetInteractable}!IInteractable@{IInteractable}}
+\doxysubsubsection{\texorpdfstring{GetInteractable()}{GetInteractable()}}
+{\footnotesize\ttfamily \label{interface_i_interactable_ab0aa0b7f6a876062de3f7ae2f70e4b74} 
+\mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}} IInteractable.\+Get\+Interactable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the type of interactable object. 
+
+\begin{DoxyReturn}{Returns}
+The type of the interactable.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_astronaut___interaction___tutorial_a8103c45018c9efb9ef1e6e90a19bc3f7}{Astronaut\+\_\+\+Interaction\+\_\+\+Tutorial}}, \mbox{\hyperlink{class_conference_interactor_ab852afb6577770c265e84d744e30111c}{Conference\+Interactor}}, \mbox{\hyperlink{class_document_dispenser_a03bc8b1b574f65d34537dcb9ce371e47}{Document\+Dispenser}}, \mbox{\hyperlink{class_library_interactor_a0a695ce8b6aaa65d655f2de3dada414d}{Library\+Interactor}}, \mbox{\hyperlink{class_metadata_manager_a60589ac23500a03ccba96d38c137f36a}{Metadata\+Manager}}, \mbox{\hyperlink{class_server_interactor_ab4d10af37539d4b38b3bee6200546645}{Server\+Interactor}}, and \mbox{\hyperlink{class_workspace_interaction_a4033d21ca48e72f0d59951c42cbfb50c}{Workspace\+Interaction}}.
+
+\Hypertarget{interface_i_interactable_afd1f62290c0b205925751a3cb5f86698}\index{IInteractable@{IInteractable}!GetInteractionText@{GetInteractionText}}
+\index{GetInteractionText@{GetInteractionText}!IInteractable@{IInteractable}}
+\doxysubsubsection{\texorpdfstring{GetInteractionText()}{GetInteractionText()}}
+{\footnotesize\ttfamily \label{interface_i_interactable_afd1f62290c0b205925751a3cb5f86698} 
+string IInteractable.\+Get\+Interaction\+Text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the text displayed on the interaction prompt. 
+
+\begin{DoxyReturn}{Returns}
+Interaction text.
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_astronaut___interaction___tutorial_af97143782c297eef54489f1ce65e3879}{Astronaut\+\_\+\+Interaction\+\_\+\+Tutorial}}, \mbox{\hyperlink{class_conference_interactor_ad09a0090ead4f4969a43b265d1b95c78}{Conference\+Interactor}}, \mbox{\hyperlink{class_document_dispenser_accef005321b15db758b460e84b1ef36c}{Document\+Dispenser}}, \mbox{\hyperlink{class_library_interactor_a958062114b4d3c0b5674c7cf293e5214}{Library\+Interactor}}, \mbox{\hyperlink{class_metadata_manager_a88a3971bed64303ebb58a9a0f1f91607}{Metadata\+Manager}}, \mbox{\hyperlink{class_server_interactor_a14dd2a39dda6fab872718a51e60e10c5}{Server\+Interactor}}, and \mbox{\hyperlink{class_workspace_interaction_a9576bfde73aa2d08a4fc0542dfa96365}{Workspace\+Interaction}}.
+
+\Hypertarget{interface_i_interactable_a100dbbe3516bf2a8e302318b41d7738c}\index{IInteractable@{IInteractable}!Interact@{Interact}}
+\index{Interact@{Interact}!IInteractable@{IInteractable}}
+\doxysubsubsection{\texorpdfstring{Interact()}{Interact()}}
+{\footnotesize\ttfamily \label{interface_i_interactable_a100dbbe3516bf2a8e302318b41d7738c} 
+void IInteractable.\+Interact (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_main_player}{Main\+Player}}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+Defines how the object interacts with the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & The player interacting with the object.\\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_astronaut___interaction___tutorial_ad5d27ef6e261a4228fe01add55c3c5de}{Astronaut\+\_\+\+Interaction\+\_\+\+Tutorial}}, \mbox{\hyperlink{class_conference_interactor_a0e6de36c939be065f1cffb710a578c10}{Conference\+Interactor}}, \mbox{\hyperlink{class_document_dispenser_a7cb97bf4f4844dca80da737a1e9b39df}{Document\+Dispenser}}, \mbox{\hyperlink{class_library_interactor_a9d15f53a756c4f1a3fab2f2754dee9ea}{Library\+Interactor}}, \mbox{\hyperlink{class_metadata_manager_a988d6215f8d975ee1e8144b33d86e29a}{Metadata\+Manager}}, \mbox{\hyperlink{class_server_interactor_ac587dd37d26a2f36dca4ab114593b8ee}{Server\+Interactor}}, and \mbox{\hyperlink{class_workspace_interaction_a18360faad0fea151effb11e1e9182674}{Workspace\+Interaction}}.
+
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/\+Interaction\+System/\mbox{\hyperlink{_interactor_8cs}{Interactor.\+cs}}\end{DoxyCompactItemize}

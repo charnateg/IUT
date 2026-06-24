@@ -1,0 +1,199 @@
+\doxysection{Rocks\+API Class Reference}
+\hypertarget{class_rocks_a_p_i}{}\label{class_rocks_a_p_i}\index{RocksAPI@{RocksAPI}}
+
+
+This class represents the minerals and rocks API.  
+
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ \mbox{\hyperlink{class_rock}{Rock}} $>$ \mbox{\hyperlink{class_rocks_a_p_i_ab7c6ed3d41b2903ac2a0a350dd95f66c}{Get\+All\+Rocks}} (string order="{}id"{})
+\begin{DoxyCompactList}\small\item\em Get all rocks and minerals. \end{DoxyCompactList}\item 
+static List$<$ \mbox{\hyperlink{class_rock}{Rock}} $>$ \mbox{\hyperlink{class_rocks_a_p_i_aecf14dfc123c66b5b7ecc1d1d75ebdf5}{Get\+Rocks}} (List$<$ int $>$ rock\+IDs)
+\item 
+static \mbox{\hyperlink{class_rock}{Rock}} \mbox{\hyperlink{class_rocks_a_p_i_acfd6f811c6de65f849414f846f65e90d}{Get\+Rock\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Get a rock or mineral by its ID. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{class_rock}{Rock}} \mbox{\hyperlink{class_rocks_a_p_i_a2ecff09af33bb744e1ed641c52a9c7a9}{Get\+Rock\+By\+Name}} (string name)
+\begin{DoxyCompactList}\small\item\em Get a rock or mineral by its name. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_rocks_a_p_i_aaa5483243bc49ce76c540d5996338b27}{Get\+Rock\+Image}} (int id)
+\begin{DoxyCompactList}\small\item\em Get the image of a rock or mineral by its ID. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{class_rocks_a_p_i_a3fa40bafb9e7f4ae2b43c231fe13297e}{Get\+Rock\+Image}} (\mbox{\hyperlink{class_rock}{Rock}} rock)
+\begin{DoxyCompactList}\small\item\em Get the image of a rock or mineral by its ID. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{class_rocks_a_p_i_a4ddf636d4c55fd61cd611478cf78783f}{Rarety\+To\+Int}} (\mbox{\hyperlink{_rarety_8cs_af9b1b454e0fdc7fcb263e40926c5f8a5}{Rarety}} rarety)
+\begin{DoxyCompactList}\small\item\em Convert a rarety to an integer (0 to 4 from Legendary to Common respectively) used for sorting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_rocks_a_p_i_a3b22ad7881fdbf7aa0f9d23f7bcf3b52}{MAX\+\_\+\+ROCKS}} = 24
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents the minerals and rocks API. 
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00009}{9}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_rocks_a_p_i_ab7c6ed3d41b2903ac2a0a350dd95f66c}\index{RocksAPI@{RocksAPI}!GetAllRocks@{GetAllRocks}}
+\index{GetAllRocks@{GetAllRocks}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{GetAllRocks()}{GetAllRocks()}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_ab7c6ed3d41b2903ac2a0a350dd95f66c} 
+static List$<$ \mbox{\hyperlink{class_rock}{Rock}} $>$ Rocks\+API.\+Get\+All\+Rocks (\begin{DoxyParamCaption}\item[{string}]{order}{ = {\ttfamily "{}id"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get all rocks and minerals. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order} & Order by "{}name"{} or "{}rarety"{} ("{}id"{} is the default parameter)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of rocks and minerals
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00043}{43}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+\Hypertarget{class_rocks_a_p_i_acfd6f811c6de65f849414f846f65e90d}\index{RocksAPI@{RocksAPI}!GetRockById@{GetRockById}}
+\index{GetRockById@{GetRockById}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{GetRockById()}{GetRockById()}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_acfd6f811c6de65f849414f846f65e90d} 
+static \mbox{\hyperlink{class_rock}{Rock}} Rocks\+API.\+Get\+Rock\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a rock or mineral by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the rock\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The rock or mineral with the specified ID 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00077}{77}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+\Hypertarget{class_rocks_a_p_i_a2ecff09af33bb744e1ed641c52a9c7a9}\index{RocksAPI@{RocksAPI}!GetRockByName@{GetRockByName}}
+\index{GetRockByName@{GetRockByName}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{GetRockByName()}{GetRockByName()}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_a2ecff09af33bb744e1ed641c52a9c7a9} 
+static \mbox{\hyperlink{class_rock}{Rock}} Rocks\+API.\+Get\+Rock\+By\+Name (\begin{DoxyParamCaption}\item[{string}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get a rock or mineral by its name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the rock\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The rock or mineral with the specified name
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00086}{86}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+\Hypertarget{class_rocks_a_p_i_aaa5483243bc49ce76c540d5996338b27}\index{RocksAPI@{RocksAPI}!GetRockImage@{GetRockImage}}
+\index{GetRockImage@{GetRockImage}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{GetRockImage()}{GetRockImage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_aaa5483243bc49ce76c540d5996338b27} 
+static string Rocks\+API.\+Get\+Rock\+Image (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the image of a rock or mineral by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the rock\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The path to the image corresponding to the \doxylink{class_rock}{Rock} or mineral
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00102}{102}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+\Hypertarget{class_rocks_a_p_i_a3fa40bafb9e7f4ae2b43c231fe13297e}\index{RocksAPI@{RocksAPI}!GetRockImage@{GetRockImage}}
+\index{GetRockImage@{GetRockImage}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{GetRockImage()}{GetRockImage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_a3fa40bafb9e7f4ae2b43c231fe13297e} 
+static string Rocks\+API.\+Get\+Rock\+Image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rock}{Rock}}}]{rock}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get the image of a rock or mineral by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rock} & A rock class\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The path to the image corresponding to the \doxylink{class_rock}{Rock} or mineral
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00111}{111}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+\Hypertarget{class_rocks_a_p_i_aecf14dfc123c66b5b7ecc1d1d75ebdf5}\index{RocksAPI@{RocksAPI}!GetRocks@{GetRocks}}
+\index{GetRocks@{GetRocks}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{GetRocks()}{GetRocks()}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_aecf14dfc123c66b5b7ecc1d1d75ebdf5} 
+static List$<$ \mbox{\hyperlink{class_rock}{Rock}} $>$ Rocks\+API.\+Get\+Rocks (\begin{DoxyParamCaption}\item[{List$<$ int $>$}]{rock\+IDs}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00061}{61}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+\Hypertarget{class_rocks_a_p_i_a4ddf636d4c55fd61cd611478cf78783f}\index{RocksAPI@{RocksAPI}!RaretyToInt@{RaretyToInt}}
+\index{RaretyToInt@{RaretyToInt}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{RaretyToInt()}{RaretyToInt()}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_a4ddf636d4c55fd61cd611478cf78783f} 
+static int Rocks\+API.\+Rarety\+To\+Int (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_rarety_8cs_af9b1b454e0fdc7fcb263e40926c5f8a5}{Rarety}}}]{rarety}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Convert a rarety to an integer (0 to 4 from Legendary to Common respectively) used for sorting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rarety} & The rarety \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value corresponding to rock
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00120}{120}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_rocks_a_p_i_a3b22ad7881fdbf7aa0f9d23f7bcf3b52}\index{RocksAPI@{RocksAPI}!MAX\_ROCKS@{MAX\_ROCKS}}
+\index{MAX\_ROCKS@{MAX\_ROCKS}!RocksAPI@{RocksAPI}}
+\doxysubsubsection{\texorpdfstring{MAX\_ROCKS}{MAX\_ROCKS}}
+{\footnotesize\ttfamily \label{class_rocks_a_p_i_a3b22ad7881fdbf7aa0f9d23f7bcf3b52} 
+int Rocks\+API.\+MAX\+\_\+\+ROCKS = 24\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \mbox{\hyperlink{_rocks_a_p_i_8cs_source_l00037}{37}} of file \mbox{\hyperlink{_rocks_a_p_i_8cs_source}{Rocks\+API.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/\+API/\+Rocks/\mbox{\hyperlink{_rocks_a_p_i_8cs}{Rocks\+API.\+cs}}\end{DoxyCompactItemize}

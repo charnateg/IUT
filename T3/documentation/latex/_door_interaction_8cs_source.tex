@@ -1,0 +1,60 @@
+\doxysection{Door\+Interaction.\+cs}
+\hypertarget{_door_interaction_8cs_source}{}\label{_door_interaction_8cs_source}\index{game/Assets/Scripts/InteractionSystem/DoorInteraction.cs@{game/Assets/Scripts/InteractionSystem/DoorInteraction.cs}}
+\mbox{\hyperlink{_door_interaction_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00005}\mbox{\hyperlink{class_door_interaction}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_door_interaction}{DoorInteraction}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00007}\mbox{\hyperlink{class_door_interaction_ae060abea979bd562810ec67f9d145925}{00007}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_door_interaction_ae060abea979bd562810ec67f9d145925}{openAngle}}\ =\ 90f;\ \textcolor{comment}{//\ Angle\ d'ouverture}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00008}\mbox{\hyperlink{class_door_interaction_abc5d1e09f3a57e552cde35bacfcad2ca}{00008}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_door_interaction_abc5d1e09f3a57e552cde35bacfcad2ca}{openSpeed}}\ =\ 2f;\ \textcolor{comment}{//\ Vitesse\ d'ouverture}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00009}\mbox{\hyperlink{class_door_interaction_a526bc3ab836fe9ee6b0c346f936906c0}{00009}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_door_interaction_a526bc3ab836fe9ee6b0c346f936906c0}{isOpen}}\ =\ \textcolor{keyword}{false};\ \ \textcolor{comment}{//\ État\ de\ la\ porte}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ Quaternion\ closedRotation;}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ Quaternion\ openRotation;}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ closedRotation\ =\ transform.rotation;}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ openRotation\ =\ Quaternion.Euler(transform.eulerAngles.x,\ transform.eulerAngles.y\ +\ \mbox{\hyperlink{class_door_interaction_ae060abea979bd562810ec67f9d145925}{openAngle}},\ transform.eulerAngles.z);}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{void}\ OnTriggerEnter(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}})\ \&\&\ !\mbox{\hyperlink{class_door_interaction_a526bc3ab836fe9ee6b0c346f936906c0}{isOpen}})}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_door_interaction_a526bc3ab836fe9ee6b0c346f936906c0}{isOpen}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ StopAllCoroutines();}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ StartCoroutine(OpenDoor());}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00030}00030\ \ \ \ \ \textcolor{keywordtype}{void}\ OnTriggerExit(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\textcolor{stringliteral}{"{}Player"{}})\ \&\&\ \mbox{\hyperlink{class_door_interaction_a526bc3ab836fe9ee6b0c346f936906c0}{isOpen}})}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_door_interaction_a526bc3ab836fe9ee6b0c346f936906c0}{isOpen}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ StopAllCoroutines();}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ StartCoroutine(CloseDoor());}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{private}\ System.Collections.IEnumerator\ OpenDoor()}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (Quaternion.Angle(transform.rotation,\ openRotation)\ >\ 0.1f)}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ transform.rotation\ =\ Quaternion.Slerp(transform.rotation,\ openRotation,\ Time.deltaTime\ *\ \mbox{\hyperlink{class_door_interaction_abc5d1e09f3a57e552cde35bacfcad2ca}{openSpeed}});}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{private}\ System.Collections.IEnumerator\ CloseDoor()}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (Quaternion.Angle(transform.rotation,\ closedRotation)\ >\ 0.1f)}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ transform.rotation\ =\ Quaternion.Slerp(transform.rotation,\ closedRotation,\ Time.deltaTime\ *\ \mbox{\hyperlink{class_door_interaction_abc5d1e09f3a57e552cde35bacfcad2ca}{openSpeed}});}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_door_interaction_8cs_source_l00057}00057\ \}}
+
+\end{DoxyCode}

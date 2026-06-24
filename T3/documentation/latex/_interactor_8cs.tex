@@ -1,0 +1,86 @@
+\doxysection{game/\+Assets/\+Scripts/\+Interaction\+System/\+Interactor.cs File Reference}
+\hypertarget{_interactor_8cs}{}\label{_interactor_8cs}\index{game/Assets/Scripts/InteractionSystem/Interactor.cs@{game/Assets/Scripts/InteractionSystem/Interactor.cs}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interface_i_interactable}{IInteractable}}
+\begin{DoxyCompactList}\small\item\em Interface for interactable objects. All interactable objects must implement this. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_interactor}{Interactor}}
+\begin{DoxyCompactList}\small\item\em Handles interaction logic between the player and interactable objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}} \{ \newline
+\mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a4cfbb125e9878528bab91d12421134d8}{Rock}}
+, \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a4d70254b3a8e2bc38b6147fa6ee813be}{Library}}
+, \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a2b1f94ef23b79bf90eb891cae1df7a90}{Book}}
+, \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7af44e14d49cd011d1e873d9fe0c4624f1}{Door}}
+, \newline
+\mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a46636203ccc3ba230c655b264982f64e}{Astronaut}}
+, \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a9a15881cc8ac684ff7f623f121f12773}{Scientist}}
+, \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a03a21915504df93cf5dba0636080f62e}{Workspace}}
+, \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a3d3fd9a28b8f462c5a4e5ce52beb0dc7}{Metadata\+Station}}
+, \newline
+\mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a8f69c4477c1e7c7e61b1ca0cc11ac45c}{Conference}}
+, \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a9aa1b03934893d7134a660af4204f2a9}{Server}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum representing different types of interactable objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}\index{Interactor.cs@{Interactor.cs}!Interactable@{Interactable}}
+\index{Interactable@{Interactable}!Interactor.cs@{Interactor.cs}}
+\doxysubsubsection{\texorpdfstring{Interactable}{Interactable}}
+{\footnotesize\ttfamily \label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+enum \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}}}
+
+
+
+Enum representing different types of interactable objects. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Rock@{Rock}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Rock@{Rock}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a4cfbb125e9878528bab91d12421134d8}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Rock&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Library@{Library}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Library@{Library}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a4d70254b3a8e2bc38b6147fa6ee813be}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Library&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Book@{Book}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Book@{Book}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a2b1f94ef23b79bf90eb891cae1df7a90}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Book&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Door@{Door}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Door@{Door}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7af44e14d49cd011d1e873d9fe0c4624f1}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Door&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Astronaut@{Astronaut}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Astronaut@{Astronaut}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a46636203ccc3ba230c655b264982f64e}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Astronaut&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Scientist@{Scientist}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Scientist@{Scientist}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a9a15881cc8ac684ff7f623f121f12773}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Scientist&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Workspace@{Workspace}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Workspace@{Workspace}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a03a21915504df93cf5dba0636080f62e}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Workspace&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MetadataStation@{MetadataStation}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!MetadataStation@{MetadataStation}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a3d3fd9a28b8f462c5a4e5ce52beb0dc7}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Metadata\+Station&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Conference@{Conference}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Conference@{Conference}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a8f69c4477c1e7c7e61b1ca0cc11ac45c}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Conference&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Server@{Server}!Interactor.cs@{Interactor.cs}}\index{Interactor.cs@{Interactor.cs}!Server@{Server}}}\Hypertarget{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a9aa1b03934893d7134a660af4204f2a9}\label{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7} 
+Server&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_interactor_8cs_source_l00008}{8}} of file \mbox{\hyperlink{_interactor_8cs_source}{Interactor.\+cs}}.
+

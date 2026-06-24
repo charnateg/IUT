@@ -1,0 +1,147 @@
+\doxysection{Library Class Reference}
+\hypertarget{class_library}{}\label{class_library}\index{Library@{Library}}
+
+
+This class represents a document object.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_library_a774a3615cb0dc15c30d1de3e2675cbba}{Library}} ()
+\item 
+void \mbox{\hyperlink{class_library_a7e39ad4844b6fcdbaaaa5cb9153cd258}{Add\+Document}} (\mbox{\hyperlink{class_document}{Document}} document)
+\begin{DoxyCompactList}\small\item\em Add a \doxylink{class_document}{Document} to the \doxylink{class_library}{Library}. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_document}{Document}} $>$ \mbox{\hyperlink{class_library_adeebe8138f21d6c66e045dd71bf7c3b8}{Get\+Documents}} ()
+\begin{DoxyCompactList}\small\item\em Get all the Documents in the \doxylink{class_library}{Library}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_document}{Document}} \mbox{\hyperlink{class_library_a6fc003805d594a1597cdda1aba15f7b7}{Find\+Document}} (int id)
+\begin{DoxyCompactList}\small\item\em Find a \doxylink{class_document}{Document} by ID. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_library_aa8c46de828adf1863137e50248a1099e}{Remove\+Document}} (int id)
+\begin{DoxyCompactList}\small\item\em Remove a \doxylink{class_document}{Document} from the \doxylink{class_library}{Library}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_library_a7e5514e17ace21a3a1e63c476d52d883}{Get\+Document\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Get the number of Documents in the \doxylink{class_library}{Library}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents a document object. 
+
+Definition at line \mbox{\hyperlink{_library_8cs_source_l00008}{8}} of file \mbox{\hyperlink{_library_8cs_source}{Library.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_library_a774a3615cb0dc15c30d1de3e2675cbba}\index{Library@{Library}!Library@{Library}}
+\index{Library@{Library}!Library@{Library}}
+\doxysubsubsection{\texorpdfstring{Library()}{Library()}}
+{\footnotesize\ttfamily \label{class_library_a774a3615cb0dc15c30d1de3e2675cbba} 
+Library.\+Library (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_library_8cs_source_l00012}{12}} of file \mbox{\hyperlink{_library_8cs_source}{Library.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_library_a7e39ad4844b6fcdbaaaa5cb9153cd258}\index{Library@{Library}!AddDocument@{AddDocument}}
+\index{AddDocument@{AddDocument}!Library@{Library}}
+\doxysubsubsection{\texorpdfstring{AddDocument()}{AddDocument()}}
+{\footnotesize\ttfamily \label{class_library_a7e39ad4844b6fcdbaaaa5cb9153cd258} 
+void Library.\+Add\+Document (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_document}{Document}}}]{document}{}\end{DoxyParamCaption})}
+
+
+
+Add a \doxylink{class_document}{Document} to the \doxylink{class_library}{Library}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em document} & The document to add\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_library_8cs_source_l00021}{21}} of file \mbox{\hyperlink{_library_8cs_source}{Library.\+cs}}.
+
+\Hypertarget{class_library_a6fc003805d594a1597cdda1aba15f7b7}\index{Library@{Library}!FindDocument@{FindDocument}}
+\index{FindDocument@{FindDocument}!Library@{Library}}
+\doxysubsubsection{\texorpdfstring{FindDocument()}{FindDocument()}}
+{\footnotesize\ttfamily \label{class_library_a6fc003805d594a1597cdda1aba15f7b7} 
+\mbox{\hyperlink{class_document}{Document}} Library.\+Find\+Document (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Find a \doxylink{class_document}{Document} by ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the document id\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_library_8cs_source_l00038}{38}} of file \mbox{\hyperlink{_library_8cs_source}{Library.\+cs}}.
+
+\Hypertarget{class_library_a7e5514e17ace21a3a1e63c476d52d883}\index{Library@{Library}!GetDocumentCount@{GetDocumentCount}}
+\index{GetDocumentCount@{GetDocumentCount}!Library@{Library}}
+\doxysubsubsection{\texorpdfstring{GetDocumentCount()}{GetDocumentCount()}}
+{\footnotesize\ttfamily \label{class_library_a7e5514e17ace21a3a1e63c476d52d883} 
+int Library.\+Get\+Document\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get the number of Documents in the \doxylink{class_library}{Library}. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_library_8cs_source_l00061}{61}} of file \mbox{\hyperlink{_library_8cs_source}{Library.\+cs}}.
+
+\Hypertarget{class_library_adeebe8138f21d6c66e045dd71bf7c3b8}\index{Library@{Library}!GetDocuments@{GetDocuments}}
+\index{GetDocuments@{GetDocuments}!Library@{Library}}
+\doxysubsubsection{\texorpdfstring{GetDocuments()}{GetDocuments()}}
+{\footnotesize\ttfamily \label{class_library_adeebe8138f21d6c66e045dd71bf7c3b8} 
+List$<$ \mbox{\hyperlink{class_document}{Document}} $>$ Library.\+Get\+Documents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get all the Documents in the \doxylink{class_library}{Library}. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_library_8cs_source_l00029}{29}} of file \mbox{\hyperlink{_library_8cs_source}{Library.\+cs}}.
+
+\Hypertarget{class_library_aa8c46de828adf1863137e50248a1099e}\index{Library@{Library}!RemoveDocument@{RemoveDocument}}
+\index{RemoveDocument@{RemoveDocument}!Library@{Library}}
+\doxysubsubsection{\texorpdfstring{RemoveDocument()}{RemoveDocument()}}
+{\footnotesize\ttfamily \label{class_library_aa8c46de828adf1863137e50248a1099e} 
+bool Library.\+Remove\+Document (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Remove a \doxylink{class_document}{Document} from the \doxylink{class_library}{Library}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The document ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if removed
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_library_8cs_source_l00047}{47}} of file \mbox{\hyperlink{_library_8cs_source}{Library.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/model/\mbox{\hyperlink{_library_8cs}{Library.\+cs}}\end{DoxyCompactItemize}

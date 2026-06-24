@@ -1,0 +1,120 @@
+\doxysection{Server\+Manager.\+cs}
+\hypertarget{_server_manager_8cs_source}{}\label{_server_manager_8cs_source}\index{game/Assets/Scripts/controller/Server/ServerManager.cs@{game/Assets/Scripts/controller/Server/ServerManager.cs}}
+\mbox{\hyperlink{_server_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00008}\mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694a278d01e5af56273bae1bb99a98b370cd}{Critical}},}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694a0eaadb4fcb48a0a0ed7bc9868be9fbaa}{Warning}},}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694a960b44c579bc2f6818d2daaf9e4c16f0}{Normal}}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00013}00013\ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00017}\mbox{\hyperlink{class_server_manager}{00017}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_server_manager}{ServerManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_main_player}{MainPlayer}}\ \_player;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00020}00020\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_server_interactor}{ServerInteractor}}\ \_serverInteractor;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00021}00021\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}\ \_state;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_downTimeInterval\ =\ 140f;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00023}00023\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_downTimer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00024}00024\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_backupInterval\ =\ 120f;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00025}00025\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_backupTimer\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00026}00026\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_loggable}{ILoggable}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00027}00027\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_baseBackupExp\ =\ 40;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00028}00028\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_baseRepairExp\ =\ 100;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00030}00030\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_manager}{TaskManager}}\ \_taskManager;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00032}00032\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \_serverInteractor\ ??=\ FindObjectOfType<ServerInteractor>();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \_logger\ ??=\ FindObjectOfType<Logger>();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \_player\ ??=\ FindObjectOfType<MainPlayer>();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \_taskManager\ ??=\ FindObjectOfType<TaskManager>();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \_state\ =\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Normal;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00041}00041\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_player.\mbox{\hyperlink{class_main_player_a4530beb74b8665c66f2d453da0b6ffe9}{GetLevel}}()\ >\ 2)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ UpdateTimers();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00049}\mbox{\hyperlink{class_server_manager_aa623f7684a0a1a81b4e3c890657f9185}{00049}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_manager_aa623f7684a0a1a81b4e3c890657f9185}{BackupData}}()}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \_backupTimer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\$\textcolor{stringliteral}{"{}Les\ données\ ont\ été\ sauvegardées."{}});}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \_taskManager.\mbox{\hyperlink{class_task_manager_a9f88c11d404ef3fb4d80a67e30325faf}{IncrementBackupData}}();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00056}\mbox{\hyperlink{class_server_manager_ad5bd668c0eb1826210a23ff10aaaa9ac}{00056}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_manager_ad5bd668c0eb1826210a23ff10aaaa9ac}{RepairServer}}()}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_state\ ==\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \_downTimer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \_state\ =\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Normal;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \_serverInteractor.\mbox{\hyperlink{class_server_interactor_a5d964dee44acb29626278a466c7848a8}{SetState}}(\mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Normal);}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\textcolor{stringliteral}{"{}Le\ serveur\ a\ été\ réparé."{}});}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \_taskManager.\mbox{\hyperlink{class_task_manager_ab93c3d272bd21282a771d5c8aa228ca6}{IncrementRepairedServers}}();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00068}\mbox{\hyperlink{class_server_manager_afd7c600cae7ac74270844429a0fcdf3d}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_server_manager_afd7c600cae7ac74270844429a0fcdf3d}{Fix}}()}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_state\ ==\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_server_manager_ad5bd668c0eb1826210a23ff10aaaa9ac}{RepairServer}}();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ xp\ =\ \_baseRepairExp\ *\ (\_player.\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Precision)\ /\ 2\ +\ \_player.\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Intelligence)\ /\ 2);}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \_player.\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(xp);}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\_state\ ==\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Warning)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_server_manager_aa623f7684a0a1a81b4e3c890657f9185}{BackupData}}();}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ xp\ =\ \_baseBackupExp\ *\ (\_player.\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Precision)\ /\ 2\ );}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \_player.\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(xp);}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ UpdateTimers()}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_state\ !=\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \_downTimer\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \_backupTimer\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_downTimer\ >=\ \_downTimeInterval)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UpdateState(\mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical);}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_downTimer\ =\ \_downTimeInterval;\ \textcolor{comment}{//\ Stop\ incrementing\ when\ critical.}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\_backupTimer\ >=\ \_backupInterval\ \&\&\ \_state\ !=\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UpdateState(\mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Warning);}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_backupTimer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00104}00104\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ UpdateState(\mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}\ newState)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_state\ ==\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical\ \&\&\ newState\ !=\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \_state\ =\ newState;}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \_serverInteractor.\mbox{\hyperlink{class_server_interactor_a5d964dee44acb29626278a466c7848a8}{SetState}}(newState);}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (newState\ ==\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Critical)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\textcolor{stringliteral}{"{}Le\ serveur\ est\ en\ état\ critique."{}});}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (newState\ ==\ \mbox{\hyperlink{_server_manager_8cs_aeee15ce451435cc7f2fdb211337d0694}{ServerState}}.Warning)}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\textcolor{stringliteral}{"{}Le\ serveur\ est\ en\ état\ d'avertissement."{}});}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_server_manager_8cs_source_l00120}00120\ \}}
+
+\end{DoxyCode}

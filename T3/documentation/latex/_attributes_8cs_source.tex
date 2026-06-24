@@ -1,0 +1,56 @@
+\doxysection{Attributes.\+cs}
+\hypertarget{_attributes_8cs_source}{}\label{_attributes_8cs_source}\index{game/Assets/Scripts/model/Player/Attributes/Attributes.cs@{game/Assets/Scripts/model/Player/Attributes/Attributes.cs}}
+\mbox{\hyperlink{_attributes_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00006}00006\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00007}\mbox{\hyperlink{class_attributes}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_attributes}{Attributes}}}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00009}00009\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_intelligence;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_speed;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_precision;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_memory;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00014}\mbox{\hyperlink{class_attributes_a7546e4438119c62ef9c633d684319f50}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_attributes_a7546e4438119c62ef9c633d684319f50}{Attributes}}(\textcolor{keywordtype}{int}\ intelligence,\ \textcolor{keywordtype}{int}\ speed,\ \textcolor{keywordtype}{int}\ precision,\ \textcolor{keywordtype}{int}\ memory)}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \_intelligence\ =\ intelligence;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \_speed\ =\ speed;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \_precision\ =\ precision;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \_memory\ =\ memory;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00021}\mbox{\hyperlink{class_attributes_a1821e0b3d7eff63215bba4e8d68d3740}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_attributes_a1821e0b3d7eff63215bba4e8d68d3740}{Attributes}}()}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \_intelligence\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \_speed\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \_precision\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \_memory\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00027}00027\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00028}\mbox{\hyperlink{class_attributes_a148b2ff3f1284e81a3fbc164fd9affe6}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attributes_a148b2ff3f1284e81a3fbc164fd9affe6}{IncreaseIntelligence}}(\textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ newVal\ =\ Math.Ceiling((\textcolor{keywordtype}{double})\ \_intelligence\ *\ value\ /\ 100);}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \_intelligence\ +=\ (int)\ newVal;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00033}\mbox{\hyperlink{class_attributes_a97fa18d9267f88768e3e8f5d19d8a1b9}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attributes_a97fa18d9267f88768e3e8f5d19d8a1b9}{IncreaseSpeed}}(\textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ newVal\ =\ Math.Ceiling((\textcolor{keywordtype}{double})\ \_speed\ *\ value\ /\ 100);}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \_speed\ +=\ (int)\ newVal;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00038}\mbox{\hyperlink{class_attributes_a1178a839ca4f66a3d4dd8c1d71992976}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attributes_a1178a839ca4f66a3d4dd8c1d71992976}{IncreasePrecision}}(\textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ newVal\ =\ Math.Ceiling((\textcolor{keywordtype}{double})\ \_precision\ *\ value\ /\ 100);}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \_precision\ +=\ (int)\ newVal;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00043}\mbox{\hyperlink{class_attributes_ae3e1a80285312dbff6557fdccd4dd9b7}{00043}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attributes_ae3e1a80285312dbff6557fdccd4dd9b7}{IncreaseMemory}}(\textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ newVal\ =\ Math.Ceiling((\textcolor{keywordtype}{double})\ \_memory\ *\ value\ /\ 100);}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \_memory\ +=\ (int)\ newVal;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00049}\mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{00049}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{GetIntelligence}}()\ =>\ \_intelligence;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00050}\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}()\ =>\ \_speed;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00051}\mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{00051}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{GetPrecision}}()\ =>\ \_precision;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00052}\mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{00052}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{GetMemory}}()\ =>\ \_memory;}
+\DoxyCodeLine{\Hypertarget{_attributes_8cs_source_l00053}00053\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,124 @@
+\doxysection{Inventory.\+cs}
+\hypertarget{_inventory_8cs_source}{}\label{_inventory_8cs_source}\index{game/Assets/Scripts/UI/Inventory.cs@{game/Assets/Scripts/UI/Inventory.cs}}
+\mbox{\hyperlink{_inventory_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00008}\mbox{\hyperlink{class_inventory}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_inventory}{Inventory}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_inventoryPanel;\ \textcolor{comment}{//\ Le\ panneau\ global\ de\ l'inventaire}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<GameObject>\ \_itemPanels;\ \textcolor{comment}{//\ Liste\ des\ panels\ d'items}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vérifications\ initiales\ pour\ éviter\ les\ erreurs}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_inventoryPanel\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Inventory\ panel\ is\ not\ assigned."{}});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_itemPanels\ ==\ \textcolor{keyword}{null}\ ||\ \_itemPanels.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Item\ panels\ are\ not\ assigned."{}});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Désactive\ le\ panneau\ principal\ et\ vide\ l'inventaire\ au\ démarrage}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \_inventoryPanel.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{UpdateInventory}}(\textcolor{keyword}{new}\ List<Document>());}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00035}\mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{UpdateInventory}}(List<Document>\ documents)}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_itemPanels\ ==\ \textcolor{keyword}{null}\ ||\ \_itemPanels.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Item\ panels\ list\ is\ null\ or\ empty."{}});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disable\ all\ item\ panels}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ itemPanel\ \textcolor{keywordflow}{in}\ \_itemPanels)}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemPanel\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemPanel.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Activate\ and\ update\ panels\ based\ on\ the\ documents}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ documents.Count\ -\/\ 1,\ panelIndex\ =\ 0;\ i\ >=\ 0\ \&\&\ panelIndex\ <\ \_itemPanels.Count;\ i-\/-\/,\ panelIndex++)}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ var\ document\ =\ documents[i];}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemPanel\ =\ \_itemPanels[panelIndex];}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemPanel\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\$\textcolor{stringliteral}{"{}Item\ panel\ at\ index\ \{panelIndex\}\ is\ null."{}});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ Text\ components\ in\ the\ panel}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ var\ nameText\ =\ itemPanel.transform.Find(\textcolor{stringliteral}{"{}Name"{}})?.GetComponent<TMP\_Text>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ var\ errorsText\ =\ itemPanel.transform.Find(\textcolor{stringliteral}{"{}ErrorsValue"{}})?.GetComponent<TMP\_Text>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ var\ xpText\ =\ itemPanel.transform.Find(\textcolor{stringliteral}{"{}XPValue"{}})?.GetComponent<TMP\_Text>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ var\ categoryText\ =\ itemPanel.transform.Find(\textcolor{stringliteral}{"{}CategoryValue"{}})?.GetComponent<TMP\_Text>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nameText\ ==\ \textcolor{keyword}{null}\ ||\ errorsText\ ==\ \textcolor{keyword}{null}\ ||\ xpText\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\$\textcolor{stringliteral}{"{}Text\ component\ is\ missing\ in\ panel\ \{itemPanel.name\}"{}});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Update\ text\ values}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ nameText.text\ =\ document.GetName();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ errorsText.text\ =\ \$\textcolor{stringliteral}{"{}\{document.GetErrors()\}"{}};}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ xpText.text\ =\ \$\textcolor{stringliteral}{"{}\{document.GetExperienceValue()\}"{}};}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ categoryText.text\ =\ DocumentCategoryExtensions.ToFrenchString(document.GetCategory());\ \textcolor{comment}{//\ Convert\ to\ French}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ itemPanel.GetComponent<Image>().color\ =\ Color.white;}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Change\ color\ if\ the\ item\ has\ metadata}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (document.HasMetadata())}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemPanel.GetComponent<Image>().color\ =\ Color.yellow;}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Change\ color\ if\ the\ item\ is\ formatted}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (document.IsFormatted())}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemPanel.GetComponent<Image>().color\ =\ Color.green;}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ UP\ button\ in\ the\ panel}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ var\ upButton\ =\ itemPanel.transform.Find(\textcolor{stringliteral}{"{}UP"{}})?.GetComponent<Button>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (upButton\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ capturedIndex\ =\ i;\ \textcolor{comment}{//\ Capture\ the\ correct\ index}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ upButton.onClick.RemoveAllListeners();\ \textcolor{comment}{//\ Clear\ old\ listeners}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ upButton.onClick.AddListener(()\ =>}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ player\ =\ FindObjectOfType<MainPlayer>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player?.MoveDocumentUp(capturedIndex);\ \textcolor{comment}{//\ Use\ the\ captured\ index}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ DOWN\ button\ in\ the\ panel}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ var\ downButton\ =\ itemPanel.transform.Find(\textcolor{stringliteral}{"{}Down"{}})?.GetComponent<Button>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (downButton\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ capturedIndex\ =\ i;\ \textcolor{comment}{//\ Capture\ the\ correct\ index}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ downButton.onClick.RemoveAllListeners();\ \textcolor{comment}{//\ Clear\ old\ listeners}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ downButton.onClick.AddListener(()\ =>}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ player\ =\ FindObjectOfType<MainPlayer>();}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player?.MoveDocumentDown(capturedIndex);\ \textcolor{comment}{//\ Correct\ method\ for\ "{}Down"{}}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Activate\ the\ panel}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ itemPanel.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_inventory_8cs_source_l00125}00125\ \}}
+
+\end{DoxyCode}

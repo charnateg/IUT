@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['task_0',['Task',['../class_task.html',1,'']]],
+  ['taskmanager_1',['TaskManager',['../class_task_manager.html',1,'']]],
+  ['taskui_2',['TaskUI',['../class_task_u_i.html',1,'']]]
+];

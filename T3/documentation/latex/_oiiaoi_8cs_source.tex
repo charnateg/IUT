@@ -1,0 +1,58 @@
+\doxysection{Oiiaoi.\+cs}
+\hypertarget{_oiiaoi_8cs_source}{}\label{_oiiaoi_8cs_source}\index{game/Assets/Scripts/controller/Oiiaoi.cs@{game/Assets/Scripts/controller/Oiiaoi.cs}}
+\mbox{\hyperlink{_oiiaoi_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00007}\mbox{\hyperlink{class_oiiaoi}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_oiiaoi}{Oiiaoi}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00009}00009\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ AudioSource\ \_audioSource;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_subject;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_speed;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_main_player}{MainPlayer}}\ \_player;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \_isRotating\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Flag\ to\ control\ rotation\ and\ audio}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ Start\ is\ called\ before\ the\ first\ frame\ update}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \_audioSource\ =\ GetComponent<AudioSource>();}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ Update\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00023}00023\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\ =\ Vector3.Distance(\_player.transform.position,\ transform.position);}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (distance\ <\ 10\ \&\&\ !\_isRotating)\ \textcolor{comment}{//\ Start\ rotation\ when\ \_player\ is\ close}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \_isRotating\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \_audioSource.Play();\ \textcolor{comment}{//\ Play\ audio\ once}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (distance\ >=\ 10\ \&\&\ \_isRotating)\ \textcolor{comment}{//\ Stop\ rotation\ when\ \_player\ is\ far}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{\ \ \ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_isRotating\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_audioSource.Stop();\ \textcolor{comment}{//\ Optionally\ stop\ the\ audio}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_isRotating)}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \_subject.transform.Rotate(Vector3.up\ *\ \_speed\ *\ Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ keep\ increasing\ the\ z\ position\ of\ the\ \_subject\ until\ it\ reaches\ 10}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_subject.transform.position.y\ <\ 2)}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_subject.transform.position\ +=\ \textcolor{keyword}{new}\ Vector3(0,\ 1,\ 0)\ *\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ decrease\ the\ z\ position\ of\ the\ \_subject\ until\ it\ reaches\ 0}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_subject.transform.position\ -\/=\ \textcolor{keyword}{new}\ Vector3(0,\ 1,\ 0)\ *\ Time.deltaTime;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_oiiaoi_8cs_source_l00055}00055\ \}}
+
+\end{DoxyCode}

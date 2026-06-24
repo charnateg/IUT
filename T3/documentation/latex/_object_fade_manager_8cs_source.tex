@@ -1,0 +1,74 @@
+\doxysection{Object\+Fade\+Manager.\+cs}
+\hypertarget{_object_fade_manager_8cs_source}{}\label{_object_fade_manager_8cs_source}\index{game/Assets/Scripts/controller/ObjectFadeManager.cs@{game/Assets/Scripts/controller/ObjectFadeManager.cs}}
+\mbox{\hyperlink{_object_fade_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00006}\mbox{\hyperlink{class_object_fade_manager}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_object_fade_manager}{ObjectFadeManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00008}00008\ \textcolor{preprocessor}{\ \ \ \ \#region\ Variables}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00009}00009\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Fader\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_offset\ =\ 1.0f;\ \textcolor{comment}{//\ Vertical\ \_offset\ for\ the\ raycast}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ List<ObjectFader>\ \_activeFaders\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \_player;}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00014}00014\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00015}00015\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ the\ player\ object}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \_player\ =\ GameObject.FindGameObjectWithTag(\textcolor{stringliteral}{"{}Player"{}});}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_player\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Player\ object\ not\ found.\ Ensure\ a\ GameObject\ with\ the\ tag\ 'Player'\ exists\ in\ the\ scene."{}});}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ enabled\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Disable\ the\ script\ if\ the\ player\ object\ is\ not\ found}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_player\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ HandleRaycast();}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00033}00033\ \textcolor{preprocessor}{\ \ \ \ \#region\ logic}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00037}00037\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ HandleRaycast()}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ ray\ direction\ (from\ the\ camera\ to\ the\ player)}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ Vector3\ direction\ =\ \_player.transform.position\ -\/\ transform.position\ +\ \textcolor{keyword}{new}\ Vector3(0,\ \_offset,\ 0);}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ the\ ray\ hits\ any\ objects}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(transform.position,\ direction,\ out\ RaycastHit\ hit,\ direction.magnitude))}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_object_fader}{ObjectFader}}\ fader\ =\ hit.collider.GetComponent<\mbox{\hyperlink{class_object_fader}{ObjectFader}}>();}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Enable\ fade\ for\ objects\ obstructing\ the\ view}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fader\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_activeFaders.Contains(fader))}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_activeFaders.Add(fader);}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fader.Fade\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ CleanupFaders(hit);}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00064}00064\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ CleanupFaders(RaycastHit\ currentHit)}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Disable\ fade\ for\ objects\ no\ longer\ obstructing\ the\ view}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \_activeFaders.RemoveAll(fader\ =>}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (currentHit.collider\ ==\ \textcolor{keyword}{null}\ ||\ currentHit.collider.GetComponent<\mbox{\hyperlink{class_object_fader}{ObjectFader}}>()\ !=\ fader)}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fader.Fade\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00077}00077\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_object_fade_manager_8cs_source_l00078}00078\ \}}
+
+\end{DoxyCode}

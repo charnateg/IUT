@@ -1,0 +1,220 @@
+\doxysection{Document Class Reference}
+\hypertarget{class_document}{}\label{class_document}\index{Document@{Document}}
+
+
+This class represents a document object.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_document_abd073352a4b22395cb5f9840f0c0fd01}{Document}} (int id, string name, int errors, int experience\+Value, \mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}} category)
+\begin{DoxyCompactList}\small\item\em Constructor to initialize the \doxylink{class_document}{Document}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_document_aa247fcf63e4a12042d8ef0ff973c2880}{Fix\+Errors}} (int amount)
+\begin{DoxyCompactList}\small\item\em Fixes the document\textquotesingle{}s errors, reducing the error count. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_document_a741952e2f65f54807efe9fe384bc7f47}{Add\+Metadata}} ()
+\item 
+int \mbox{\hyperlink{class_document_a4cb1f7933e4aafeb1e3cd550180c88d2}{Calculate\+Experience}} ()
+\begin{DoxyCompactList}\small\item\em Calculates the experience based on the number of errors fixed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_document_a0819c5454e26896af4e4205538ff528e}{Format}} ()
+\begin{DoxyCompactList}\small\item\em Marks the document as formatted. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_document_ac1d196f6baaf5db0e0ae6198c1e8439f}{Archive}} ()
+\begin{DoxyCompactList}\small\item\em Archives the document. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_document_abd66de382cfd881e1f140a63f70eadce}{Get\+Id}} ()
+\item 
+string \mbox{\hyperlink{class_document_a71d8a6cfb8636dc994d28910161efd32}{Get\+Name}} ()
+\item 
+int \mbox{\hyperlink{class_document_a7062b55cc19ef90f057a0846fcfafcfe}{Get\+Experience\+Value}} ()
+\item 
+int \mbox{\hyperlink{class_document_a25e72356d3461c390ed4ad635109fe04}{Get\+Errors}} ()
+\item 
+\mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}} \mbox{\hyperlink{class_document_a984adcdda0310b8fca7d263f93ce1fef}{Get\+Category}} ()
+\item 
+bool \mbox{\hyperlink{class_document_a670f59d124843ad4ff670f960a7d56b4}{Is\+Formatted}} ()
+\item 
+bool \mbox{\hyperlink{class_document_a8ddfabbec38b2272ce992ea388f42877}{Is\+Archived}} ()
+\item 
+bool \mbox{\hyperlink{class_document_a42242f3611ec657a9bb6632c95ed5f21}{Has\+Metadata}} ()
+\item 
+int \mbox{\hyperlink{class_document_abb5b3193fbe6c43524c3a30ebbf45589}{Get\+Metadata\+XP}} ()
+\item 
+override string \mbox{\hyperlink{class_document_afb4c586379e80ada9a5268442251660b}{To\+String}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represents a document object. 
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00010}{10}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_document_abd073352a4b22395cb5f9840f0c0fd01}\index{Document@{Document}!Document@{Document}}
+\index{Document@{Document}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{Document()}{Document()}}
+{\footnotesize\ttfamily \label{class_document_abd073352a4b22395cb5f9840f0c0fd01} 
+Document.\+Document (\begin{DoxyParamCaption}\item[{int}]{id}{, }\item[{string}]{name}{, }\item[{int}]{errors}{, }\item[{int}]{experience\+Value}{, }\item[{\mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}}}]{category}{}\end{DoxyParamCaption})}
+
+
+
+Constructor to initialize the \doxylink{class_document}{Document}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The unique ID of the document.\\
+\hline
+{\em name} & The name of the document.\\
+\hline
+{\em errors} & Initial error count of the document.\\
+\hline
+{\em experience\+Value} & Experience value related to fixing errors.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00029}{29}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_document_a741952e2f65f54807efe9fe384bc7f47}\index{Document@{Document}!AddMetadata@{AddMetadata}}
+\index{AddMetadata@{AddMetadata}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{AddMetadata()}{AddMetadata()}}
+{\footnotesize\ttfamily \label{class_document_a741952e2f65f54807efe9fe384bc7f47} 
+void Document.\+Add\+Metadata (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00059}{59}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+\Hypertarget{class_document_ac1d196f6baaf5db0e0ae6198c1e8439f}\index{Document@{Document}!Archive@{Archive}}
+\index{Archive@{Archive}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{Archive()}{Archive()}}
+{\footnotesize\ttfamily \label{class_document_ac1d196f6baaf5db0e0ae6198c1e8439f} 
+void Document.\+Archive (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Archives the document. 
+
+
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00090}{90}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+\Hypertarget{class_document_a4cb1f7933e4aafeb1e3cd550180c88d2}\index{Document@{Document}!CalculateExperience@{CalculateExperience}}
+\index{CalculateExperience@{CalculateExperience}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{CalculateExperience()}{CalculateExperience()}}
+{\footnotesize\ttfamily \label{class_document_a4cb1f7933e4aafeb1e3cd550180c88d2} 
+int Document.\+Calculate\+Experience (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Calculates the experience based on the number of errors fixed. 
+
+
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00068}{68}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+\Hypertarget{class_document_aa247fcf63e4a12042d8ef0ff973c2880}\index{Document@{Document}!FixErrors@{FixErrors}}
+\index{FixErrors@{FixErrors}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{FixErrors()}{FixErrors()}}
+{\footnotesize\ttfamily \label{class_document_aa247fcf63e4a12042d8ef0ff973c2880} 
+void Document.\+Fix\+Errors (\begin{DoxyParamCaption}\item[{int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Fixes the document\textquotesingle{}s errors, reducing the error count. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & Amount to fix (reduce errors).\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00046}{46}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+\Hypertarget{class_document_a0819c5454e26896af4e4205538ff528e}\index{Document@{Document}!Format@{Format}}
+\index{Format@{Format}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{Format()}{Format()}}
+{\footnotesize\ttfamily \label{class_document_a0819c5454e26896af4e4205538ff528e} 
+void Document.\+Format (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Marks the document as formatted. 
+
+
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00082}{82}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+\Hypertarget{class_document_a984adcdda0310b8fca7d263f93ce1fef}\index{Document@{Document}!GetCategory@{GetCategory}}
+\index{GetCategory@{GetCategory}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{GetCategory()}{GetCategory()}}
+{\footnotesize\ttfamily \label{class_document_a984adcdda0310b8fca7d263f93ce1fef} 
+\mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}} Document.\+Get\+Category (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_a25e72356d3461c390ed4ad635109fe04}\index{Document@{Document}!GetErrors@{GetErrors}}
+\index{GetErrors@{GetErrors}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{GetErrors()}{GetErrors()}}
+{\footnotesize\ttfamily \label{class_document_a25e72356d3461c390ed4ad635109fe04} 
+int Document.\+Get\+Errors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_a7062b55cc19ef90f057a0846fcfafcfe}\index{Document@{Document}!GetExperienceValue@{GetExperienceValue}}
+\index{GetExperienceValue@{GetExperienceValue}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{GetExperienceValue()}{GetExperienceValue()}}
+{\footnotesize\ttfamily \label{class_document_a7062b55cc19ef90f057a0846fcfafcfe} 
+int Document.\+Get\+Experience\+Value (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_abd66de382cfd881e1f140a63f70eadce}\index{Document@{Document}!GetId@{GetId}}
+\index{GetId@{GetId}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{GetId()}{GetId()}}
+{\footnotesize\ttfamily \label{class_document_abd66de382cfd881e1f140a63f70eadce} 
+int Document.\+Get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_abb5b3193fbe6c43524c3a30ebbf45589}\index{Document@{Document}!GetMetadataXP@{GetMetadataXP}}
+\index{GetMetadataXP@{GetMetadataXP}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{GetMetadataXP()}{GetMetadataXP()}}
+{\footnotesize\ttfamily \label{class_document_abb5b3193fbe6c43524c3a30ebbf45589} 
+int Document.\+Get\+Metadata\+XP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_a71d8a6cfb8636dc994d28910161efd32}\index{Document@{Document}!GetName@{GetName}}
+\index{GetName@{GetName}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{GetName()}{GetName()}}
+{\footnotesize\ttfamily \label{class_document_a71d8a6cfb8636dc994d28910161efd32} 
+string Document.\+Get\+Name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_a42242f3611ec657a9bb6632c95ed5f21}\index{Document@{Document}!HasMetadata@{HasMetadata}}
+\index{HasMetadata@{HasMetadata}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{HasMetadata()}{HasMetadata()}}
+{\footnotesize\ttfamily \label{class_document_a42242f3611ec657a9bb6632c95ed5f21} 
+bool Document.\+Has\+Metadata (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_a8ddfabbec38b2272ce992ea388f42877}\index{Document@{Document}!IsArchived@{IsArchived}}
+\index{IsArchived@{IsArchived}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{IsArchived()}{IsArchived()}}
+{\footnotesize\ttfamily \label{class_document_a8ddfabbec38b2272ce992ea388f42877} 
+bool Document.\+Is\+Archived (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_a670f59d124843ad4ff670f960a7d56b4}\index{Document@{Document}!IsFormatted@{IsFormatted}}
+\index{IsFormatted@{IsFormatted}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{IsFormatted()}{IsFormatted()}}
+{\footnotesize\ttfamily \label{class_document_a670f59d124843ad4ff670f960a7d56b4} 
+bool Document.\+Is\+Formatted (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_document_afb4c586379e80ada9a5268442251660b}\index{Document@{Document}!ToString@{ToString}}
+\index{ToString@{ToString}!Document@{Document}}
+\doxysubsubsection{\texorpdfstring{ToString()}{ToString()}}
+{\footnotesize\ttfamily \label{class_document_afb4c586379e80ada9a5268442251660b} 
+override string Document.\+To\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_document_8cs_source_l00107}{107}} of file \mbox{\hyperlink{_document_8cs_source}{Document.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/model/\mbox{\hyperlink{_document_8cs}{Document.\+cs}}\end{DoxyCompactItemize}

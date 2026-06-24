@@ -1,0 +1,71 @@
+\doxysection{Highlight.\+cs}
+\hypertarget{_highlight_8cs_source}{}\label{_highlight_8cs_source}\index{game/Assets/Scripts/InteractionSystem/Highlight.cs@{game/Assets/Scripts/InteractionSystem/Highlight.cs}}
+\mbox{\hyperlink{_highlight_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00006}\mbox{\hyperlink{class_highlight}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_highlight}{Highlight}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00008}00008\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Highlight\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00009}00009\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Color\ highlightColor\ =\ \textcolor{keyword}{new}\ Color(1f,\ 0.5f,\ 0.2f);\ \textcolor{comment}{//\ Default\ orange\ highlight}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ emissionIntensity\ =\ 2f;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Emission\ intensity\ multiplier}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ enableGlowEffect\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Optional\ toggle\ for\ glow\ effect}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ List<Renderer>\ renderers\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ List<Material>\ materials\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00016}00016\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ all\ renderers\ from\ the\ object\ and\ its\ children}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ renderers.AddRange(GetComponentsInChildren<Renderer>());}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cache\ all\ materials\ to\ improve\ performance}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ renderer\ \textcolor{keywordflow}{in}\ renderers)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ materials.AddRange(renderer.materials);}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00031}\mbox{\hyperlink{class_highlight_a500315cab4aa36a4c0a4b5ac3ec86d33}{00031}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_highlight_a500315cab4aa36a4c0a4b5ac3ec86d33}{ToggleHighlight}}(\textcolor{keywordtype}{bool}\ enable)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ material\ \textcolor{keywordflow}{in}\ materials)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enable)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ EnableHighlight(material);}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DisableHighlight(material);}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ EnableHighlight(Material\ material)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ material.EnableKeyword(\textcolor{stringliteral}{"{}\_EMISSION"{}});}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Adjust\ emission\ color\ with\ intensity}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ Color\ emissionColor\ =\ highlightColor\ *\ Mathf.LinearToGammaSpace(emissionIntensity);}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ material.SetColor(\textcolor{stringliteral}{"{}\_EmissionColor"{}},\ emissionColor);}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enableGlowEffect)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ material.globalIlluminationFlags\ =\ MaterialGlobalIlluminationFlags.RealtimeEmissive;}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ DisableHighlight(Material\ material)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ material.DisableKeyword(\textcolor{stringliteral}{"{}\_EMISSION"{}});}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ global\ illumination\ if\ glow\ effect\ is\ enabled}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (enableGlowEffect)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ material.globalIlluminationFlags\ =\ MaterialGlobalIlluminationFlags.EmissiveIsBlack;}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00080}\mbox{\hyperlink{class_highlight_a872e25a5fa93e750716c64900b55789c}{00080}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_highlight_a872e25a5fa93e750716c64900b55789c}{SetColor}}(Color\ color)}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ highlightColor\ =\ color;}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_highlight_8cs_source_l00084}00084\ \}}
+
+\end{DoxyCode}

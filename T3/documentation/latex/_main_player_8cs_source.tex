@@ -1,0 +1,320 @@
+\doxysection{Main\+Player.\+cs}
+\hypertarget{_main_player_8cs_source}{}\label{_main_player_8cs_source}\index{game/Assets/Scripts/model/Player/MainPlayer.cs@{game/Assets/Scripts/model/Player/MainPlayer.cs}}
+\mbox{\hyperlink{_main_player_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.IO;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00009}00009\ [Serializable]}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00010}\mbox{\hyperlink{class_main_player}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_main_player}{MainPlayer}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Components"{}})]}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_animation_and_movement_controller}{AnimationAndMovementController}}\ \_animationAndMovementController;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_doc_stack_player}{DocStackPlayer}}\ \_documentStacker;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Observer>\ \_observers\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_player_level_manager}{PlayerLevelManager}}\ \_playerLevelManager;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_inventory}{Inventory}}\ \_inventory;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_loggable}{ILoggable}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00020}00020\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Player\ Data"{}})]}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \_name;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00023}00023\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_maxLevel;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00024}00024\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_level;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00025}00025\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_experience;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00026}00026\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_maxExperience;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00027}00027\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Skill>\ \_skills\ =\ \textcolor{keyword}{new}\ ();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00028}00028\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Document>\ \_documents\ =\ \textcolor{keyword}{new}\ ();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00029}00029\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_maxLoad\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00030}00030\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_attributes}{Attributes}}\ \_attributes\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00031}00031\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_stats}{Stats}}\ \_statsUI;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ SaveFileName\ =\ \textcolor{stringliteral}{"{}PlayerData.json"{}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \_animationAndMovementController\ ??=\ GetComponent<AnimationAndMovementController>();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \_documentStacker\ ??=\ GetComponent<DocStackPlayer>();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \_playerLevelManager\ ??=\ FindAnyObjectByType<PlayerLevelManager>();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \_logger\ ??=\ FindObjectOfType<Logger>();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \_inventory\ =\ GetComponent<Inventory>();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \_statsUI\ =\ FindObjectOfType<Stats>();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_statsUI\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Stats\ UI\ not\ found.\ Make\ sure\ an\ object\ with\ the\ Stats\ component\ exists\ in\ the\ scene."{}});}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a307f52a38f6c17d90afa399e8c586349}{AddObserver}}(\_playerLevelManager);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_af8edc1db2e05467194bef729ba74941e}{LoadPlayerData}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_ac73ecea5c4caab403e683223c6f1f48a}{SynchronizeSpeed}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \_statsUI.\mbox{\hyperlink{class_stats_a652c5a06d4150c8acca788a3186a1563}{UpdateStats}}(\_attributes.\mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{GetIntelligence}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{GetPrecision}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{GetMemory}}(),\ \_level);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ save\ player\ data\ every\ 60\ seconds}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Time.frameCount\ \%\ 3600\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a831240ac268f1b66f4523451beba2596}{SavePlayerData}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00067}\mbox{\hyperlink{class_main_player_a831240ac268f1b66f4523451beba2596}{00067}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a831240ac268f1b66f4523451beba2596}{SavePlayerData}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00068}00068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ a\ data\ object\ to\ store\ all\ the\ player's\ information}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_data}{PlayerData}}\ data\ =\ \textcolor{keyword}{new}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ Name\ =\ \_name,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ MaxLevel\ =\ \_maxLevel,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ Level\ =\ \_level,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ Experience\ =\ \_experience,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ MaxExperience\ =\ \_maxExperience,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attributes}{Attributes}}\ =\ \_attributes,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1}{Skills}}\ =\ \_skills,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \_statsUI.\mbox{\hyperlink{class_stats_a652c5a06d4150c8acca788a3186a1563}{UpdateStats}}(\_attributes.\mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{GetIntelligence}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{GetPrecision}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{GetMemory}}(),\ \_level);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ data\ object\ to\ JSON}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ json\ =\ JsonUtility.ToJson(data,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Save\ the\ JSON\ string\ to\ a\ file}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ filePath\ =\ Path.Combine(Application.persistentDataPath,\ SaveFileName);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ File.WriteAllText(filePath,\ json);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00091}\mbox{\hyperlink{class_main_player_af8edc1db2e05467194bef729ba74941e}{00091}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_af8edc1db2e05467194bef729ba74941e}{LoadPlayerData}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ filePath\ =\ Path.Combine(Application.persistentDataPath,\ SaveFileName);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_ab1d4b9f7a4bc32662a4461d24e53b4ec}{FreshPlayerData}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (File.Exists(filePath))}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Read\ the\ JSON\ string\ from\ the\ file}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ json\ =\ File.ReadAllText(filePath);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Deserialize\ the\ JSON\ string\ into\ a\ PlayerData\ object}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_data}{PlayerData}}\ data\ =\ JsonUtility.FromJson<\mbox{\hyperlink{class_player_data}{PlayerData}}>(json);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Restore\ the\ player's\ data}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \_name\ =\ data.\mbox{\hyperlink{class_player_data_ad29f3c5280317b3e10cfe223a0c5e251}{Name}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \_maxLevel\ =\ data.\mbox{\hyperlink{class_player_data_ab760463adc7b1f5ee049ff2897767549}{MaxLevel}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \_level\ =\ data.\mbox{\hyperlink{class_player_data_a4df77e152ee8ffce54d9dd784c597de3}{Level}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \_experience\ =\ data.\mbox{\hyperlink{class_player_data_aefa2eaa228f54fb7a9bb798573833467}{Experience}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \_maxExperience\ =\ data.\mbox{\hyperlink{class_player_data_a3b0816bc8865ec6b63bcb275452b8884}{MaxExperience}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \_attributes\ =\ data.\mbox{\hyperlink{class_player_data_ad690470fa4a9b511c218c8758a93e634}{Attributes}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \_skills\ =\ data.\mbox{\hyperlink{class_player_data_a6766e8c514a49ed20634c1597001f126}{Skills}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Player\ data\ loaded\ successfully."{}});}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}No\ save\ file\ found.\ Starting\ with\ default\ values."{}});}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_ab1d4b9f7a4bc32662a4461d24e53b4ec}{FreshPlayerData}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00119}00119\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00123}\mbox{\hyperlink{class_main_player_ab1d4b9f7a4bc32662a4461d24e53b4ec}{00123}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_ab1d4b9f7a4bc32662a4461d24e53b4ec}{FreshPlayerData}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00124}00124\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \_name\ =\ \textcolor{stringliteral}{"{}Charlie"{}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \_maxLevel\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \_level\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \_experience\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ CalculateMaxExperience();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \_attributes\ =\ \textcolor{keyword}{new}(3,4,2,4);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \_skills\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \_documents\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00137}\mbox{\hyperlink{class_main_player_ac73ecea5c4caab403e683223c6f1f48a}{00137}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_ac73ecea5c4caab403e683223c6f1f48a}{SynchronizeSpeed}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00138}00138\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \_animationAndMovementController.\mbox{\hyperlink{class_animation_and_movement_controller_a655e20c5e29da32f0751c9f630c031f5}{IncreaseVelocity}}(\_attributes.\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}());}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00140}00140\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00144}\mbox{\hyperlink{class_main_player_a3517dafb49386bd9e28f89bdb33a8367}{00144}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a3517dafb49386bd9e28f89bdb33a8367}{IncreaseLevel}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00145}00145\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_level\ <\ \_maxLevel)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \_level++;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_level\ \%\ 2\ ==\ 0\ ||\ \_level\ \%\ 3\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{IncreaseAttributes}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Intelligence,\ 1);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{IncreaseAttributes}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Speed,\ 1);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{IncreaseAttributes}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Precision,\ 1);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{IncreaseAttributes}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Memory,\ 1);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a83a04bd058c73a9454a75418b021d033}{NotifyObservers}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\$\textcolor{stringliteral}{"{}Player\ leveled\ up\ to\ level\ \{\_level\}"{}});}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \_statsUI.\mbox{\hyperlink{class_stats_a652c5a06d4150c8acca788a3186a1563}{UpdateStats}}(\_attributes.\mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{GetIntelligence}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{GetPrecision}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{GetMemory}}(),\ \_level);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00165}\mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{00165}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_af01defa18d4375e16d2eee7fcfd950f1}{IncreaseExpereince}}(\textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00166}00166\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_ab779766736731d7673de7548ee7d74af}{LogXP}}(value);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \_experience\ +=\ value;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}(\_experience\ >=\ \_maxExperience)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \_experience\ -\/=\ \_maxExperience;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a3517dafb49386bd9e28f89bdb33a8367}{IncreaseLevel}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ CalculateMaxExperience();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \_statsUI.\mbox{\hyperlink{class_stats_a652c5a06d4150c8acca788a3186a1563}{UpdateStats}}(\_attributes.\mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{GetIntelligence}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{GetPrecision}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{GetMemory}}(),\ \_level);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00176}00176\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00180}00180\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ CalculateMaxExperience()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00181}00181\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Quadratic\ progression}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_level\ <=\ 10)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \_maxExperience\ =\ (int)(100\ *\ Math.Pow(\_level,\ 2)\ *\ \_level\ +\ 200);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \_maxExperience\ =\ (int)(150\ *\ Math.Pow(\_level,\ 1.5)\ +\ 100\ *\ \_level);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00197}\mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{00197}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{IncreaseAttributes}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}\ attribute,\ \textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00198}00198\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentValue\ =\ \mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(attribute);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (attribute)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Intelligence:}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_attributes.\mbox{\hyperlink{class_attributes_a148b2ff3f1284e81a3fbc164fd9affe6}{IncreaseIntelligence}}(value);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Speed:}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_attributes.\mbox{\hyperlink{class_attributes_a97fa18d9267f88768e3e8f5d19d8a1b9}{IncreaseSpeed}}(value);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_ac73ecea5c4caab403e683223c6f1f48a}{SynchronizeSpeed}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Precision:}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_attributes.\mbox{\hyperlink{class_attributes_a1178a839ca4f66a3d4dd8c1d71992976}{IncreasePrecision}}(value);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Memory:}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_attributes.\mbox{\hyperlink{class_attributes_ae3e1a80285312dbff6557fdccd4dd9b7}{IncreaseMemory}}(value);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\$\textcolor{stringliteral}{"{}Attribute\ \{attribute\}\ increased\ from\ \{currentValue\}\ to\ \{currentValue\ +\ value\}"{}});}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \_statsUI.\mbox{\hyperlink{class_stats_a652c5a06d4150c8acca788a3186a1563}{UpdateStats}}(\_attributes.\mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{GetIntelligence}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{GetPrecision}}(),\ \_attributes.\mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{GetMemory}}(),\ \_level);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00219}00219\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00220}00220\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00225}\mbox{\hyperlink{class_main_player_a4d2c5d891f3b98c31b31c9e05cf2552b}{00225}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a4d2c5d891f3b98c31b31c9e05cf2552b}{AddDocument}}(\mbox{\hyperlink{class_document}{Document}}\ document)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00226}00226\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_documents.Count\ >=\ \_maxLoad)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\textcolor{stringliteral}{"{}Inventory\ is\ full.\ Cannot\ add\ more\ documents."{}});}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \_documents.Add(document);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_doc_stack_player_aa85fac984cef91f7c110bde0d554e69b}{StackDoc}}(document);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \_inventory.\mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{UpdateInventory}}(\_documents);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00235}00235\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00240}\mbox{\hyperlink{class_main_player_ac5030d5ed5a71996be0cccabd4ee5429}{00240}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_document}{Document}}\ \mbox{\hyperlink{class_main_player_ac5030d5ed5a71996be0cccabd4ee5429}{GetDocument}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00241}00241\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_documents.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_documents[\_documents.Count\ -\/1];}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00247}00247\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00252}\mbox{\hyperlink{class_main_player_aab518a2aaee2345dd078996e735e8977}{00252}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_document}{Document}}\ \mbox{\hyperlink{class_main_player_aab518a2aaee2345dd078996e735e8977}{RemoveDocument}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00253}00253\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_documents.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_document}{Document}}\ document\ =\ \_documents[\_documents.Count\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \_documents.RemoveAt(\_documents.Count\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00260}00260\ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_doc_stack_player_add32726ba7ccda6637a4a8cbb19da202}{UnstackDoc}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \_inventory.\mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{UpdateInventory}}(\_documents);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ document;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00263}00263\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00268}\mbox{\hyperlink{class_main_player_ade36737aeed38bcfa9dcefb016287d07}{00268}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_ade36737aeed38bcfa9dcefb016287d07}{MoveDocumentUp}}(\textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00269}00269\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vérifier\ que\ l'index\ est\ valide\ et\ qu'il\ y\ a\ un\ élément\ au-\/dessus\ à\ échanger}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >=0\ \&\&\ index\ <\ \_documents.Count)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Échanger\ les\ documents\ dans\ la\ liste}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ var\ temp\ =\ \_documents[index];}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \_documents[index]\ =\ \_documents[index+1];}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \_documents[index+1]\ =\ temp;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Actualiser\ l'affichage\ de\ l'inventaire}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \_inventory.\mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{UpdateInventory}}(\_documents);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00281}00281\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00286}\mbox{\hyperlink{class_main_player_a0ed4838e2d23d477549140389035fb0c}{00286}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a0ed4838e2d23d477549140389035fb0c}{MoveDocumentDown}}(\textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00287}00287\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Vérifier\ que\ l'index\ est\ valide\ et\ qu'il\ y\ a\ un\ élément\ en-\/dessous\ à\ échanger}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (index\ >\ 0\ \&\&\ index\ <\ \_documents.Count)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Échanger\ les\ documents\ dans\ la\ liste}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ var\ temp\ =\ \_documents[index];}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \_documents[index]\ =\ \_documents[index-\/1];}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \_documents[index-\/1]\ =\ temp;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Actualiser\ l'affichage\ de\ l'inventaire}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \_inventory.\mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{UpdateInventory}}(\_documents);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00301}00301\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00307}\mbox{\hyperlink{class_main_player_a275b454afaefa94266f28da5e4620c05}{00307}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a275b454afaefa94266f28da5e4620c05}{AddSkill}}(\mbox{\hyperlink{class_skill}{Skill}}\ skill)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00308}00308\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \_skills.Add(skill);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_main_player_a7509df1e9eb0c18f682aaf9e7105048f}{IncreaseAttributes}}(skill.\mbox{\hyperlink{class_skill_a1d4a7251edd0b7f7620a0c2ad9ad8aca}{GetAttribute}}(),\ skill.\mbox{\hyperlink{class_skill_a33095fa05f3289b5d3ef00181ca6ced5}{GetValue}}());}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00311}00311\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00316}\mbox{\hyperlink{class_main_player_a307f52a38f6c17d90afa399e8c586349}{00316}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a307f52a38f6c17d90afa399e8c586349}{AddObserver}}(\mbox{\hyperlink{interface_observer}{Observer}}\ observer)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00317}00317\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \_observers.Add(observer);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00319}00319\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00324}\mbox{\hyperlink{class_main_player_a58e99d87c65c39b1c2066591b342c8a3}{00324}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_main_player_a58e99d87c65c39b1c2066591b342c8a3}{CanAddDocument}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00325}00325\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_documents.Count\ <\ \_maxLoad;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00327}00327\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00331}\mbox{\hyperlink{class_main_player_a6a366029ca433142fa47c425a4ca53d9}{00331}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a6a366029ca433142fa47c425a4ca53d9}{RefreshStacker}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00332}00332\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_doc_stack_player_aa4620f1dca0902b63f8dcb6b9dce333c}{ClearStack}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{class_document}{Document}}\ doc\ \textcolor{keywordflow}{in}\ \_documents)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_doc_stack_player_aa85fac984cef91f7c110bde0d554e69b}{StackDoc}}(doc);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00337}00337\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \_inventory.\mbox{\hyperlink{class_inventory_a5bce6c06f0ad6b686b8f5e84b75e40bf}{UpdateInventory}}(\_documents);}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00339}00339\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00344}\mbox{\hyperlink{class_main_player_a83a04bd058c73a9454a75418b021d033}{00344}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a83a04bd058c73a9454a75418b021d033}{NotifyObservers}}()}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00345}00345\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (\mbox{\hyperlink{interface_observer}{Observer}}\ observer\ \textcolor{keywordflow}{in}\ \_observers)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ observer.\mbox{\hyperlink{interface_observer_a0b85e9fbd3d2b2763e2b41bb58ae181a}{OnNotify}}();}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00350}00350\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00355}\mbox{\hyperlink{class_main_player_a375245d5ed7e05ece6f0f8d0353a2890}{00355}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_main_player_a375245d5ed7e05ece6f0f8d0353a2890}{SetName}}(\textcolor{keywordtype}{string}\ name)\ =>\ \_name\ =\ name;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00361}\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{00361}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}\ attribute)}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00362}00362\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ attribute\ \textcolor{keywordflow}{switch}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00364}00364\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ Attribute.Intelligence\ =>\ \_attributes.\mbox{\hyperlink{class_attributes_a7e2ab4cd247d1535c3929fb8bed63c33}{GetIntelligence}}(),}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ Attribute.Speed\ =>\ \_attributes.\mbox{\hyperlink{class_attributes_a89c2382f236cf948a2fdf3180d49d9f7}{GetSpeed}}(),}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ Attribute.Precision\ =>\ \_attributes.\mbox{\hyperlink{class_attributes_aaaf8a0dc944906b3586e48d98a25dd48}{GetPrecision}}(),}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ Attribute.Memory\ =>\ \_attributes.\mbox{\hyperlink{class_attributes_a170af4082868c8cfe1bdce0f35cf0c0e}{GetMemory}}(),}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \_\ =>\ 0,}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00371}00371\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00376}\mbox{\hyperlink{class_main_player_a4d32cd9ff5caf8f408843a85573771f1}{00376}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_attributes}{Attributes}}\ \mbox{\hyperlink{class_main_player_a4d32cd9ff5caf8f408843a85573771f1}{GetAttributes}}()\ =>\ \_attributes;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00381}\mbox{\hyperlink{class_main_player_a4530beb74b8665c66f2d453da0b6ffe9}{00381}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_main_player_a4530beb74b8665c66f2d453da0b6ffe9}{GetLevel}}()\ =>\ \_level;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00386}\mbox{\hyperlink{class_main_player_affe671f2eb99466cb902ef7f37927bf6}{00386}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_main_player_affe671f2eb99466cb902ef7f37927bf6}{GetExperience}}()\ =>\ \_experience;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00391}\mbox{\hyperlink{class_main_player_ac613f81a6c39e842eb1ff6d268618bc6}{00391}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_main_player_ac613f81a6c39e842eb1ff6d268618bc6}{GetMaxExperience}}()\ =>\ \_maxExperience;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00396}\mbox{\hyperlink{class_main_player_af91b966b277925eb6017aeb580a9454b}{00396}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_inventory}{Inventory}}\ \mbox{\hyperlink{class_main_player_af91b966b277925eb6017aeb580a9454b}{GetInventory}}()\ =>\ \_inventory;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00401}\mbox{\hyperlink{class_main_player_a95778f3ff92e44f1f37f3a4302dd8c01}{00401}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Document>\ \mbox{\hyperlink{class_main_player_a95778f3ff92e44f1f37f3a4302dd8c01}{GetDocuments}}()\ =>\ \_documents;}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00402}00402\ \}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00405}00405\ [Serializable]}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00406}\mbox{\hyperlink{class_player_data}{00406}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_player_data}{PlayerData}}}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00407}00407\ \{}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00408}\mbox{\hyperlink{class_player_data_ad29f3c5280317b3e10cfe223a0c5e251}{00408}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_player_data_ad29f3c5280317b3e10cfe223a0c5e251}{Name}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00409}\mbox{\hyperlink{class_player_data_ab760463adc7b1f5ee049ff2897767549}{00409}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_player_data_ab760463adc7b1f5ee049ff2897767549}{MaxLevel}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00410}\mbox{\hyperlink{class_player_data_a4df77e152ee8ffce54d9dd784c597de3}{00410}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_player_data_a4df77e152ee8ffce54d9dd784c597de3}{Level}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00411}\mbox{\hyperlink{class_player_data_aefa2eaa228f54fb7a9bb798573833467}{00411}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_player_data_aefa2eaa228f54fb7a9bb798573833467}{Experience}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00412}\mbox{\hyperlink{class_player_data_a3b0816bc8865ec6b63bcb275452b8884}{00412}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_player_data_a3b0816bc8865ec6b63bcb275452b8884}{MaxExperience}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00413}\mbox{\hyperlink{class_player_data_ad690470fa4a9b511c218c8758a93e634}{00413}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_attributes}{Attributes}}\ \mbox{\hyperlink{class_player_data_ad690470fa4a9b511c218c8758a93e634}{Attributes}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00414}\mbox{\hyperlink{class_player_data_a6766e8c514a49ed20634c1597001f126}{00414}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Skill>\ \mbox{\hyperlink{class_player_data_a6766e8c514a49ed20634c1597001f126}{Skills}};}
+\DoxyCodeLine{\Hypertarget{_main_player_8cs_source_l00415}00415\ \}}
+
+\end{DoxyCode}

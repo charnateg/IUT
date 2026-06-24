@@ -1,0 +1,58 @@
+\doxysection{Skill\+Factory.\+cs}
+\hypertarget{_skill_factory_8cs_source}{}\label{_skill_factory_8cs_source}\index{game/Assets/Scripts/model/Player/Skills/SkillFactory.cs@{game/Assets/Scripts/model/Player/Skills/SkillFactory.cs}}
+\mbox{\hyperlink{_skill_factory_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00007}00007\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00008}\mbox{\hyperlink{class_skill_factory}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_skill_factory}{SkillFactory}}\ }
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ singleton\ instance}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ List<Skills>\ \_generatedSkills\ =\ \textcolor{keyword}{new}\ List<Skills>();}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_skill_factory}{SkillFactory}}\ \_instance;}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00015}\mbox{\hyperlink{class_skill_factory_a67b3602c3adae55919a87a935c818629}{00015}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_skill_factory}{SkillFactory}}\ \mbox{\hyperlink{class_skill_factory_a67b3602c3adae55919a87a935c818629}{Instance}}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_instance\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_instance\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_skill_factory}{SkillFactory}}();}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_instance;}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00026}00026\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00027}\mbox{\hyperlink{class_skill_factory_aae35a4f4b90f2210d4a621e519234927}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_skill}{Skill}}\ \mbox{\hyperlink{class_skill_factory_aae35a4f4b90f2210d4a621e519234927}{GenerateSkill}}()}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nbSkills\ =\ System.Enum.GetValues(typeof(\mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1}{Skills}})).Length;}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1}{Skills}}\ skill\ =\ (\mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1}{Skills}})Random.Range(0,\ nbSkills);}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\_generatedSkills.Contains(skill)\ \&\&\ \_generatedSkills.Count\ <\ nbSkills)}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ skill\ =\ (\mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1}{Skills}})Random.Range(0,\ nbSkills);}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \_generatedSkills.Add(skill);}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ skill\ \textcolor{keywordflow}{switch}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.HawkEye\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1af09ed77072837e7bbcf5509b813a5eac}{HawkEye}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Memory\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550a4789f23283b3a61f858b641a1bef19a3}{Memory}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Agility\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1a241bb470b0110efc8b5609f7311b0bb1}{Agility}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Calculator\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1acc84fa821011b93c1f935268e5560c2e}{Calculator}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Crosser\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1a94d6b90d8a9c492919cd5d0960b676bb}{Crosser}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Intuition\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1a5ba8f69f3398de4c9b200e1f14566697}{Intuition}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Ironclad\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1a6cfc103ab8d6a5b1ce06eb39c23bfb19}{Ironclad}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Mediator\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1acf7f72fb2e3e5a9df104130ba81c194e}{Mediator}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Organizer\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1adcd46de9a3b3accf80e479e41811bc9d}{Organizer}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Phoenix\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1a5047bc596a4bab2dc7f7c120bb22dec5}{Phoenix}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Reflexes\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1a9599415d91c07d431e6764bc21e6f44a}{Reflexes}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Serenity\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1ad296908001bc19d5158c3e8b475db78f}{Serenity}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Vigilance\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1abfd583dfcfc9007d5900720e29e4499e}{Vigilance}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ Skills.Vision\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_skill_8cs_a4e2b4058f77685c32eafe828537141a1a99a0628d9f7179c032e0cf59efbc0fad}{Vision}}(),}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \_\ =>\ \textcolor{keyword}{null},}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_skill_factory_8cs_source_l00055}00055\ \}}
+
+\end{DoxyCode}

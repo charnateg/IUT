@@ -1,0 +1,179 @@
+\doxysection{Document\+Generator Class Reference}
+\hypertarget{class_document_generator}{}\label{class_document_generator}\index{DocumentGenerator@{DocumentGenerator}}
+
+
+Singleton class to generate and manage documents.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_document}{Document}} \mbox{\hyperlink{class_document_generator_a1102158d28e4812471f62d9556344bd5}{Pick\+Document}} (\mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}} category)
+\begin{DoxyCompactList}\small\item\em Picks a random document from the list and removes it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_document}{Document}} \mbox{\hyperlink{class_document_generator_a72341b2f16a4d5f3077ad7872c3ca8e0}{Pick\+Document}} (List$<$ \mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}} $>$ categories)
+\begin{DoxyCompactList}\small\item\em Picks a random document from the list and removes it. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_document}{Document}} \mbox{\hyperlink{class_document_generator_af8b16772a12c29983d1ba4fadf9f50ae}{Create\+Document}} (string name, int errors, int experience\+Value, \mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}} category)
+\begin{DoxyCompactList}\small\item\em Creates a new document with the given name, error count, and experience value. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_document_generator_ab597eb02edc1ab78bbbc74aefe5d842c}{Delete\+Document}} (int id)
+\begin{DoxyCompactList}\small\item\em Deletes a document by its ID. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_document}{Document}} \mbox{\hyperlink{class_document_generator_a9e10fb3b11e7ed0a0d71399ac65b972d}{Get\+Document\+By\+Id}} (int id)
+\begin{DoxyCompactList}\small\item\em Retrieves a document by its ID. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_document}{Document}} $>$ \mbox{\hyperlink{class_document_generator_a352bfede9d50b9126b8a854bc67a9639}{Get\+All\+Documents}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_document_generator}{Document\+Generator}} \mbox{\hyperlink{class_document_generator_a0b42bb0f443a942d0d256b50a117a768}{Instance}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class to generate and manage documents. 
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00007}{7}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_document_generator_af8b16772a12c29983d1ba4fadf9f50ae}\index{DocumentGenerator@{DocumentGenerator}!CreateDocument@{CreateDocument}}
+\index{CreateDocument@{CreateDocument}!DocumentGenerator@{DocumentGenerator}}
+\doxysubsubsection{\texorpdfstring{CreateDocument()}{CreateDocument()}}
+{\footnotesize\ttfamily \label{class_document_generator_af8b16772a12c29983d1ba4fadf9f50ae} 
+\mbox{\hyperlink{class_document}{Document}} Document\+Generator.\+Create\+Document (\begin{DoxyParamCaption}\item[{string}]{name}{, }\item[{int}]{errors}{, }\item[{int}]{experience\+Value}{, }\item[{\mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}}}]{category}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new document with the given name, error count, and experience value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the document. \\
+\hline
+{\em errors} & the initial error count of the document. \\
+\hline
+{\em experience\+Value} & The experience value related to fixing errors. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the new document
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00285}{285}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+\Hypertarget{class_document_generator_ab597eb02edc1ab78bbbc74aefe5d842c}\index{DocumentGenerator@{DocumentGenerator}!DeleteDocument@{DeleteDocument}}
+\index{DeleteDocument@{DeleteDocument}!DocumentGenerator@{DocumentGenerator}}
+\doxysubsubsection{\texorpdfstring{DeleteDocument()}{DeleteDocument()}}
+{\footnotesize\ttfamily \label{class_document_generator_ab597eb02edc1ab78bbbc74aefe5d842c} 
+bool Document\+Generator.\+Delete\+Document (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Deletes a document by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the document to delete.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the document has been deleted
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00297}{297}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+\Hypertarget{class_document_generator_a352bfede9d50b9126b8a854bc67a9639}\index{DocumentGenerator@{DocumentGenerator}!GetAllDocuments@{GetAllDocuments}}
+\index{GetAllDocuments@{GetAllDocuments}!DocumentGenerator@{DocumentGenerator}}
+\doxysubsubsection{\texorpdfstring{GetAllDocuments()}{GetAllDocuments()}}
+{\footnotesize\ttfamily \label{class_document_generator_a352bfede9d50b9126b8a854bc67a9639} 
+List$<$ \mbox{\hyperlink{class_document}{Document}} $>$ Document\+Generator.\+Get\+All\+Documents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00317}{317}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+\Hypertarget{class_document_generator_a9e10fb3b11e7ed0a0d71399ac65b972d}\index{DocumentGenerator@{DocumentGenerator}!GetDocumentById@{GetDocumentById}}
+\index{GetDocumentById@{GetDocumentById}!DocumentGenerator@{DocumentGenerator}}
+\doxysubsubsection{\texorpdfstring{GetDocumentById()}{GetDocumentById()}}
+{\footnotesize\ttfamily \label{class_document_generator_a9e10fb3b11e7ed0a0d71399ac65b972d} 
+\mbox{\hyperlink{class_document}{Document}} Document\+Generator.\+Get\+Document\+By\+Id (\begin{DoxyParamCaption}\item[{int}]{id}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves a document by its ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & the ID of the document to retrieve. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The document with the specified ID
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00312}{312}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+\Hypertarget{class_document_generator_a1102158d28e4812471f62d9556344bd5}\index{DocumentGenerator@{DocumentGenerator}!PickDocument@{PickDocument}}
+\index{PickDocument@{PickDocument}!DocumentGenerator@{DocumentGenerator}}
+\doxysubsubsection{\texorpdfstring{PickDocument()}{PickDocument()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_document_generator_a1102158d28e4812471f62d9556344bd5} 
+\mbox{\hyperlink{class_document}{Document}} Document\+Generator.\+Pick\+Document (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}}}]{category}{}\end{DoxyParamCaption})}
+
+
+
+Picks a random document from the list and removes it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em category} & The category of the document to pick. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The picked document. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00241}{241}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+\Hypertarget{class_document_generator_a72341b2f16a4d5f3077ad7872c3ca8e0}\index{DocumentGenerator@{DocumentGenerator}!PickDocument@{PickDocument}}
+\index{PickDocument@{PickDocument}!DocumentGenerator@{DocumentGenerator}}
+\doxysubsubsection{\texorpdfstring{PickDocument()}{PickDocument()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_document_generator_a72341b2f16a4d5f3077ad7872c3ca8e0} 
+\mbox{\hyperlink{class_document}{Document}} Document\+Generator.\+Pick\+Document (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{_document_8cs_a2e53ef8d42f7630d7a61b7ddb30e9a42}{Document\+Category}} $>$}]{categories}{}\end{DoxyParamCaption})}
+
+
+
+Picks a random document from the list and removes it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em category} & The category of the document to pick. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The picked document. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00259}{259}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_document_generator_a0b42bb0f443a942d0d256b50a117a768}\index{DocumentGenerator@{DocumentGenerator}!Instance@{Instance}}
+\index{Instance@{Instance}!DocumentGenerator@{DocumentGenerator}}
+\doxysubsubsection{\texorpdfstring{Instance}{Instance}}
+{\footnotesize\ttfamily \label{class_document_generator_a0b42bb0f443a942d0d256b50a117a768} 
+\mbox{\hyperlink{class_document_generator}{Document\+Generator}} Document\+Generator.\+Instance\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [get]}}
+
+
+
+Definition at line \mbox{\hyperlink{_document_generator_8cs_source_l00225}{225}} of file \mbox{\hyperlink{_document_generator_8cs_source}{Document\+Generator.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/model/\mbox{\hyperlink{_document_generator_8cs}{Document\+Generator.\+cs}}\end{DoxyCompactItemize}

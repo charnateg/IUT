@@ -1,0 +1,58 @@
+\doxysection{Conference\+Manager.\+cs}
+\hypertarget{_conference_manager_8cs_source}{}\label{_conference_manager_8cs_source}\index{game/Assets/Scripts/controller/Conference/ConferenceManager.cs@{game/Assets/Scripts/controller/Conference/ConferenceManager.cs}}
+\mbox{\hyperlink{_conference_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00007}\mbox{\hyperlink{class_conference_manager}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_conference_manager}{ConferenceManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00009}00009\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Dependencies"{}})]}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_loggable}{ILoggable}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_conference_factory}{ConferenceFactory}}\ \_conferenceFactory;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00012}00012\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_conference_interactor}{ConferenceInteractor}}\ \_conferenceInteractor;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00014}00014\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Level\ Configuration"{}})]}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_currentLevel;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Conference\ Timing"{}})]}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_conferenceTimer;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \_spawnInterval\ =\ 10f;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Conference\ Management"{}})]}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Conference>\ \_conferences;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00023}00023\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_maxConferences\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00024}00024\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \_counter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \_logger\ ??=\ FindObjectOfType<Logger>();}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \_conferenceFactory\ ??=\ \mbox{\hyperlink{class_conference_factory}{ConferenceFactory}}.\mbox{\hyperlink{class_conference_factory_a45819564471308404771b2052f6eadbd}{Instance}};}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \_conferenceInteractor\ ??=\ FindObjectOfType<ConferenceInteractor>();}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \_conferenceTimer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_currentLevel\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_currentLevel\ =\ FindAnyObjectByType<LevelManager>().GetLevel();}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \_conferences\ =\ \_conferenceFactory.\mbox{\hyperlink{class_conference_factory_aeedcdf3b61053fd512766d0b8d362544}{GetLevelConferences}}(\_currentLevel);}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ we\ can\ spawn\ a\ new\ conference}}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_counter\ <\ \_maxConferences)}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \_conferenceTimer\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_conferenceTimer\ >=\ \_spawnInterval)}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_conferenceTimer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_conference}{Conference}}\ conference\ =\ \_conferences[\_counter];}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_conferenceInteractor.\mbox{\hyperlink{class_conference_interactor_a517b2bdc9b48004bc47491d576cbe7dd}{AddConference}}(conference);}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_counter++;}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\$\textcolor{stringliteral}{"{}Une\ nouvelle\ conférence\ est\ disponible\ :\ \{conference.GetSubject()\}"{}});}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_conference_manager_8cs_source_l00055}00055\ \}}
+
+\end{DoxyCode}

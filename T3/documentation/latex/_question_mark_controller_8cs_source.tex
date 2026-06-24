@@ -1,0 +1,53 @@
+\doxysection{Question\+Mark\+Controller.\+cs}
+\hypertarget{_question_mark_controller_8cs_source}{}\label{_question_mark_controller_8cs_source}\index{game/Assets/Scripts/controller/UI/QuestionMarkController.cs@{game/Assets/Scripts/controller/UI/QuestionMarkController.cs}}
+\mbox{\hyperlink{_question_mark_controller_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00004}\mbox{\hyperlink{class_question_mark_controller}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_question_mark_controller}{QuestionMarkController}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00006}00006\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_questionMark;\ \textcolor{comment}{//\ Reference\ to\ the\ GameObject}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00007}00007\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ shakeAngle\ =\ 30f;\ \textcolor{comment}{//\ Max\ angle\ of\ shake\ (in\ degrees)}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00008}00008\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ shakeDuration\ =\ 2f;\ \textcolor{comment}{//\ Duration\ for\ one\ full\ oscillation}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00009}00009\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ shakeSpeed\ =\ 1f;\ \textcolor{comment}{//\ Speed\ of\ oscillation}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00011}00011\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ originalPosition;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keyword}{private}\ Quaternion\ originalRotation;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Store\ the\ original\ position\ and\ rotation}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ originalPosition\ =\ \_questionMark.transform.position;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ originalRotation\ =\ \_questionMark.transform.rotation;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{void}\ Update()}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_questionMark.activeSelf)}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Continuously\ oscillate\ the\ rotation\ between\ -\/shakeAngle\ and\ +shakeAngle\ on\ the\ Z-\/axis}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ OscillateRotation();}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ to\ original\ position\ and\ rotation\ if\ the\ object\ is\ not\ active}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \_questionMark.transform.position\ =\ originalPosition;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_questionMark.transform.rotation\ =\ originalRotation;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00036}00036\ \ \ \ \ \textcolor{keywordtype}{void}\ OscillateRotation()}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ normalized\ time\ (0\ to\ 1)\ based\ on\ time\ elapsed\ and\ shakeDuration}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ normalizedTime\ =\ Mathf.PingPong(Time.time\ *\ shakeSpeed,\ shakeDuration)\ /\ shakeDuration;}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ Mathf.SmoothStep\ to\ create\ the\ ease-\/in\ and\ ease-\/out\ effect}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ easedValue\ =\ Mathf.SmoothStep(-\/shakeAngle,\ shakeAngle,\ normalizedTime);}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ the\ rotation\ around\ the\ Z\ axis}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \_questionMark.transform.rotation\ =\ Quaternion.Euler(0,\ 90,\ easedValue);}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_question_mark_controller_8cs_source_l00047}00047\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,288 @@
+\doxysection{Player\+Input.\+cs}
+\hypertarget{_player_input_8cs_source}{}\label{_player_input_8cs_source}\index{game/Assets/Scripts/controller/Player/PlayerInput.cs@{game/Assets/Scripts/controller/Player/PlayerInput.cs}}
+\mbox{\hyperlink{_player_input_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00001}00001\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00002}00002\ \textcolor{comment}{//\ <auto-\/generated>}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00003}00003\ \textcolor{comment}{//\ \ \ \ \ This\ code\ was\ auto-\/generated\ by\ com.unity.inputsystem:InputActionCodeGenerator}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00004}00004\ \textcolor{comment}{//\ \ \ \ \ version\ 1.7.0}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00005}00005\ \textcolor{comment}{//\ \ \ \ \ from\ Assets/Characters/Data\_Librarian/Animations/PlayerInput.inputactions}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00006}00006\ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00007}00007\ \textcolor{comment}{//\ \ \ \ \ Changes\ to\ this\ file\ may\ cause\ incorrect\ behavior\ and\ will\ be\ lost\ if}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00008}00008\ \textcolor{comment}{//\ \ \ \ \ the\ code\ is\ regenerated.}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00009}00009\ \textcolor{comment}{//\ </auto-\/generated>}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00010}00010\ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00015}00015\ \textcolor{keyword}{using\ }UnityEngine.InputSystem;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00016}00016\ \textcolor{keyword}{using\ }UnityEngine.InputSystem.Utilities;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00018}\mbox{\hyperlink{class_player_input}{00018}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }@\mbox{\hyperlink{class_player_input}{PlayerInput}}:\ IInputActionCollection2,\ IDisposable}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00020}\mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ InputActionAsset\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}\ \{\ \textcolor{keyword}{get};\ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00021}\mbox{\hyperlink{class_player_input_a38dde73fa051405778d6cc5aa0a25097}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ @\mbox{\hyperlink{class_player_input_a38dde73fa051405778d6cc5aa0a25097}{PlayerInput}}()}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}\ =\ InputActionAsset.FromJson(\textcolor{stringliteral}{@"{}\{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00024}00024\ \textcolor{stringliteral}{\ \ \ \ "{}"{}name"{}"{}:\ "{}"{}PlayerInput"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00025}00025\ \textcolor{stringliteral}{\ \ \ \ "{}"{}maps"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00026}00026\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00027}00027\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}CharacterControls"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00028}00028\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}988a3b10-\/fad4-\/4dfc-\/9f6f-\/9a2833ce5051"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00029}00029\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}actions"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00030}00030\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00031}00031\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00032}00032\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}Value"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00033}00033\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}6faacfa2-\/cf11-\/4911-\/8f74-\/cc668f7219f5"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00034}00034\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Vector2"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00035}00035\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}NormalizeVector2"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00036}00036\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00037}00037\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00038}00038\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00039}00039\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00040}00040\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Dance"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}fd4db142-\/c23d-\/4a30-\/93b1-\/be38ea5eb8d3"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00044}00044\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00045}00045\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00046}00046\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00047}00047\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00048}00048\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00049}00049\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}Run"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00050}00050\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}type"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00051}00051\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}b983fbeb-\/9967-\/4daf-\/b376-\/b52550657cda"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00052}00052\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}expectedControlType"{}"{}:\ "{}"{}Button"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00053}00053\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00054}00054\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00055}00055\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}initialStateCheck"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00056}00056\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00057}00057\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ],}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00058}00058\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ "{}"{}bindings"{}"{}:\ [}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00059}00059\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00060}00060\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00061}00061\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}a4382aa2-\/ceca-\/4bba-\/bf5c-\/9404952fd9b8"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00062}00062\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<XInputController>/leftStick"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00063}00063\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00064}00064\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00065}00065\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00068}00068\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00069}00069\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00070}00070\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00071}00071\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}2D\ Vector"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00072}00072\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}493ff792-\/5ff1-\/463f-\/a9f3-\/d0d382079050"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00073}00073\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}2DVector"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00074}00074\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00075}00075\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00076}00076\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00077}00077\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00078}00078\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ true,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00079}00079\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00080}00080\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00081}00081\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00082}00082\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}up"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00083}00083\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}95d1874a-\/f3d4-\/49dd-\/a14f-\/838c540c0e39"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00084}00084\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/w"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00085}00085\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00086}00086\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00087}00087\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00088}00088\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00089}00089\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00090}00090\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00091}00091\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00092}00092\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00093}00093\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}down"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00094}00094\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}6f69222e-\/abee-\/49b0-\/b70f-\/1e8976f74bfb"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00095}00095\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/s"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00096}00096\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00097}00097\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00098}00098\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00099}00099\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00100}00100\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00101}00101\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00102}00102\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00103}00103\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00104}00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}left"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00105}00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}f5d78c26-\/f6f1-\/44dd-\/93c5-\/ca190d6f2f44"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00106}00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/a"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00107}00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00108}00108\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00109}00109\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00110}00110\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00111}00111\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00112}00112\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00113}00113\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00114}00114\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00115}00115\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}right"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00116}00116\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}325386df-\/2bab-\/44a8-\/89a4-\/947c549e6409"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00117}00117\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/d"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00118}00118\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00119}00119\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00120}00120\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00121}00121\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Move"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00122}00122\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00123}00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ true}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00124}00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00125}00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00126}00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00127}00127\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}76cfad37-\/636d-\/4770-\/9210-\/26744a3c858f"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00128}00128\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/g"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00129}00129\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}Press"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00130}00130\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00131}00131\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00132}00132\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Dance"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00133}00133\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00134}00134\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00135}00135\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00136}00136\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00137}00137\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}name"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00138}00138\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}id"{}"{}:\ "{}"{}48e7573a-\/dbb7-\/4993-\/941f-\/e270075f48ed"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00139}00139\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}path"{}"{}:\ "{}"{}<Keyboard>/shift"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00140}00140\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}interactions"{}"{}:\ "{}"{}Hold"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00141}00141\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}processors"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00142}00142\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}groups"{}"{}:\ "{}"{}"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00143}00143\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}action"{}"{}:\ "{}"{}Run"{}"{},}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00144}00144\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isComposite"{}"{}:\ false,}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00145}00145\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ "{}"{}isPartOfComposite"{}"{}:\ false}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00146}00146\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00147}00147\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \ \ \ \ ]}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00148}00148\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00149}00149\ \textcolor{stringliteral}{\ \ \ \ ],}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00150}00150\ \textcolor{stringliteral}{\ \ \ \ "{}"{}controlSchemes"{}"{}:\ []}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00151}00151\ \textcolor{stringliteral}{\}"{}});}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CharacterControls}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ m\_CharacterControls\ =\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.FindActionMap(\textcolor{stringliteral}{"{}CharacterControls"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ m\_CharacterControls\_Move\ =\ m\_CharacterControls.FindAction(\textcolor{stringliteral}{"{}Move"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ m\_CharacterControls\_Dance\ =\ m\_CharacterControls.FindAction(\textcolor{stringliteral}{"{}Dance"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ m\_CharacterControls\_Run\ =\ m\_CharacterControls.FindAction(\textcolor{stringliteral}{"{}Run"{}},\ throwIfNotFound:\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00157}00157\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00159}\mbox{\hyperlink{class_player_input_a4c545a7cc61eae7ccd7b07000b413841}{00159}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_input_a4c545a7cc61eae7ccd7b07000b413841}{Dispose}}()}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00160}00160\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ UnityEngine.Object.Destroy(\mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}});}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00164}\mbox{\hyperlink{class_player_input_a1a729dccae8a70b742edfbc94138467b}{00164}}\ \ \ \ \ \textcolor{keyword}{public}\ InputBinding?\ \mbox{\hyperlink{class_player_input_a1a729dccae8a70b742edfbc94138467b}{bindingMask}}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00165}00165\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ =>\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.bindingMask;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ =>\ asset.bindingMask\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00170}\mbox{\hyperlink{class_player_input_abefe1889fbed4be795fc9ccbc73998f1}{00170}}\ \ \ \ \ \textcolor{keyword}{public}\ ReadOnlyArray<InputDevice>?\ \mbox{\hyperlink{class_player_input_abefe1889fbed4be795fc9ccbc73998f1}{devices}}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00171}00171\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ =>\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.devices;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ =>\ asset.devices\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00174}00174\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00176}\mbox{\hyperlink{class_player_input_a69019e0fc67c39026a5f078ab43cd4f1}{00176}}\ \ \ \ \ \textcolor{keyword}{public}\ ReadOnlyArray<InputControlScheme>\ \mbox{\hyperlink{class_player_input_a69019e0fc67c39026a5f078ab43cd4f1}{controlSchemes}}\ =>\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.controlSchemes;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00178}\mbox{\hyperlink{class_player_input_a0d588d48ccbe392b69401b4ae4f4bebf}{00178}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_player_input_a0d588d48ccbe392b69401b4ae4f4bebf}{Contains}}(InputAction\ action)}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00179}00179\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.Contains(action);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00183}\mbox{\hyperlink{class_player_input_acdc36e3c41e21aa40fa83210af0fcbe6}{00183}}\ \ \ \ \ \textcolor{keyword}{public}\ IEnumerator<InputAction>\ \mbox{\hyperlink{class_player_input_acdc36e3c41e21aa40fa83210af0fcbe6}{GetEnumerator}}()}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00184}00184\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.GetEnumerator();}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00186}00186\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00188}00188\ \ \ \ \ IEnumerator\ IEnumerable.GetEnumerator()}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00189}00189\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_player_input_acdc36e3c41e21aa40fa83210af0fcbe6}{GetEnumerator}}();}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00193}\mbox{\hyperlink{class_player_input_a63f00af6311db959534f1d0095df01a0}{00193}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_input_a63f00af6311db959534f1d0095df01a0}{Enable}}()}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00194}00194\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.Enable();}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00196}00196\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00198}\mbox{\hyperlink{class_player_input_a01d0c1c799ae614a0ed406f88d0eae5c}{00198}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_player_input_a01d0c1c799ae614a0ed406f88d0eae5c}{Disable}}()}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00199}00199\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.Disable();}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00201}00201\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00203}\mbox{\hyperlink{class_player_input_a06b227bd8739d554f7f918c40435f2dd}{00203}}\ \ \ \ \ \textcolor{keyword}{public}\ IEnumerable<InputBinding>\ \mbox{\hyperlink{class_player_input_a06b227bd8739d554f7f918c40435f2dd}{bindings}}\ =>\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.bindings;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00205}\mbox{\hyperlink{class_player_input_a4fc164e57be3599f5c5bb93d2fff74f8}{00205}}\ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ \mbox{\hyperlink{class_player_input_a4fc164e57be3599f5c5bb93d2fff74f8}{FindAction}}(\textcolor{keywordtype}{string}\ actionNameOrId,\ \textcolor{keywordtype}{bool}\ throwIfNotFound\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00206}00206\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.FindAction(actionNameOrId,\ throwIfNotFound);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00208}00208\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00210}\mbox{\hyperlink{class_player_input_a96e441ebd1434f66de91d281377050bb}{00210}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_player_input_a96e441ebd1434f66de91d281377050bb}{FindBinding}}(InputBinding\ \mbox{\hyperlink{class_player_input_a1a729dccae8a70b742edfbc94138467b}{bindingMask}},\ out\ InputAction\ action)}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00211}00211\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}.FindBinding(\mbox{\hyperlink{class_player_input_a1a729dccae8a70b742edfbc94138467b}{bindingMask}},\ out\ action);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00215}00215\ \ \ \ \ \textcolor{comment}{//\ CharacterControls}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00216}00216\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputActionMap\ m\_CharacterControls;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00217}00217\ \ \ \ \ \textcolor{keyword}{private}\ List<ICharacterControlsActions>\ m\_CharacterControlsActionsCallbackInterfaces\ =\ \textcolor{keyword}{new}\ List<ICharacterControlsActions>();}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_CharacterControls\_Move;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00219}00219\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_CharacterControls\_Dance;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00220}00220\ \ \ \ \ \textcolor{keyword}{private}\ readonly\ InputAction\ m\_CharacterControls\_Run;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00221}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{00221}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{CharacterControlsActions}}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00222}00222\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ @\mbox{\hyperlink{class_player_input}{PlayerInput}}\ m\_Wrapper;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00224}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a6303da83d9cf50e7395335e6b7e8c2ba}{00224}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a6303da83d9cf50e7395335e6b7e8c2ba}{CharacterControlsActions}}(@\mbox{\hyperlink{class_player_input}{PlayerInput}}\ wrapper)\ \{\ m\_Wrapper\ =\ wrapper;\ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00225}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_ad2846f05ced663eeeee6a9e9779a4b6e}{00225}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_ad2846f05ced663eeeee6a9e9779a4b6e}{Move}}\ =>\ m\_Wrapper.m\_CharacterControls\_Move;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00226}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a584ff5e5d10f0ebb91ff11d6c4d9de41}{00226}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a584ff5e5d10f0ebb91ff11d6c4d9de41}{Dance}}\ =>\ m\_Wrapper.m\_CharacterControls\_Dance;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00227}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a58c35adbbf92ea8129895cd170429c3b}{00227}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputAction\ @\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a58c35adbbf92ea8129895cd170429c3b}{Run}}\ =>\ m\_Wrapper.m\_CharacterControls\_Run;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00228}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a4514edc7187f59ba110724e80f5fc923}{00228}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ InputActionMap\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a4514edc7187f59ba110724e80f5fc923}{Get}}()\ \{\ \textcolor{keywordflow}{return}\ m\_Wrapper.m\_CharacterControls;\ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00229}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a480e8aba1f4e21821fd7cca70d1158e4}{00229}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a480e8aba1f4e21821fd7cca70d1158e4}{Enable}}()\ \{\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a4514edc7187f59ba110724e80f5fc923}{Get}}().Enable();\ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00230}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a3393b31a7393bc26b7a3280c21941859}{00230}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a3393b31a7393bc26b7a3280c21941859}{Disable}}()\ \{\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a4514edc7187f59ba110724e80f5fc923}{Get}}().Disable();\ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00231}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a34147aeb7ba46ddcf12c1c4679ea63b3}{00231}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a34147aeb7ba46ddcf12c1c4679ea63b3}{enabled}}\ =>\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a4514edc7187f59ba110724e80f5fc923}{Get}}().enabled;}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00232}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_aaad89d53f117da15c2b88a4b11ae6e63}{00232}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ implicit\ \textcolor{keyword}{operator}\ InputActionMap(\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{CharacterControlsActions}}\ \textcolor{keyword}{set})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{set}.Get();\ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00233}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a72b6eec88b5ea7318d536422c3271cbf}{00233}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a72b6eec88b5ea7318d536422c3271cbf}{AddCallbacks}}(\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions}{ICharacterControlsActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (instance\ ==\ \textcolor{keyword}{null}\ ||\ m\_Wrapper.m\_CharacterControlsActionsCallbackInterfaces.Contains(instance))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Wrapper.m\_CharacterControlsActionsCallbackInterfaces.Add(instance);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.started\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{OnMove}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.performed\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{OnMove}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.canceled\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{OnMove}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ @Dance.started\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{OnDance}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ @Dance.performed\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{OnDance}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ @Dance.canceled\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{OnDance}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ @Run.started\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{OnRun}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ @Run.performed\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{OnRun}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ @Run.canceled\ +=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{OnRun}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ UnregisterCallbacks(\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions}{ICharacterControlsActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.started\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{OnMove}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.performed\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{OnMove}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ @Move.canceled\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{OnMove}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ @Dance.started\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{OnDance}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ @Dance.performed\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{OnDance}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ @Dance.canceled\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{OnDance}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ @Run.started\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{OnRun}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ @Run.performed\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{OnRun}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ @Run.canceled\ -\/=\ instance.\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{OnRun}};}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00261}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a8590f898e24f91546f45de59c121d018}{00261}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a8590f898e24f91546f45de59c121d018}{RemoveCallbacks}}(\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions}{ICharacterControlsActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_Wrapper.m\_CharacterControlsActionsCallbackInterfaces.Remove(instance))}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UnregisterCallbacks(instance);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00267}\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a8fd82fff6ddd3ff23cf6505fae458915}{00267}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a8fd82fff6ddd3ff23cf6505fae458915}{SetCallbacks}}(\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions}{ICharacterControlsActions}}\ instance)}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ m\_Wrapper.m\_CharacterControlsActionsCallbackInterfaces)}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ UnregisterCallbacks(item);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ m\_Wrapper.m\_CharacterControlsActionsCallbackInterfaces.Clear();}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions_a72b6eec88b5ea7318d536422c3271cbf}{AddCallbacks}}(instance);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00274}00274\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00275}\mbox{\hyperlink{class_player_input_a9fea28a418944c6d6d1ab4267c09a276}{00275}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{CharacterControlsActions}}\ @\mbox{\hyperlink{class_player_input_a9fea28a418944c6d6d1ab4267c09a276}{CharacterControls}}\ =>\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{CharacterControlsActions}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00276}\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions}{00276}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{interface\ }\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions}{ICharacterControlsActions}}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00277}00277\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00278}\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{00278}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a52e0c8c2cc3b126b4486a31a215f450a}{OnMove}}(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00279}\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{00279}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a13c6cf04d24ddf811822615def3b636b}{OnDance}}(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00280}\mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{00280}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions_a84722546a122449b32231379314e0a85}{OnRun}}(InputAction.CallbackContext\ context);}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00281}00281\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_input_8cs_source_l00282}00282\ \}}
+
+\end{DoxyCode}

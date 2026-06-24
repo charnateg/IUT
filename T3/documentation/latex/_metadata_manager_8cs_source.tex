@@ -1,0 +1,135 @@
+\doxysection{Metadata\+Manager.\+cs}
+\hypertarget{_metadata_manager_8cs_source}{}\label{_metadata_manager_8cs_source}\index{game/Assets/Scripts/InteractionSystem/Workspace/MetadataManager.cs@{game/Assets/Scripts/InteractionSystem/Workspace/MetadataManager.cs}}
+\mbox{\hyperlink{_metadata_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00009}\mbox{\hyperlink{class_metadata_manager}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_metadata_manager}{MetadataManager}}\ :\ MonoBehaviour,\ \mbox{\hyperlink{interface_i_interactable}{IInteractable}}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00011}00011\ \textcolor{preprocessor}{\ \ \ \ \#region\ Variables}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}UI\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \_infoPanel;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ TextMeshProUGUI\ \_promptText;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_document_stacker}{DocumentStacker}}\ \_documentStacker;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Dependencies"{}})]}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_loggable}{ILoggable}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_manager}{TaskManager}}\ \_taskManager;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Interaction\ Settings"{}})]}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00022}00022\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \_isInteracting\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00023}00023\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \_documentStacker\ ??=\ GetComponent<DocumentStacker>();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \_taskManager\ ??=\ FindObjectOfType<TaskManager>();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \_infoPanel?.SetActive(\textcolor{keyword}{false});\ \textcolor{comment}{//\ Ensure\ the\ info\ panel\ is\ hidden\ at\ the\ start}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \_logger\ ??=\ FindObjectOfType<Logger>();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00033}00033\ \textcolor{preprocessor}{\ \ \ \ \#region\ Interaction\ Methods}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00035}\mbox{\hyperlink{class_metadata_manager_a988d6215f8d975ee1e8144b33d86e29a}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_metadata_manager_a988d6215f8d975ee1e8144b33d86e29a}{Interact}}(\mbox{\hyperlink{class_main_player}{MainPlayer}}\ player)}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_isInteracting\ ||\ \_infoPanel\ ==\ \textcolor{keyword}{null}\ ||\ \_promptText\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_infoPanel\ ==\ \textcolor{keyword}{null}\ ||\ \_promptText\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}Missing\ references\ in\ MetadataManager\ script."{}});}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \_infoPanel.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_document}{Document}}\ doc\ =\ player.\mbox{\hyperlink{class_main_player_ac5030d5ed5a71996be0cccabd4ee5429}{GetDocument}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (HandleDocumentState(doc,\ player))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \_isInteracting\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ doc\ =\ player.\mbox{\hyperlink{class_main_player_aab518a2aaee2345dd078996e735e8977}{RemoveDocument}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ player.\mbox{\hyperlink{class_main_player_a6a366029ca433142fa47c425a4ca53d9}{RefreshStacker}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_document_stacker_a17f09bf17c4675c8b1855c817b1d5abd}{StackDock}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ waitTime\ =\ Mathf.Clamp(5f\ -\/\ (player.\mbox{\hyperlink{class_main_player_ab672d4203f33e69888df0f7928ed298c}{GetAttributeValue}}(\mbox{\hyperlink{_attribute_8cs_a15b1b83081915ae5239f81050ae0f550}{Attribute}}.Intelligence)\ /\ 6),\ 1f,\ 5f);}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ StartCoroutine(ProcessDocument(doc,\ waitTime,\ player));}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00065}00065\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ HandleDocumentState(\mbox{\hyperlink{class_document}{Document}}\ doc,\ \mbox{\hyperlink{class_main_player}{MainPlayer}}\ player)}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \_promptText.text\ =\ \textcolor{stringliteral}{"{}Vous\ n'avez\ pas\ de\ document"{}};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ ResetAfterDelay();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc.\mbox{\hyperlink{class_document_a42242f3611ec657a9bb6632c95ed5f21}{HasMetadata}}())}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \_promptText.text\ =\ \textcolor{stringliteral}{"{}Le\ document\ a\ déjà\ des\ métadonnées"{}};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ ResetAfterDelay();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{private}\ IEnumerator\ ProcessDocument(\mbox{\hyperlink{class_document}{Document}}\ doc,\ \textcolor{keywordtype}{float}\ waitTime,\ \mbox{\hyperlink{class_main_player}{MainPlayer}}\ player)}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00089}00089\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ var\ playerController\ =\ player.GetComponent<\mbox{\hyperlink{class_animation_and_movement_controller}{AnimationAndMovementController}}>();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ playerController.\mbox{\hyperlink{class_animation_and_movement_controller_a679f393511368272c9da0de6a3598e07}{DisableMovement}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ RunProcessingTimer(waitTime);}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ doc.\mbox{\hyperlink{class_document_a741952e2f65f54807efe9fe384bc7f47}{AddMetadata}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \_promptText.text\ =\ \textcolor{stringliteral}{"{}Métadonnées\ ajoutées"{}};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \_promptText.color\ =\ Color.green;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \_documentStacker.\mbox{\hyperlink{class_document_stacker_a541dc30ae52ec0f711a6f378bff01df1}{UnstackDock}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ player.\mbox{\hyperlink{class_main_player_a4d2c5d891f3b98c31b31c9e05cf2552b}{AddDocument}}(doc);}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ player.\mbox{\hyperlink{class_main_player_a6a366029ca433142fa47c425a4ca53d9}{RefreshStacker}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ playerController.EnableMovement();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \_taskManager.\mbox{\hyperlink{class_task_manager_a7a946eedda694d16c0f47b9448092ebe}{IncrementMetadatedDocuments}}();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\$\textcolor{stringliteral}{"{}Métadonnées\ ajoutées\ au\ document\ +\ \{doc.GetId()\}."{}});}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ WaitForSeconds(2f);}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ ResetInteraction();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{private}\ IEnumerator\ RunProcessingTimer(\textcolor{keywordtype}{float}\ waitTime)}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00113}00113\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ elapsedTime\ =\ 0f;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (elapsedTime\ <\ waitTime)}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ remainingTime\ =\ Mathf.Ceil(waitTime\ -\/\ elapsedTime);}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \_promptText.text\ =\ \$\textcolor{stringliteral}{"{}En\ cours\ de\ traitement\ :\ \{remainingTime\}s"{}};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ WaitForSeconds(1f);}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ elapsedTime\ +=\ 1f;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00126}\mbox{\hyperlink{class_metadata_manager_a88a3971bed64303ebb58a9a0f1f91607}{00126}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_metadata_manager_a88a3971bed64303ebb58a9a0f1f91607}{GetInteractionText}}()\ =>\ \textcolor{stringliteral}{"{}Ajouter\ des\ métadonnées"{}};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00128}\mbox{\hyperlink{class_metadata_manager_a60589ac23500a03ccba96d38c137f36a}{00128}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}}\ \mbox{\hyperlink{class_metadata_manager_a60589ac23500a03ccba96d38c137f36a}{GetInteractable}}()\ =>\ \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7}{Interactable}}.MetadataStation;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ ResetInteraction()}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00131}00131\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \_infoPanel?.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_promptText\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \_promptText.text\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \_promptText.color\ =\ Color.white;}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \_isInteracting\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00143}00143\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ ResetAfterDelay()\ =>\ StartCoroutine(ResetAfterDelayCoroutine());}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00145}00145\ \ \ \ \ \textcolor{keyword}{private}\ IEnumerator\ ResetAfterDelayCoroutine()}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ yield\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ WaitForSeconds(2f);}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ ResetInteraction();}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00151}00151\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_metadata_manager_8cs_source_l00152}00152\ \}}
+
+\end{DoxyCode}

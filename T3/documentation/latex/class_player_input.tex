@@ -1,0 +1,210 @@
+\doxysection{Player\+Input Class Reference}
+\hypertarget{class_player_input}{}\label{class_player_input}\index{PlayerInput@{PlayerInput}}
+Inheritance diagram for Player\+Input\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_player_input}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{Character\+Controls\+Actions}}
+\item 
+interface \mbox{\hyperlink{interface_player_input_1_1_i_character_controls_actions}{ICharacter\+Controls\+Actions}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_input_a38dde73fa051405778d6cc5aa0a25097}{Player\+Input}} ()
+\item 
+void \mbox{\hyperlink{class_player_input_a4c545a7cc61eae7ccd7b07000b413841}{Dispose}} ()
+\item 
+bool \mbox{\hyperlink{class_player_input_a0d588d48ccbe392b69401b4ae4f4bebf}{Contains}} (Input\+Action action)
+\item 
+IEnumerator$<$ Input\+Action $>$ \mbox{\hyperlink{class_player_input_acdc36e3c41e21aa40fa83210af0fcbe6}{Get\+Enumerator}} ()
+\item 
+void \mbox{\hyperlink{class_player_input_a63f00af6311db959534f1d0095df01a0}{Enable}} ()
+\item 
+void \mbox{\hyperlink{class_player_input_a01d0c1c799ae614a0ed406f88d0eae5c}{Disable}} ()
+\item 
+Input\+Action \mbox{\hyperlink{class_player_input_a4fc164e57be3599f5c5bb93d2fff74f8}{Find\+Action}} (string action\+Name\+Or\+Id, bool throw\+If\+Not\+Found=false)
+\item 
+int \mbox{\hyperlink{class_player_input_a96e441ebd1434f66de91d281377050bb}{Find\+Binding}} (Input\+Binding \mbox{\hyperlink{class_player_input_a1a729dccae8a70b742edfbc94138467b}{binding\+Mask}}, out Input\+Action action)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Input\+Action\+Asset \mbox{\hyperlink{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}{asset}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Input\+Binding? \mbox{\hyperlink{class_player_input_a1a729dccae8a70b742edfbc94138467b}{binding\+Mask}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Read\+Only\+Array$<$ Input\+Device $>$? \mbox{\hyperlink{class_player_input_abefe1889fbed4be795fc9ccbc73998f1}{devices}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Read\+Only\+Array$<$ Input\+Control\+Scheme $>$ \mbox{\hyperlink{class_player_input_a69019e0fc67c39026a5f078ab43cd4f1}{control\+Schemes}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+IEnumerable$<$ Input\+Binding $>$ \mbox{\hyperlink{class_player_input_a06b227bd8739d554f7f918c40435f2dd}{bindings}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{Character\+Controls\+Actions}} \mbox{\hyperlink{class_player_input_a9fea28a418944c6d6d1ab4267c09a276}{Character\+Controls}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00018}{18}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_player_input_a38dde73fa051405778d6cc5aa0a25097}\index{PlayerInput@{PlayerInput}!PlayerInput@{PlayerInput}}
+\index{PlayerInput@{PlayerInput}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{PlayerInput()}{PlayerInput()}}
+{\footnotesize\ttfamily \label{class_player_input_a38dde73fa051405778d6cc5aa0a25097} 
+Player\+Input.\+Player\+Input (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00021}{21}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_player_input_a0d588d48ccbe392b69401b4ae4f4bebf}\index{PlayerInput@{PlayerInput}!Contains@{Contains}}
+\index{Contains@{Contains}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{Contains()}{Contains()}}
+{\footnotesize\ttfamily \label{class_player_input_a0d588d48ccbe392b69401b4ae4f4bebf} 
+bool Player\+Input.\+Contains (\begin{DoxyParamCaption}\item[{Input\+Action}]{action}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00178}{178}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a01d0c1c799ae614a0ed406f88d0eae5c}\index{PlayerInput@{PlayerInput}!Disable@{Disable}}
+\index{Disable@{Disable}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{Disable()}{Disable()}}
+{\footnotesize\ttfamily \label{class_player_input_a01d0c1c799ae614a0ed406f88d0eae5c} 
+void Player\+Input.\+Disable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00198}{198}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a4c545a7cc61eae7ccd7b07000b413841}\index{PlayerInput@{PlayerInput}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}}
+{\footnotesize\ttfamily \label{class_player_input_a4c545a7cc61eae7ccd7b07000b413841} 
+void Player\+Input.\+Dispose (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00159}{159}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a63f00af6311db959534f1d0095df01a0}\index{PlayerInput@{PlayerInput}!Enable@{Enable}}
+\index{Enable@{Enable}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{Enable()}{Enable()}}
+{\footnotesize\ttfamily \label{class_player_input_a63f00af6311db959534f1d0095df01a0} 
+void Player\+Input.\+Enable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00193}{193}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a4fc164e57be3599f5c5bb93d2fff74f8}\index{PlayerInput@{PlayerInput}!FindAction@{FindAction}}
+\index{FindAction@{FindAction}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{FindAction()}{FindAction()}}
+{\footnotesize\ttfamily \label{class_player_input_a4fc164e57be3599f5c5bb93d2fff74f8} 
+Input\+Action Player\+Input.\+Find\+Action (\begin{DoxyParamCaption}\item[{string}]{action\+Name\+Or\+Id}{, }\item[{bool}]{throw\+If\+Not\+Found}{ = {\ttfamily false}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00205}{205}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a96e441ebd1434f66de91d281377050bb}\index{PlayerInput@{PlayerInput}!FindBinding@{FindBinding}}
+\index{FindBinding@{FindBinding}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{FindBinding()}{FindBinding()}}
+{\footnotesize\ttfamily \label{class_player_input_a96e441ebd1434f66de91d281377050bb} 
+int Player\+Input.\+Find\+Binding (\begin{DoxyParamCaption}\item[{Input\+Binding}]{binding\+Mask}{, }\item[{out Input\+Action}]{action}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00210}{210}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_acdc36e3c41e21aa40fa83210af0fcbe6}\index{PlayerInput@{PlayerInput}!GetEnumerator@{GetEnumerator}}
+\index{GetEnumerator@{GetEnumerator}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{GetEnumerator()}{GetEnumerator()}}
+{\footnotesize\ttfamily \label{class_player_input_acdc36e3c41e21aa40fa83210af0fcbe6} 
+IEnumerator$<$ Input\+Action $>$ Player\+Input.\+Get\+Enumerator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00183}{183}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+
+
+\doxysubsection{Property Documentation}
+\Hypertarget{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a}\index{PlayerInput@{PlayerInput}!asset@{asset}}
+\index{asset@{asset}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{asset}{asset}}
+{\footnotesize\ttfamily \label{class_player_input_a61df2216f42b3671f9ddb7852b06ee3a} 
+Input\+Action\+Asset Player\+Input.\+asset\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00020}{20}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a1a729dccae8a70b742edfbc94138467b}\index{PlayerInput@{PlayerInput}!bindingMask@{bindingMask}}
+\index{bindingMask@{bindingMask}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{bindingMask}{bindingMask}}
+{\footnotesize\ttfamily \label{class_player_input_a1a729dccae8a70b742edfbc94138467b} 
+Input\+Binding? Player\+Input.\+binding\+Mask\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00164}{164}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a06b227bd8739d554f7f918c40435f2dd}\index{PlayerInput@{PlayerInput}!bindings@{bindings}}
+\index{bindings@{bindings}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{bindings}{bindings}}
+{\footnotesize\ttfamily \label{class_player_input_a06b227bd8739d554f7f918c40435f2dd} 
+IEnumerable$<$Input\+Binding$>$ Player\+Input.\+bindings\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00203}{203}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a9fea28a418944c6d6d1ab4267c09a276}\index{PlayerInput@{PlayerInput}!CharacterControls@{CharacterControls}}
+\index{CharacterControls@{CharacterControls}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{CharacterControls}{CharacterControls}}
+{\footnotesize\ttfamily \label{class_player_input_a9fea28a418944c6d6d1ab4267c09a276} 
+\mbox{\hyperlink{struct_player_input_1_1_character_controls_actions}{Character\+Controls\+Actions}} Player\+Input.\+Character\+Controls\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00275}{275}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_a69019e0fc67c39026a5f078ab43cd4f1}\index{PlayerInput@{PlayerInput}!controlSchemes@{controlSchemes}}
+\index{controlSchemes@{controlSchemes}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{controlSchemes}{controlSchemes}}
+{\footnotesize\ttfamily \label{class_player_input_a69019e0fc67c39026a5f078ab43cd4f1} 
+Read\+Only\+Array$<$Input\+Control\+Scheme$>$ Player\+Input.\+control\+Schemes\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00176}{176}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+\Hypertarget{class_player_input_abefe1889fbed4be795fc9ccbc73998f1}\index{PlayerInput@{PlayerInput}!devices@{devices}}
+\index{devices@{devices}!PlayerInput@{PlayerInput}}
+\doxysubsubsection{\texorpdfstring{devices}{devices}}
+{\footnotesize\ttfamily \label{class_player_input_abefe1889fbed4be795fc9ccbc73998f1} 
+Read\+Only\+Array$<$Input\+Device$>$? Player\+Input.\+devices\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line \mbox{\hyperlink{_player_input_8cs_source_l00170}{170}} of file \mbox{\hyperlink{_player_input_8cs_source}{Player\+Input.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/controller/\+Player/\mbox{\hyperlink{_player_input_8cs}{Player\+Input.\+cs}}\end{DoxyCompactItemize}

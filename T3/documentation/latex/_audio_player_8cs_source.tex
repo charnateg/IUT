@@ -1,0 +1,74 @@
+\doxysection{Audio\+Player.\+cs}
+\hypertarget{_audio_player_8cs_source}{}\label{_audio_player_8cs_source}\index{game/Assets/Scripts/controller/Player/AudioPlayer.cs@{game/Assets/Scripts/controller/Player/AudioPlayer.cs}}
+\mbox{\hyperlink{_audio_player_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00004}00004\ [RequireComponent(typeof(AudioSource))]}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00008}\mbox{\hyperlink{class_audio_player}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_audio_player}{AudioPlayer}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00010}00010\ \textcolor{preprocessor}{\ \ \ \ \#region\ Variables}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Audio\ Sources"{}})]}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00013}00013\ \ \ \ \ \textcolor{keyword}{private}\ AudioSource\ \_danceAudioSource;}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00014}00014\ \ \ \ \ \textcolor{keyword}{private}\ AudioSource\ \_footStepSource;}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00016}00016\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Footstep\ Clips"{}})]}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<AudioClip>\ \_footStepClips\ =\ \textcolor{keyword}{new}\ List<AudioClip>();}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00019}00019\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00021}00021\ \ \ \ \ \textcolor{keywordtype}{void}\ Awake()}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Ensure\ there\ are\ at\ least\ two\ AudioSources\ attached}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ AudioSource[]\ audioSources\ =\ GetComponents<AudioSource>();}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (audioSources.Length\ <\ 2)}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}AudioPlayer\ requires\ at\ least\ two\ AudioSource\ components!"{}});}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \_danceAudioSource\ =\ audioSources[0];}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \_footStepSource\ =\ audioSources[1];}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00038}\mbox{\hyperlink{class_audio_player_a8814bcfd21d9e59be1b1a180cd3a0f3d}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_player_a8814bcfd21d9e59be1b1a180cd3a0f3d}{PlayDanceMusic}}()}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_danceAudioSource\ !=\ \textcolor{keyword}{null}\ \&\&\ \_danceAudioSource.clip\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \_danceAudioSource.Play();}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}Dance\ AudioSource\ or\ clip\ is\ missing."{}});}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00053}\mbox{\hyperlink{class_audio_player_aadb8b17ee894dd3215d9f7cae65b1ed2}{00053}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_player_aadb8b17ee894dd3215d9f7cae65b1ed2}{PlayFootStep}}(\textcolor{keywordtype}{float}\ pitch\ =\ 1.0f)}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_footStepClips.Count\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogWarning(\textcolor{stringliteral}{"{}Footstep\ clips\ list\ is\ empty."{}});}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ randomClipIndex\ =\ Random.Range(0,\ \_footStepClips.Count);}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \_footStepSource.clip\ =\ \_footStepClips[randomClipIndex];}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Apply\ random\ pitch,\ volume,\ and\ stereo\ pan}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \_footStepSource.pitch\ =\ pitch;}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \_footStepSource.volume\ =\ Random.Range(0.8f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \_footStepSource.panStereo\ =\ Random.Range(-\/0.2f,\ 0.2f);}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \_footStepSource.Play();}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00073}\mbox{\hyperlink{class_audio_player_a9f77b261dd36b6f4bf3b7c2e133e87c4}{00073}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_player_a9f77b261dd36b6f4bf3b7c2e133e87c4}{StopFootStep}}()}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \_footStepSource.Stop();}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00080}\mbox{\hyperlink{class_audio_player_a2894ca4107142e214b5c0d574b7354d3}{00080}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_audio_player_a2894ca4107142e214b5c0d574b7354d3}{StopDanceMusic}}()}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \_danceAudioSource.Stop();}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_audio_player_8cs_source_l00084}00084\ \}}
+
+\end{DoxyCode}

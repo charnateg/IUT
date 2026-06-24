@@ -1,0 +1,169 @@
+\doxysection{Level\+Manager Class Reference}
+\hypertarget{class_level_manager}{}\label{class_level_manager}\index{LevelManager@{LevelManager}}
+
+
+Manages the level progression, timer, and rocket launching functionalities.  
+
+
+Inheritance diagram for Level\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_level_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_level_manager_acd4c530eb1d86a3147abfd1a743ed289}{Update\+Chrono}} ()
+\begin{DoxyCompactList}\small\item\em Updates the level timer and displays it on the UI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_manager_a1afd7d3befb0aa3bf563f55aced79a81}{Launch\+Rocket}} ()
+\begin{DoxyCompactList}\small\item\em Launches the rocket and displays the end panel after a short delay. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_level_manager_ac84b7450c28bafe815a5a09b86395099}{Finish\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Handles actions to be performed when the level finishes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_level_manager_a41827fc0491d46c1eebe9602dcfd43cc}{Calculate\+Score}} ()
+\item 
+bool \mbox{\hyperlink{class_level_manager_afdef5e588b9850916443800977b1a07d}{Evaluate\+Score}} ()
+\item 
+void \mbox{\hyperlink{class_level_manager_a026e12dc54a9cc961f251e447525c18b}{Load\+Level}} (int level)
+\begin{DoxyCompactList}\small\item\em Loads a new level and resets relevant settings. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_level_manager_af63f51e6375e20735ec4b1095b8d1321}{Get\+Chrono}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current timer value. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_level_manager_af1f4976817a3601f3151edba4121ff2e}{Get\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current level number. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_level_manager_ad23083bf512e3a0a5137159b81c1f7e1}{Get\+Score}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current score. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the level progression, timer, and rocket launching functionalities. 
+
+Definition at line \mbox{\hyperlink{_level_manager_8cs_source_l00010}{10}} of file \mbox{\hyperlink{_level_manager_8cs_source}{Level\+Manager.\+cs}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_level_manager_a41827fc0491d46c1eebe9602dcfd43cc}\index{LevelManager@{LevelManager}!CalculateScore@{CalculateScore}}
+\index{CalculateScore@{CalculateScore}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{CalculateScore()}{CalculateScore()}}
+{\footnotesize\ttfamily \label{class_level_manager_a41827fc0491d46c1eebe9602dcfd43cc} 
+int Level\+Manager.\+Calculate\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_level_manager_8cs_source_l00133}{133}} of file \mbox{\hyperlink{_level_manager_8cs_source}{Level\+Manager.\+cs}}.
+
+\Hypertarget{class_level_manager_afdef5e588b9850916443800977b1a07d}\index{LevelManager@{LevelManager}!EvaluateScore@{EvaluateScore}}
+\index{EvaluateScore@{EvaluateScore}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{EvaluateScore()}{EvaluateScore()}}
+{\footnotesize\ttfamily \label{class_level_manager_afdef5e588b9850916443800977b1a07d} 
+bool Level\+Manager.\+Evaluate\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_level_manager_8cs_source_l00187}{187}} of file \mbox{\hyperlink{_level_manager_8cs_source}{Level\+Manager.\+cs}}.
+
+\Hypertarget{class_level_manager_ac84b7450c28bafe815a5a09b86395099}\index{LevelManager@{LevelManager}!FinishLevel@{FinishLevel}}
+\index{FinishLevel@{FinishLevel}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{FinishLevel()}{FinishLevel()}}
+{\footnotesize\ttfamily \label{class_level_manager_ac84b7450c28bafe815a5a09b86395099} 
+void Level\+Manager.\+Finish\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Handles actions to be performed when the level finishes. 
+
+
+
+Definition at line \mbox{\hyperlink{_level_manager_8cs_source_l00116}{116}} of file \mbox{\hyperlink{_level_manager_8cs_source}{Level\+Manager.\+cs}}.
+
+\Hypertarget{class_level_manager_af63f51e6375e20735ec4b1095b8d1321}\index{LevelManager@{LevelManager}!GetChrono@{GetChrono}}
+\index{GetChrono@{GetChrono}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{GetChrono()}{GetChrono()}}
+{\footnotesize\ttfamily \label{class_level_manager_af63f51e6375e20735ec4b1095b8d1321} 
+float Level\+Manager.\+Get\+Chrono (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current timer value. 
+
+\begin{DoxyReturn}{Returns}
+The current timer value.
+\end{DoxyReturn}
+\Hypertarget{class_level_manager_af1f4976817a3601f3151edba4121ff2e}\index{LevelManager@{LevelManager}!GetLevel@{GetLevel}}
+\index{GetLevel@{GetLevel}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{GetLevel()}{GetLevel()}}
+{\footnotesize\ttfamily \label{class_level_manager_af1f4976817a3601f3151edba4121ff2e} 
+int Level\+Manager.\+Get\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current level number. 
+
+\begin{DoxyReturn}{Returns}
+The current level number.
+\end{DoxyReturn}
+\Hypertarget{class_level_manager_ad23083bf512e3a0a5137159b81c1f7e1}\index{LevelManager@{LevelManager}!GetScore@{GetScore}}
+\index{GetScore@{GetScore}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{GetScore()}{GetScore()}}
+{\footnotesize\ttfamily \label{class_level_manager_ad23083bf512e3a0a5137159b81c1f7e1} 
+int Level\+Manager.\+Get\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current score. 
+
+\begin{DoxyReturn}{Returns}
+The current score.
+\end{DoxyReturn}
+\Hypertarget{class_level_manager_a1afd7d3befb0aa3bf563f55aced79a81}\index{LevelManager@{LevelManager}!LaunchRocket@{LaunchRocket}}
+\index{LaunchRocket@{LaunchRocket}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{LaunchRocket()}{LaunchRocket()}}
+{\footnotesize\ttfamily \label{class_level_manager_a1afd7d3befb0aa3bf563f55aced79a81} 
+void Level\+Manager.\+Launch\+Rocket (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Launches the rocket and displays the end panel after a short delay. 
+
+
+
+Definition at line \mbox{\hyperlink{_level_manager_8cs_source_l00085}{85}} of file \mbox{\hyperlink{_level_manager_8cs_source}{Level\+Manager.\+cs}}.
+
+\Hypertarget{class_level_manager_a026e12dc54a9cc961f251e447525c18b}\index{LevelManager@{LevelManager}!LoadLevel@{LoadLevel}}
+\index{LoadLevel@{LoadLevel}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{LoadLevel()}{LoadLevel()}}
+{\footnotesize\ttfamily \label{class_level_manager_a026e12dc54a9cc961f251e447525c18b} 
+void Level\+Manager.\+Load\+Level (\begin{DoxyParamCaption}\item[{int}]{level}{}\end{DoxyParamCaption})}
+
+
+
+Loads a new level and resets relevant settings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em level} & The level number to load.\\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_level_manager_8cs_source_l00201}{201}} of file \mbox{\hyperlink{_level_manager_8cs_source}{Level\+Manager.\+cs}}.
+
+\Hypertarget{class_level_manager_acd4c530eb1d86a3147abfd1a743ed289}\index{LevelManager@{LevelManager}!UpdateChrono@{UpdateChrono}}
+\index{UpdateChrono@{UpdateChrono}!LevelManager@{LevelManager}}
+\doxysubsubsection{\texorpdfstring{UpdateChrono()}{UpdateChrono()}}
+{\footnotesize\ttfamily \label{class_level_manager_acd4c530eb1d86a3147abfd1a743ed289} 
+void Level\+Manager.\+Update\+Chrono (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Updates the level timer and displays it on the UI. 
+
+
+
+Definition at line \mbox{\hyperlink{_level_manager_8cs_source_l00040}{40}} of file \mbox{\hyperlink{_level_manager_8cs_source}{Level\+Manager.\+cs}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+game/\+Assets/\+Scripts/controller/\+Level/\mbox{\hyperlink{_level_manager_8cs}{Level\+Manager.\+cs}}\end{DoxyCompactItemize}

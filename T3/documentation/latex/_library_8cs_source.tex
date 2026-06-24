@@ -1,0 +1,46 @@
+\doxysection{Library.\+cs}
+\hypertarget{_library_8cs_source}{}\label{_library_8cs_source}\index{game/Assets/Scripts/model/Library.cs@{game/Assets/Scripts/model/Library.cs}}
+\mbox{\hyperlink{_library_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00007}00007\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00008}\mbox{\hyperlink{class_library}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_library}{Library}}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Document>\ \_documents;}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00012}\mbox{\hyperlink{class_library_a774a3615cb0dc15c30d1de3e2675cbba}{00012}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_library_a774a3615cb0dc15c30d1de3e2675cbba}{Library}}()}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \_documents\ =\ \textcolor{keyword}{new}\ List<Document>();}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00021}\mbox{\hyperlink{class_library_a7e39ad4844b6fcdbaaaa5cb9153cd258}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_library_a7e39ad4844b6fcdbaaaa5cb9153cd258}{AddDocument}}(\mbox{\hyperlink{class_document}{Document}}\ document)}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \_documents.Add(document);}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00024}00024\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00029}\mbox{\hyperlink{class_library_adeebe8138f21d6c66e045dd71bf7c3b8}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Document>\ \mbox{\hyperlink{class_library_adeebe8138f21d6c66e045dd71bf7c3b8}{GetDocuments}}()}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_documents;}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00038}\mbox{\hyperlink{class_library_a6fc003805d594a1597cdda1aba15f7b7}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_document}{Document}}\ \mbox{\hyperlink{class_library_a6fc003805d594a1597cdda1aba15f7b7}{FindDocument}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_documents.Find(doc\ =>\ doc.GetId()\ ==\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00047}\mbox{\hyperlink{class_library_aa8c46de828adf1863137e50248a1099e}{00047}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_library_aa8c46de828adf1863137e50248a1099e}{RemoveDocument}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00048}00048\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ var\ doc\ =\ \mbox{\hyperlink{class_library_a6fc003805d594a1597cdda1aba15f7b7}{FindDocument}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (doc\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \_documents.Remove(doc);}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00061}\mbox{\hyperlink{class_library_a7e5514e17ace21a3a1e63c476d52d883}{00061}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_library_a7e5514e17ace21a3a1e63c476d52d883}{GetDocumentCount}}()}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_documents.Count;}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00064}00064\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_8cs_source_l00065}00065\ \}}
+
+\end{DoxyCode}

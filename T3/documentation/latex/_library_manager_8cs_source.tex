@@ -1,0 +1,38 @@
+\doxysection{Library\+Manager.\+cs}
+\hypertarget{_library_manager_8cs_source}{}\label{_library_manager_8cs_source}\index{game/Assets/Scripts/model/LibraryManager.cs@{game/Assets/Scripts/model/LibraryManager.cs}}
+\mbox{\hyperlink{_library_manager_8cs}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00007}\mbox{\hyperlink{class_library_manager}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_library_manager}{LibraryManager}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00009}00009\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_library}{Library}}\ \_library;}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00010}00010\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_loggable}{ILoggable}}\ \_logger;}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_task_manager}{TaskManager}}\ \_taskManager;}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00012}00012\ \ \ \ \ \textcolor{keywordtype}{void}\ Start()}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Initialize\ the\ \_library}}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \_library\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{_interactor_8cs_a9f9417d2c8748a9b50d48f29d9566bc7a4d70254b3a8e2bc38b6147fa6ee813be}{Library}}();}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \_logger\ ??=\ FindObjectOfType<Logger>();}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \_taskManager\ ??=\ FindObjectOfType<TaskManager>();}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00023}\mbox{\hyperlink{class_library_manager_a1b58e11824706c61214117e7a5567ba9}{00023}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_library_manager_a1b58e11824706c61214117e7a5567ba9}{ArchiveDocument}}(\mbox{\hyperlink{class_document}{Document}}\ document)}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ document.\mbox{\hyperlink{class_document_ac1d196f6baaf5db0e0ae6198c1e8439f}{Archive}}();}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \_library.\mbox{\hyperlink{class_library_a7e39ad4844b6fcdbaaaa5cb9153cd258}{AddDocument}}(document);}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \_logger.\mbox{\hyperlink{interface_i_loggable_a1709a5b8d37f8bf554511c8222937a86}{Log}}(\$\textcolor{stringliteral}{"{}Vous\ avez\ archivé\ le\ document\ \{document.GetId()\}"{}});}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \_taskManager.\mbox{\hyperlink{class_task_manager_ad9be67a08da85326e1f9120e88ba571d}{IncrementArchivedDocuments}}();}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00035}\mbox{\hyperlink{class_library_manager_a5052d66aca04b6f9ad9fb411bc69a1ac}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_document}{Document}}\ \mbox{\hyperlink{class_library_manager_a5052d66aca04b6f9ad9fb411bc69a1ac}{GetDocument}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_library.\mbox{\hyperlink{class_library_a6fc003805d594a1597cdda1aba15f7b7}{FindDocument}}(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00040}\mbox{\hyperlink{class_library_manager_a1b730737cc51b0920986986713baacb1}{00040}}\ \ \ \ \ \textcolor{keyword}{public}\ List<Document>\ \mbox{\hyperlink{class_library_manager_a1b730737cc51b0920986986713baacb1}{GetDocuments}}()}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00041}00041\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_library.\mbox{\hyperlink{class_library_adeebe8138f21d6c66e045dd71bf7c3b8}{GetDocuments}}();}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_library_manager_8cs_source_l00044}00044\ \}}
+
+\end{DoxyCode}

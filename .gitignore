@@ -32,3 +32,4 @@ T3/Executables/
 *.cubemap
 .DS_Store
 *.zip
+T4/Code/src/assets/sound/background_music.wav
